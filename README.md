@@ -1,5 +1,7 @@
 # Clean Code MOC
 
+[Syllabus here](https://gist.github.com/CaptpBdcht/c7b13598d16596204fbfccca2d403d6d)
+
 ### Branches
 
 * master: sources, cours
