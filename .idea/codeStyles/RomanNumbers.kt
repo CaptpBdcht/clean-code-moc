@@ -1,3 +1,0 @@
-fun (number : Int) : String {
-    
-}

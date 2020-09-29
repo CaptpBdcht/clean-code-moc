@@ -26,15 +26,23 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -48,11 +56,26 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1601366551724</updated>
-      <workItem from="1601366553907" duration="1114000" />
+      <workItem from="1601366553907" duration="2974000" />
+      <workItem from="1601370628530" duration="1185000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="137" y="29" width="1092" height="739" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1601368936342">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="137" y="29" width="1092" height="739" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.768@0.0.1366.768" timestamp="1601368936342" />
+    <state x="412" y="185" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1601368716250">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="412" y="185" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1366.768@0.0.1366.768" timestamp="1601368716250" />
+    <state x="463" y="153" key="FileChooserDialogImpl" timestamp="1601368931561">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="463" y="153" key="FileChooserDialogImpl/0.0.1366.768@0.0.1366.768" timestamp="1601368931561" />
   </component>
 </project>
