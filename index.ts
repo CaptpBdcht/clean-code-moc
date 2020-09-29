@@ -43,7 +43,6 @@ function extractValuesFromInput(inputData: String): FizzBuzzValues{
         fizzBuzzValues.buzz = buzz;
         fizzBuzzValues.value = value;
     }
-    console.log(fizzBuzzValues);
     return fizzBuzzValues;
 }
 
