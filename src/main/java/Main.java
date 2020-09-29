@@ -16,12 +16,12 @@ public class Main {
         if (arguments.length() == 0){
             System.out.println("Please specify a value to fizzbuzz");
         } else if (arguments.contains(",")){
-            String[] inputs = arguments.split(",");
-            String[] inputs2 = inputs[1].split(" ");
+            String[] firstArguments = arguments.split(",");
+            String[] SecondArguments = firstArguments[1].split(" ");
 
-            int fizz = Integer.parseInt(inputs[0]);
-            int buzz = Integer.parseInt(inputs2[0]);
-            int max = Integer.parseInt(inputs2[1]);
+            int fizz = Integer.parseInt(firstArguments[0]);
+            int buzz = Integer.parseInt(SecondArguments[0]);
+            int max = Integer.parseInt(SecondArguments[1]);
 
             if(fizz == 1 || buzz == 1){
                 System.out.println("Divisor cannot be 1");
