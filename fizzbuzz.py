@@ -1,7 +1,19 @@
-number = int(input())
-if number < 0:
+
+numberstart = float(input())
+numberend = float(input())
+
+if numberstart < 1:
     print("Cannot fizzbuzz negative numbers")
-for x in range(1, number):
+elif numberstart > 100:
+    print("Number to big")
+if numberend < 1:
+    print("Cannot fizzbuzz negative numbers")
+elif numberend > 100:
+    print("Number to big")
+if numberend > numberstart:
+    print("Divisor must be a prime")
+
+for x in range(int(numberstart), int(numberend)):
 
     fizz = not x % 3
     buzz = not x % 5
