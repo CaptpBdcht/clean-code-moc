@@ -1,0 +1,3 @@
+fun (number : Int) : String {
+    
+}
