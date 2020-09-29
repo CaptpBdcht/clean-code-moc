@@ -34,8 +34,6 @@ func FizzBuzzWithSpecificFizzAndBuzz(fizz:Int,buzz:Int,limit:Int)->String{
         result="Divisor must be a prime"
     }else if(CheckNegativeFizzBuzz(fizz: fizz, buzz: buzz)){
         result="Divisor cannot be negative"
-    }else if(true){
-        
     }
         
     else{
