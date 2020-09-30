@@ -2,10 +2,9 @@
 
 [Sujet](https://gist.github.com/CaptpBdcht/9192a868457a1003edda6687893a92b6)
 
-L'objectif de cet exercice est de commencer à créer le coeur applicatif (business) d'un RPG.
-Commencez par former un groupe de 2
-
-Créez d'abord la branche pour votre projet:
+L'objectif de cet exercice est de commencer à créer le coeur applicatif (business) d'un RPG.  
+Commencez par former un groupe de 2.
+Créez ensuite la branche pour votre projet:
 
 ````
 git checkout -b examen-nom1-nom2
