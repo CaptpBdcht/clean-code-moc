@@ -24,6 +24,7 @@
     <option name="version" value="1" />
   </component>
   <component name="ProjectId" id="1iB2EGW1c5MmJcEExHr0lNoYoSp" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -33,7 +34,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="kotlin" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/Dev" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -42,17 +43,6 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="FizzBuzz.kts" type="KotlinStandaloneScriptRunConfigurationType" temporary="true" nameIsGenerated="true">
       <option name="filePath" value="$PROJECT_DIR$/FizzBuzz.kts" />
       <option name="vmParameters" value="" />
@@ -137,7 +127,9 @@
       <updated>1601366551724</updated>
       <workItem from="1601366553907" duration="2974000" />
       <workItem from="1601370628530" duration="3370000" />
-      <workItem from="1601381989160" duration="2117000" />
+      <workItem from="1601381989160" duration="2460000" />
+      <workItem from="1601384645430" duration="831000" />
+      <workItem from="1601445970954" duration="233000" />
     </task>
     <servers />
   </component>
@@ -153,9 +145,9 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="412" y="185" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1366.768@0.0.1366.768" timestamp="1601368716250" />
-    <state x="463" y="153" key="FileChooserDialogImpl" timestamp="1601368931561">
+    <state x="463" y="153" key="FileChooserDialogImpl" timestamp="1601446217048">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="463" y="153" key="FileChooserDialogImpl/0.0.1366.768@0.0.1366.768" timestamp="1601368931561" />
+    <state x="463" y="153" key="FileChooserDialogImpl/0.0.1366.768@0.0.1366.768" timestamp="1601446217048" />
   </component>
 </project>
