@@ -10,12 +10,12 @@ Exercice 1
     - toString() -> pretty print details
     - constructeur(setter les valeurs)
     - norme() -> distance à l'origine
-    - tests / programme exemple
 
 ---- Cercle
     - centre (Point)
     - rayon
     - getter/setter ?
+	- constructeur(Point, rayon)
     - toString()
     - perimetre()
     - aire()
@@ -24,8 +24,8 @@ Exercice 1
 ---- Rectangle
     - longueur
     - largueur
-    - ctor(l, L)
-    - ctor(4 points (horaire))
+    - constructeur(l, L)
+    - constructeur(3 points dans le sens horaire) (si le langage le permet)
     - perimetre()
     - aire()
 
@@ -45,28 +45,26 @@ Exercice 1
 
 Exercice 2
 
----- Employee
+---- Employee // abstract
     - number (uuid)
     - nom (string)
     - prenom (string)
-    - ctor(number)
-    - ctor(number, nom, prenom)
     - toString()
-    - getSalary()
+    - getSalary() // abstract
 
----- Worker
+---- Worker: Employee
     - ils ont tous une valeur commune: smic(3000)
     - son salaire est = smic + (ancienneté * 100)
     - son salaire ne peut pas dépasser 2,5 smic
 
----- Executive
+---- Executive: Employee
     - salaire défini selon un indice (enum?):
         Fresh -> 7000
         Bold -> 9000
         Senior -> 11000
         Guru -> 15000
 
----- Boss
+---- Boss: Employee
     - son salaire est variable et dépend du % du CA qu'il prend
     - salaire = CA * pourcentage% + (ancienneté * 200)
 
