@@ -10,7 +10,5 @@
 
 ### Sources
 
-1. Practices
-    - https://refactoring.guru/
-2. Books, pages
-3. Misc
+- https://refactoring.guru/
+- https://codingdojo.org/
