@@ -25,6 +25,7 @@
   - [Dette technique](https://www.youtube.com/watch?v=VKe9EE4MUxk&t=493s) <--------- Best talk ever
   - [Le métier de développeur](https://www.youtube.com/watch?v=bQfumbBN6YQ)
   - [Les microservices c'est pas automatique](https://www.youtube.com/watch?v=F8C_iPGhHoI)
+  - [CQRS & cie.](https://www.youtube.com/watch?v=qBLtZN3p3FU)
   - [Wat](https://www.destroyallsoftware.com/talks/wat)
 4. Books
   - [The Clean Coder](https://www.amazon.fr/Clean-Coder-Conduct-Professional-Programmers/dp/0137081073/ref=sr_1_1?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=1OZFGPPPCT4C4&dchild=1&keywords=the+clean+coder&qid=1601469872&sprefix=the+clean+coder%2Caps%2C150&sr=8-1)
