@@ -1,19 +1,19 @@
 class Range (val biginOpen : Boolean, val a : Int, val b : Int, val endOpen : Boolean) {
-    fun openCharacter(open : Boolean) : String {
+    private fun openCharacter(open : Boolean) : String {
         return if (open) {
             "("
         } else {
             "["
         }
     }
-    fun closeCharacter(open : Boolean) : String {
+    private fun closeCharacter(open : Boolean) : String {
         return if (open) {
             ")"
         } else {
             "]"
         }
     }
-    fun lessThan (open : Boolean, smaller : Int, bigger : Int): Boolean {
+    private fun lessThan (open : Boolean, smaller : Int, bigger : Int): Boolean {
         if (open)   return smaller < bigger
                     return smaller <= bigger
     }
@@ -35,7 +35,7 @@ class Range (val biginOpen : Boolean, val a : Int, val b : Int, val endOpen : Bo
         println(output)
     }
 
-    private fun size(): Int = (this.b - this.a) + oneIfTrue(this.contains(this.a)) + oneIfTrue(this.contains(this.b))
+    fun size(): Int = (this.b - this.a) + oneIfTrue(this.contains(this.a)) + oneIfTrue(this.contains(this.b))
 
     private fun oneIfTrue(contains: Boolean): Int = if (contains) 1 else 0
 }
