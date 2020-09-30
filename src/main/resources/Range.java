@@ -41,8 +41,6 @@ public class Range{
     }
 
     public int[] values(){
-        int[] values = new int[0];
-
         int flag_start = start;
         int flag_end = end;
         if(!startIncluded){
@@ -53,6 +51,7 @@ public class Range{
         }
         int counter = 0;
         int flag;
+        int[] values = new int[flag_end-flag_start+1];
         for(flag = flag_start ; flag <= flag_end ; flag++){
             values[counter] = flag;
             counter++;
@@ -62,7 +61,6 @@ public class Range{
     }
 
     public int[] endPoints(){
-
         int flag_start = start;
         int flag_end = end;
         if(!startIncluded){
