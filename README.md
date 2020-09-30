@@ -7,4 +7,4 @@ git checkout -b cc2-mon-nom                 # créer ma branche
 git push --set-upstream origin cc2-mon-nom  # push la remote
 ````
 
-Sujet: ?
+Sujet: https://gist.github.com/CaptpBdcht/9d2d99951531cd8a8adb21bd60320668
