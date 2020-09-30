@@ -56,6 +56,19 @@ public class RangeOfNumber {
         System.out.println("\n[" + beginingNumber + ", " + endingNumber + "]");
     }
 
+    public boolean containingOtherInterval (RangeOfNumber firstRangeOfNumber, RangeOfNumber secondRangeOfNumber) {
+        int firstNumberRange = firstRangeOfNumber.beginingNumber;
+        int firstOfSecondNumberRange = secondRangeOfNumber.beginingNumber;
+
+        int firstEndingNumberRange = firstRangeOfNumber.endingNumber;
+        int endOfSecondNumberRange = secondRangeOfNumber.endingNumber;
+
+        if(firstNumberRange < firstOfSecondNumberRange && firstEndingNumberRange > endOfSecondNumberRange) {
+            return true;
+        }
+        return false;
+    }
+
     @Override
     public String toString() {
         return "RangeOfNumber{" +
