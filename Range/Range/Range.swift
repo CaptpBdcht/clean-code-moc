@@ -25,11 +25,13 @@ class Range {
  
     
     func iscontained(number: Int) -> Bool {
+        
         if (self.minValue <= number && number <= self.maxValue){
             return true
         }
         return false
     }
+    
     
     func numberOfElement() -> Int {
         var number = self.maxValue - self.minValue
@@ -48,4 +50,15 @@ class Range {
     }
     
  
+    
+    func containInterval(min: Int, max: Int) -> Bool {
+        if (self.minValue <= min && max <= self.maxValue){
+                   return true
+               }
+               return false
+    
+    }
+    
+    
+    
 }

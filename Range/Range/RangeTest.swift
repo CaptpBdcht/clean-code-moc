@@ -13,7 +13,7 @@ import Foundation
 
 func range_test() {
     
-    let range1 = Range(closedInterval1: false, minValue: 2, maxValue: 5, closedInterval2: false)
+    let range1 = Range(closedInterval1: true, minValue: 5, maxValue: 15, closedInterval2: true)
     
     
     var interval1 :String = "["
@@ -37,6 +37,11 @@ func range_test() {
     print("Interval: ",interval1,range1.minValue,",",range1.maxValue,interval2)
     
     range1.listOfElement()
+    
+    let range2 = Range(closedInterval1: true, minValue: 8, maxValue: 13, closedInterval2: true)
+
+    print(range1.containInterval(min: 8, max: 13))
+    
     
 }
 
