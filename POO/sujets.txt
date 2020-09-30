@@ -1,3 +1,6 @@
+Veuillez fournir des tests ou des programme-exemple pour chacune de vos classes ! 
+Il est important de montrer comment utiliser les outils que l'on fournit =)
+
 Exercice 1
 
 ---- Point
