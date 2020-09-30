@@ -21,6 +21,16 @@ class Range(_isBoundaryAOpen: Boolean,  _boundaryA: Int, _boundaryB: Int, _isBou
         return false
     }
 
+    fun contains(interval: Range): Boolean {
+        if (boundaryA > interval.boundaryA || boundaryB < interval.boundaryB)
+            return false
+
+        if ((boundaryB < interval.boundaryA) || (boundaryA > interval.boundaryB))
+            return false
+            
+        return true
+    }
+
     fun size(): Int {
         var rangeSize = 0
         val boundaryATemp: Int = if (isBoundaryAOpen) (boundaryA + 1) else boundaryA
@@ -55,8 +65,15 @@ class Range(_isBoundaryAOpen: Boolean,  _boundaryA: Int, _boundaryB: Int, _isBou
 
 fun main() {
     val testRange = Range(true, 2, 4, true)
+    val secondTestRange = Range(false, 5, 6, false)
+
     println(testRange.contains(4))
+
     println(testRange.size())
+
     println(testRange.values())
+    
     println(testRange.endPoints())
+
+    println(testRange.contains(secondTestRange))
 }
