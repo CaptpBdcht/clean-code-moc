@@ -1,0 +1,73 @@
+Exercice 1
+
+---- Point
+    - abscisse (x) 
+    - ordonnée (y)
+    - getter/setter ?
+    - toString() -> pretty print details
+    - constructeur(setter les valeurs)
+    - norme() -> distance à l'origine
+    - tests / programme exemple
+
+---- Cercle
+    - centre (Point)
+    - rayon
+    - getter/setter ?
+    - toString()
+    - perimetre()
+    - aire()
+    ( - appartient(Point) )
+
+---- Rectangle
+    - longueur
+    - largueur
+    - ctor(l, L)
+    - ctor(4 points (horaire))
+    - perimetre()
+    - aire()
+
+---- Shaper (statique)
+    - perimetre d'un cercle ou d'un rectangle
+    - aire d'un cercle ou d'un rectangle
+
+
+
+-> Comment ne pas utiliser de switch dans shaper ?
+-> Comment ne pas avoir de getter sur un point ? Pourquoi faire ça ?
+-> Peut-on apporter des abstractions supplémentaires pertinentes ?
+
+
+
+
+
+Exercice 2
+
+---- Employee
+    - number (uuid)
+    - nom (string)
+    - prenom (string)
+    - ctor(number)
+    - ctor(number, nom, prenom)
+    - toString()
+    - getSalary()
+
+---- Worker
+    - ils ont tous une valeur commune: smic(3000)
+    - son salaire est = smic + (ancienneté * 100)
+    - son salaire ne peut pas dépasser 2,5 smic
+
+---- Executive
+    - salaire défini selon un indice (enum?):
+        Fresh -> 7000
+        Bold -> 9000
+        Senior -> 11000
+        Guru -> 15000
+
+---- Boss
+    - son salaire est variable et dépend du % du CA qu'il prend
+    - salaire = CA * pourcentage% + (ancienneté * 200)
+
+
+-> Employé peut-il être une interface ? Une classe abstraite ?
+-> Les executives ne devraient pas avoir d'ancienneté, en ont-ils une dans votre implem ?
+-> Si oui, comment s'en débarasser ?
