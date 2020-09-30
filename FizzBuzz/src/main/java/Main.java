@@ -4,7 +4,6 @@ public class Main {
         System.out.println("fizzbuzz");
         System.out.println("Please specify a value to fizzbuzz");
 
-
     }
 
 }

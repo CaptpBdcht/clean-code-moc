@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Tests" tests="5" skipped="0" failures="0" errors="0" timestamp="2020-09-29T13:44:33" hostname="DESKTOP-J4394U0" time="0.014">
+<testsuite name="Tests" tests="13" skipped="0" failures="0" errors="0" timestamp="2020-09-30T07:36:19" hostname="DESKTOP-J4394U0" time="0.022">
   <properties/>
   <testcase name="create" classname="Tests" time="0.007"/>
-  <testcase name="fizzBuzz2" classname="Tests" time="0.0"/>
-  <testcase name="fizzBuzz3" classname="Tests" time="0.0"/>
+  <testcase name="fizzBuzz2" classname="Tests" time="0.001"/>
+  <testcase name="fizzBuzz3" classname="Tests" time="0.001"/>
   <testcase name="fizzBuzz5" classname="Tests" time="0.0"/>
+  <testcase name="identicalDivisors" classname="Tests" time="0.001"/>
+  <testcase name="fizzbuzz3_7_15" classname="Tests" time="0.007"/>
+  <testcase name="divisorEqualOne" classname="Tests" time="0.0"/>
+  <testcase name="fizzbuzz2_5_3" classname="Tests" time="0.0"/>
+  <testcase name="fizzbuzz5_2_3" classname="Tests" time="0.0"/>
+  <testcase name="negativeMax" classname="Tests" time="0.0"/>
   <testcase name="fizzBuzz15" classname="Tests" time="0.001"/>
+  <testcase name="negativeDivisor" classname="Tests" time="0.0"/>
+  <testcase name="isNotPrimeNumber" classname="Tests" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
