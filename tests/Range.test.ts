@@ -6,7 +6,7 @@ let range2: Range;
 
 beforeEach(() => {
     range1 = new Range(false, false, 2, 5);
-    range2 = new Range(false, false, 4, 15);
+    range2 = new Range(false, false, 1, 15);
 });
 
 describe('Range test',
@@ -31,6 +31,19 @@ describe('Range test',
 
         it('should contains 3 ', () => {
             expect(range1.contains(3)).equal(true);
+        });
+
+        it('should not contains 13 ', () => {
+            expect(range1.contains(13)).equal(false);
+        });
+
+        it('should contains [2,3,4,5] ', () => {
+            expect(range2.contains(range1)).equal(true);
+        });
+
+        it('should not contains [2,3,4,5] ', () => {
+            range2 = new Range(true, true, 1, 5);
+            expect(range2.contains(range1)).equal(false);
         });
 
         /*it('should be [2,3,4]', () => {
