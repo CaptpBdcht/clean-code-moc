@@ -13,14 +13,14 @@ public class TesterRange {
     @DisplayName("Vérifie que 2 est dans [1,3]")
     public void isInRange(){
         buildARange(1, 3, true, true)
-                                .isInRange(2, true);
+                                .isInRange(2);
     }
 
     @Test
     @DisplayName("Vérifie que 4 n'est pas dans [1,3]")
     public void isNotInRange(){
         buildARange(1, 3, true, true)
-                                .isInRange(4, false);
+                                .isNotInRange(4);
     }
 
     @Test
@@ -35,8 +35,17 @@ public class TesterRange {
     public void contents(){
         int[] expectedValues = {2,3,4,5,6};
 
-        buildARange(2, 7, true, false)
+        buildARange(2, 7, true, true)
                 .contents(expectedValues);
+    }
+
+    @Test
+    @DisplayName("[1, 8] bornes [1, 8]")
+    public void endPoints(){
+        int[] expectedValues = {1, 8};
+
+        buildARange(1, 8, true, true)
+                .endPoints(expectedValues);
     }
 
 

@@ -1,4 +1,3 @@
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,8 +40,8 @@ public class Range{
         return counter;
     }
 
-    public List<Integer> values(){
-        List<Integer> values = new ArrayList();
+    public int[] values(){
+        int[] values = new int[0];
 
         int flag_start = start;
         int flag_end = end;
@@ -55,10 +54,25 @@ public class Range{
         int counter = 0;
         int flag;
         for(flag = flag_start ; flag <= flag_end ; flag++){
-            values.add(flag);
+            values[counter] = flag;
             counter++;
         }
 
         return values;
     }
+
+    public int[] endPoints(){
+
+        int flag_start = start;
+        int flag_end = end;
+        if(!startIncluded){
+            flag_start++;
+        }
+        if(!endIncluded){
+            flag_end--;
+        }
+
+        return new int[]{ flag_start, flag_end};
+    }
+
 }

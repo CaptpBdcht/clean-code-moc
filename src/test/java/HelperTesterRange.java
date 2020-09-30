@@ -7,9 +7,14 @@ public class HelperTesterRange {
         range = r;
     }
 
-    //TODO: assertEquals => AssertTrue
-    public HelperTesterRange isInRange(int value, boolean result){
-        Assert.assertEquals(result, range.isInRange(value));
+
+    public HelperTesterRange isInRange(int value){
+        Assert.assertTrue(range.isInRange(value));
+        return this;
+    }
+
+    public HelperTesterRange isNotInRange(int value){
+        Assert.assertFalse(range.isInRange(value));
         return this;
     }
 
@@ -19,7 +24,12 @@ public class HelperTesterRange {
     }
 
     public HelperTesterRange contents(int[] values){
-        Assert.assertEquals(values, range.values());
+        Assert.assertArrayEquals(values, range.values());
+        return this;
+    }
+
+    public HelperTesterRange endPoints(int[] values){
+        Assert.assertArrayEquals(values, range.endPoints());
         return this;
     }
 
