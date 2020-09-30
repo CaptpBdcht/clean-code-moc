@@ -1,14 +1,10 @@
 # Clean Code MOC
 
-[Syllabus here](https://gist.github.com/CaptpBdcht/c7b13598d16596204fbfccca2d403d6d)
+````
+git fetch -p # mettre a jour mes branches
+git branch -a # voir toutes les branches
+git checkout -b cc2-mon-nom # créer ma branche
+git push --set-upstream origin cc2-mon-nom # push la remote
+````
 
-### Branches
-
-* master: sources, cours
-* CC1 & CC2: branches sources pour les TP notés
-* corrections: pour les katas vus en cours
-
-### Sources
-
-- https://refactoring.guru/
-- https://codingdojo.org/
+Sujet: ?
