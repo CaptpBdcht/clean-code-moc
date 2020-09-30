@@ -12,5 +12,7 @@ fun main (args : Array<String>){
     println("contains 2? : " + rangeClosed_1_3.contains(2))
     println("contains 3? : " + rangeOpen_1_3.contains(3))
 
+    println(rangeClosed_1_3.values())
+
 
 }
