@@ -8,6 +8,14 @@ class Range(_isBoundaryAOpen: Boolean,  _boundaryA: Int, _boundaryB: Int, _isBou
     val isBoundaryAOpen: Boolean = _isBoundaryAOpen
     val isBoundaryBOpen: Boolean = _isBoundaryBOpen
 
+
+    fun getFormatedRange(): String {
+        val boundaryAChar: String = if (isBoundaryAOpen) "(" else "{"
+        val boundaryBChar: String = if (isBoundaryBOpen)  ")" else "}"
+
+        return "$boundaryAChar" + "$boundaryA" + "," + "$boundaryB" + "$boundaryBChar"
+    }
+
     fun contains(value: Int): Boolean{
         val boundaryATemp: Int = if (isBoundaryAOpen) (boundaryA + 1) else boundaryA
         val boundaryBTemp: Int = if (isBoundaryBOpen) (boundaryB - 1) else boundaryB
@@ -64,16 +72,19 @@ class Range(_isBoundaryAOpen: Boolean,  _boundaryA: Int, _boundaryB: Int, _isBou
 }
 
 fun main() {
-    val testRange = Range(true, 2, 4, true)
+    val testRange = Range(true, 2, 4, false)
     val secondTestRange = Range(false, 5, 6, false)
 
-    println(testRange.contains(4))
+    println("TEST RANGE:" + testRange.getFormatedRange())
+    println("SECOND TEST RANGE:" + secondTestRange.getFormatedRange())
 
-    println(testRange.size())
+    println("SHOULD CONTAIN 4 " + testRange.contains(4))
 
-    println(testRange.values())
-    
-    println(testRange.endPoints())
+    println("SIZE OF THE RANGE: " + testRange.size())
 
-    println(testRange.contains(secondTestRange))
+    println("RANGE VALUES" + testRange.values())
+
+    println("RANGE ENDPOINTS" + testRange.endPoints())
+
+    println("SHOULD CONTAIN SECOND TEST RANGE"  + testRange.contains(secondTestRange))
 }
