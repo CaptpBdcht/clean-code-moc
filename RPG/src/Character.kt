@@ -1,8 +1,8 @@
-class Character (val name : String, var health : Int = 100) {
+open class Character (val name : String, var health : Int = 100) {
 
-    fun alive() = this.health > 0
+    private fun alive() = this.health > 0
 
-    fun attack(otherCharacter : Character) {
+    open fun attack(otherCharacter : Character) {
         println("$this attacks $otherCharacter")
         if (otherCharacter.alive() && this != otherCharacter)
             otherCharacter.health -= 1
