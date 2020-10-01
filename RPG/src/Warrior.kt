@@ -2,23 +2,24 @@ import kotlin.random.Random
 
 class Warrior(
     name: String,
-    var damage: Int = Random.nextInt(10),
-    health: Int = 100
+    health: Int = 100,
 ) : Character(name, health) {
 
-    init{
-        if (!(0 <= this.damage && this.damage <= 9))
-            this.damage = 0
+    override fun attack(aCharacter: Character) {
+        val damage = Random.nextInt(10)
+        println("$this attacked $aCharacter with $damage damage")
+        aCharacter.health -= damage
+        if (aCharacter.health < 0)
+            aCharacter.health = 0
     }
 
-    override fun attack(aCharacter: Character) {
-        println("$this attacks $aCharacter")
-        aCharacter.health -= this.damage
+    //for tests
+    fun attack(aCharacter : Character, damage : Int) {
+        println("$this attacked $aCharacter")
+        aCharacter.health -= damage
         if (aCharacter.health < 0)
             aCharacter.health = 0
     }
 
     fun heal() = super.heal(this)
-
-    override fun toString(): String = super.toString() + "[Damage: ${this.damage}]"
 }
