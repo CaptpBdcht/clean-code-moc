@@ -5,26 +5,11 @@ class Priest(
     health: Int = 100
 ): Character(name, health) {
 
-    override fun attack(otherCharacter : Character) =
-        println("${otherCharacter.name} didn't take any damage !")
-
-    override fun heal(aCharacter: Character) {
-        val healValue = Random.nextInt(5, 11)
-        println("$this healed $aCharacter for $healValue pv")
-
-        aCharacter.health += healValue
-
-        if (aCharacter.health > 100)
-            aCharacter.health = 100
+    fun attack(anEntity : Entity) {
+        super.attack(anEntity, 0)
+        println("${anEntity.name} didn't take any damage !")
     }
 
-    //for tests
-    fun heal(aCharacter: Character, healValue : Int) {
-        println("$this healed $aCharacter for $healValue pv")
-
-        aCharacter.health += healValue
-
-        if (aCharacter.health > 100)
-            aCharacter.health = 100
-    }
+    fun heal(aCharacter: Character) = 
+        super.heal(aCharacter, Random.nextInt(5, 11))
 }
