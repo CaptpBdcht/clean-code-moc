@@ -56,4 +56,29 @@ fun main(){
     println("\n" + faction)
     weakWarrior.leave(factionWithNobody)
     strongWarrior.attack(weakWarrior)
+
+// ==== ENTITIES ===== //
+    val pig = Entity("Piggy")
+    val mediumWarrior = Warrior("gorak")
+    mediumWarrior.attack(pig)
+    println(pig)
+
+// ==== FACTION FRIENDS ===== //
+    val famousFaction = Faction("famous")
+    val friendFaction = Faction("friend")
+
+    famousFaction.addFactionFriend(friendFaction)
+
+    println(famousFaction)
+    println(friendFaction)
+
+    strongWarrior.join(famousFaction)
+    weakWarrior.join(friendFaction)
+
+    weakWarrior.attack(strongWarrior)
+    println(strongWarrior)
+    println(weakWarrior)
+
+    println("Faction : " + famousFaction)
+    println("Faction : " + friendFaction)
 }
