@@ -10,6 +10,10 @@ class Priest(
         println("${anEntity.name} didn't take any damage !")
     }
 
-    fun heal(aCharacter: Character) = 
-        super.heal(aCharacter, Random.nextInt(5, 11))
+    fun heal(aCharacter: Character) {
+        if (this.isEnemy(aCharacter))
+            println("can't heal ${aCharacter.name}, it is an enemy!")
+        else
+            super.heal(aCharacter, Random.nextInt(5, 11))
+    }
 }

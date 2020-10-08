@@ -50,8 +50,8 @@ fun main(){
     strongWarrior.join(faction)
     weakWarrior.join(faction)
     println(faction)
-    println("contains Garrosh?  ${faction.isMember(strongWarrior)}")
-    println("contains Anduin?  ${faction.isMember(priest)}")
+    println("contains Garrosh?  ${faction.hasMember(strongWarrior)}")
+    println("contains Anduin?  ${faction.hasMember(priest)}")
     weakWarrior.join(faction)
     println("\n" + faction)
     weakWarrior.leave(factionWithNobody)
@@ -62,6 +62,8 @@ fun main(){
     val mediumWarrior = Warrior("gorak")
     mediumWarrior.attack(pig)
     println(pig)
+
+    val barbare = Warrior("barbare", 99) //warrior without faction
 
 // ==== FACTION FRIENDS ===== //
     val famousFaction = Faction("famous")
@@ -78,7 +80,12 @@ fun main(){
     weakWarrior.attack(strongWarrior)
     println(strongWarrior)
     println(weakWarrior)
+    println()
 
     println("Faction : " + famousFaction)
     println("Faction : " + friendFaction)
+
+    priest.heal(barbare)
+
+    println()
 }
