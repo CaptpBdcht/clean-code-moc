@@ -21,3 +21,12 @@ Le code doit:
   - être correctement structuré, ne mettez pas tout dans un seul fichier et séparez bien les classes par responsabilité
   - être lisible, choisissez la langue dans laquelle vous développez et tenez-vous-y ; aussi discutez régulièrement le nom des variables que vous donnez avec votre binôme: soyez au plus proche du **métier** 
   - posséder un README.md expliquant **précisément** comment lancer vos tests : partez du principe qu'un développeur lambda doit pouvoir checkout sur votre branche et suivre votre tutoriel pour lancer les tests - ce qui signifie que vous devez préciser s'il y a des choses à installer pour que ça tourne. Néanmoins n'oubliez pas que clean code rime avec "make dependencies minimal"
+
+
+##Test 1 : Test de la classe "Character"
+La classe "Character" définit un personnage tout simplement. Il possède des points de vie et un nom. Il ne peut pas dépasser les 100 points de vie et si il atteint 0 il meurt.
+
+Un "Character" peut attaquer un autre "Character" mais il ne peut pas s'attaquer lui-même Une attaque retire 1 point de vie à un personnage. 
+
+Un "Character" peut soigner un autre "Character" mais aussi lui-même. Un soin redonne 1 point de vie à la cible.
+d
