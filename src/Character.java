@@ -1,4 +1,4 @@
-public abstract class Character {
+public class Character {
 
     protected int MAXHEALTH = 100;
     protected int currentHealth = MAXHEALTH;
@@ -6,6 +6,10 @@ public abstract class Character {
     protected Character.status state = Character.status.ALIVE;
 
     protected String name;
+
+    public Character(String name) {
+        this.name = name;
+    }
 
     public void attack(Character attackTarget){
         if(attackTarget.state != status.DEAD && this != attackTarget){
