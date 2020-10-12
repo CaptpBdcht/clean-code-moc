@@ -21,8 +21,8 @@ fun main(){
 */
 // ==== WARRIOR ===== //
     println("\n// ==== WARRIOR ===== //")
-    val strongWarrior = Warrior("Garrosh")
-    val weakWarrior = Warrior("WeakGarrosh", 50)
+    val strongWarrior = Warrior("Strong warrior")
+    val weakWarrior = Warrior("Weak warrior", 50)
 
     strongWarrior.attack(strongWarrior, 9)
     println(strongWarrior)
@@ -36,7 +36,7 @@ fun main(){
 
 // ==== PRIEST ===== //
     println("\n// ==== PRIEST ===== //")
-    val priest = Priest("Anduin")
+    val priest = Priest("Priest")
     priest.heal(weakWarrior, 4)
     priest.heal(weakWarrior)
     println(weakWarrior)
@@ -59,7 +59,7 @@ fun main(){
 
 // ==== ENTITIES ===== //
     val pig = Entity("Piggy")
-    val mediumWarrior = Warrior("gorak")
+    val mediumWarrior = Warrior("Regular warrior")
     mediumWarrior.attack(pig)
     println(pig)
 
@@ -89,3 +89,4 @@ fun main(){
 
     println()
 }
+
