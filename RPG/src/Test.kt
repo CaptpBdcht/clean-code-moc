@@ -31,8 +31,8 @@ fun main(){
     println(weakWarrior)
 
     println()
-    strongWarrior.heal()
-    println(strongWarrior)
+    weakWarrior.heal()
+    println(weakWarrior)
 
 // ==== PRIEST ===== //
     println("\n// ==== PRIEST ===== //")
@@ -85,8 +85,12 @@ fun main(){
     println("Faction : " + famousFaction)
     println("Faction : " + friendFaction)
 
-    priest.heal(barbare)
+   priest.heal(priest)
 
-    println()
+   // ==== ASSEMBLY ===== //
+    val assembly = Assembly("assembly", arrayOf(Warrior::class.simpleName.toString(), ""))
+    barbare.join(assembly)
+    println(assembly)
+
+    //println(barbare::class.simpleName)
 }
-

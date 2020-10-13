@@ -1,5 +1,5 @@
 open class Faction(var name: String) {
-    private val listOfMembers : MutableList<Character> = mutableListOf()
+    protected val listOfMembers : MutableList<Character> = mutableListOf()
     private val listOfFriends : MutableList<Faction> = mutableListOf()
     
     fun add(character : Character) {
@@ -32,15 +32,11 @@ open class Faction(var name: String) {
         }
         return this.hasMember(character)
     }
-/*
-    fun isFriend(faction : Faction) =
-        this.listOfFriends.contains(faction)
- */
 
     override fun toString(): String {
         val groupType = if(this is Assembly) "assembly" else "faction"
         var characters = "characters in ${this.name}:\n"
-        var friends = "friend $groupType:\n"
+        var friends = ""
 
         if (this.listOfMembers.isEmpty())
             characters = "no characters in $groupType\n"
@@ -48,12 +44,14 @@ open class Faction(var name: String) {
             for (character in this.listOfMembers)
                 characters += "$character\n"
 
-        if (this.listOfFriends.isEmpty())
-            characters = "this $groupType has no friends\n"
-        else
-            for (friend in this.listOfFriends)
-                friends += "${friend.name}\n"
-
+        if (groupType == "faction"){
+            friends += "friend $groupType:\n"
+            if (this.listOfFriends.isEmpty())
+                characters = "this $groupType has no friends\n"
+            else
+                for (friend in this.listOfFriends)
+                    friends += "${friend.name}\n"
+        }
         return characters + friends
     }
 }

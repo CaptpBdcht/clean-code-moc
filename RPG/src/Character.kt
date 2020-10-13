@@ -1,5 +1,6 @@
 abstract class Character (override val name : String, override var health : Int) : Entity(name, health) {
     protected val factions : MutableList<Faction> = mutableListOf()
+    private var assembly : Assembly? = null
 
     protected fun isEnemy(aCharacter: Character): Boolean {
         
@@ -11,7 +12,7 @@ abstract class Character (override val name : String, override var health : Int)
             }
         }
         //no faction
-        return true
+        return this != aCharacter
     }
 
     private fun isEnemy(anEntity: Entity) : Boolean {
@@ -38,24 +39,30 @@ abstract class Character (override val name : String, override var health : Int)
             aCharacter.health += healValue
     }
 
-    private fun addFaction(faction : Faction){
+    fun join(faction : Faction) {
         this.factions.remove(faction)
         this.factions.add(faction)
-    }
-
-    private fun removeFaction(faction : Faction){
-        this.factions.remove(faction)
-    }
-
-    fun join(faction : Faction) {
         faction.add(this)
-        addFaction(faction)
     }
 
     fun leave(faction : Faction) {
+        this.factions.remove(faction)
         faction.remove(this)
-        removeFaction(faction)
     }
 
-    override fun toString(): String = super.toString()
+    fun join(assembly : Assembly) {
+        //master if first
+        if(assembly.allowedRoles.contains(this::class.simpleName)) {
+            if (this.assembly != null)
+                this.leave(assembly)
+
+            this.assembly = assembly
+            assembly.add(this)
+        }
+    }
+
+    fun leave(assembly : Assembly) {
+        this.assembly = null
+        assembly.remove(this)
+    }
 }
