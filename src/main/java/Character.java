@@ -30,6 +30,10 @@ public class Character {
         return health;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public boolean isAlive() {
         return health > 0;
     }

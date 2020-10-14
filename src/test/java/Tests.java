@@ -33,7 +33,7 @@ public class Tests {
 
     @Test
     public void testSecondIteration(){
-        Warrior gentil = new Warrior("Jason Todd");
+        Warrior gentil = new Warrior("Red Hood");
         Warrior mechant = new Warrior("Joker");
 
         gentil.attack(mechant);
@@ -71,4 +71,6 @@ public class Tests {
         priest.heal(priest);
         Assert.assertEquals(priest.getHealth() - 1, healthPriest);
     }
+
+
 }
