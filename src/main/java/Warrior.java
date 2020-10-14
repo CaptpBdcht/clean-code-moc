@@ -1,4 +1,5 @@
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Warrior extends Character {
     Warrior(String name) {
@@ -7,17 +8,16 @@ public class Warrior extends Character {
 
     @Override
     public void attack(Character character) {
-        Random random = new Random();
-        int damage = random.nextInt(9);
         if (character.isAlive()) {
-            character.dealDamage(damage);
+            int damages = ThreadLocalRandom.current().nextInt(0, 9);
+            character.setHealth(getHealth() - damages);
         }
     }
 
     @Override
     public void heal(Character character) {
         if(this.equals(character)) {
-            super.heal(character);
+            character.setHealth(character.getHealth() + 1);
         }
     }
 }

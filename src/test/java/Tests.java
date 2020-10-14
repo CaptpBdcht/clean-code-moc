@@ -72,5 +72,4 @@ public class Tests {
         Assert.assertEquals(priest.getHealth() - 1, healthPriest);
     }
 
-
 }

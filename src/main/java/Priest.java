@@ -7,17 +7,11 @@ public class Priest extends Character {
     }
 
     @Override
-    public void attack(Character character) {
-        return;
-    }
+    public void attack(Character character) { }
 
     @Override
     public void heal(Character character) {
-        if(this != character){
-            int healPoints = ThreadLocalRandom.current().nextInt(5, 11);
-            character.giveHeal(healPoints);
-        }else{
-            character.giveHeal(1);
-        }
+        int value = this.equals(character) ? 1 : ThreadLocalRandom.current().nextInt(5, 11);
+        character.setHealth(character.getHealth() + value);
     }
 }

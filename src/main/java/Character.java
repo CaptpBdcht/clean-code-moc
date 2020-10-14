@@ -6,19 +6,11 @@ public class Character {
         this.name = name;
     }
 
-    protected void dealDamage(int damage) {
-        setHealth(getHealth() - damage);
-    }
-
-    protected void giveHeal(int lifeHeal) {
-        setHealth(getHealth() + lifeHeal);
-    }
-
     public void setHealth(int health) {
-        if (health > 100) {
+        if (this.isMaximumHealth(health)) {
             this.health = 100;
         }
-        else if (health < 0) {
+        else if (this.isMinimumHealth(health)) {
             this.health = 0;
         }
         else {
@@ -39,15 +31,22 @@ public class Character {
     }
 
     public void attack(Character character) {
-        if (this == character) {
-            return;
-        }
-        if (character.isAlive()) {
-            character.dealDamage(1);
+        boolean success = !this.equals(character) && character.isAlive();
+        if (success) {
+            character.setHealth(character.getHealth() - 1);
         }
     }
 
     public void heal(Character character) {
-        character.giveHeal(1);
+        character.setHealth(character.getHealth() + 1);
     }
+
+    private boolean isMaximumHealth(int value){
+        return value > 100;
+    }
+
+    private boolean isMinimumHealth(int value){
+        return value < 0;
+    }
+
 }
