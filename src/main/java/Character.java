@@ -6,11 +6,11 @@ public class Character {
         this.name = name;
     }
 
-    private void dealDamage(int damage) {
+    protected void dealDamage(int damage) {
         setHealth(getHealth() - damage);
     }
 
-    private void giveHeal(int lifeHeal) {
+    protected void giveHeal(int lifeHeal) {
         setHealth(getHealth() + lifeHeal);
     }
 
@@ -42,6 +42,7 @@ public class Character {
             character.dealDamage(1);
         }
     }
+
     public void heal(Character character) {
         character.giveHeal(1);
     }
