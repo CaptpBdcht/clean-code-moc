@@ -3,7 +3,7 @@ open class Faction(var name: String) {
     private val listOfFriends : MutableList<Faction> = mutableListOf()
     
     fun add(character : Character) {
-        this.listOfMembers.remove(character) //in case he is already in
+        this.listOfMembers.remove(character)
         this.listOfMembers.add(character)
     }
 
