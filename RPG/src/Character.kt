@@ -1,15 +1,14 @@
 abstract class Character (override val name : String, override var health : Int) : Entity(name, health) {
-    protected val factions : MutableList<Faction> = mutableListOf()
+    private val factions : MutableList<Faction> = mutableListOf()
     private var assembly : Assembly? = null
 
-    protected fun isEnemy(aCharacter: Character): Boolean {
-        
+    open protected fun isEnemy(aCharacter: Character): Boolean {
         if (this.factions.size > 0) {
-            println("${aCharacter.name} is a friend")
             for (faction in this.factions) {
                 if (faction.hasMemberOrFriend(aCharacter))
                     return false
             }
+            // println("${aCharacter.name} is a friend")
         }
         //no faction
         return this != aCharacter
@@ -23,9 +22,9 @@ abstract class Character (override val name : String, override var health : Int)
     }
 
     open fun attack(anEntity : Entity, damage : Int) {
-        println("$this attacked $anEntity")
+        println("$this attacked $anEntity with $damage damage(s)")
     
-        if (anEntity.alive() && isEnemy(anEntity))
+        if (anEntity.isAlive() && isEnemy(anEntity))
             anEntity.health -= damage
 
         if (anEntity.health < 0)

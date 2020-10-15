@@ -5,28 +5,28 @@ class Assembly (name : String, val allowedRoles : Array<String>) : Faction(name)
 
     private fun masterIs(aCharacter : Character) : Boolean {
         if (this.masterUser != null)
-            aCharacter == masterUser
+            return aCharacter == masterUser
         else
-            false
+            return false
     }
 
-    fun setAssemblyName(aCharacter : Character, name : String) {
-        this.name = if (masterIs(aCharacter)) name else this.name
+    fun setAssemblyName(character : Character, name : String) {
+        this.name = if (masterIs(character)) name else this.name
     }
 
-    override fun add(aCharacter){
-        super.add(aCharacter)
+    override fun add(character : Character){
+        super.add(character)
         if (this.masterUser == null)
-            this.master = aCharacter
+            this.masterUser = character
     }
 
-    override fun remove(aCharacter){
-        super.remove(aCharacter)
-        if (aCharacter == this.masterUser)
-            Random.nextInt
+    override fun remove(character : Character){
+        super.remove(character)
+        if (character == this.masterUser && this.listOfMembers.isNotEmpty())
+            this.masterUser = this.listOfMembers[Random.nextInt(this.listOfMembers.size)]
     }
 
-    changingNameByTo(master : Character, newName : String){
+    fun renameAssembly(master : Character, newName : String){
         if (master == this.masterUser)
             this.name = newName
     }

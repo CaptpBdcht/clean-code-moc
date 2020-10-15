@@ -1,42 +1,21 @@
 fun main(){
-/*
-// ==== CHARACTER ===== //
-    val rogue = Character("Valeera")
-    val warlock = Character("Guldan", 8)
 
-    println(rogue)
-    println(warlock)
-
-    println("\n// ==== CHARACTER ===== //")
-    rogue.attack(warlock)
-    rogue.attack(rogue)
-    println(rogue)
-    println(warlock)
-
-    println()
-    warlock.heal(rogue)
-    warlock.heal(warlock)
-    println(rogue)
-    println(warlock)
-*/
 // ==== WARRIOR ===== //
     println("\n// ==== WARRIOR ===== //")
     val strongWarrior = Warrior("Strong warrior")
     val weakWarrior = Warrior("Weak warrior", 50)
 
     strongWarrior.attack(strongWarrior, 9)
-    println(strongWarrior)
+    println("should have taken damage -> " + strongWarrior + "\n")
 
     strongWarrior.attack(weakWarrior, 9)
-    println(weakWarrior)
+    println("should have taken damage -> " + weakWarrior + "\n")
 
-    println()
     weakWarrior.heal()
-    println(weakWarrior)
 
 // ==== PRIEST ===== //
     println("\n// ==== PRIEST ===== //")
-    val priest = Priest("Priest")
+    val priest = Priest("Priest", 99)
     priest.heal(weakWarrior, 4)
     priest.heal(weakWarrior)
     println(weakWarrior)
@@ -57,15 +36,21 @@ fun main(){
     weakWarrior.leave(factionWithNobody)
     strongWarrior.attack(weakWarrior)
 
-// ==== ENTITIES ===== //
-    val pig = Entity("Piggy")
-    val mediumWarrior = Warrior("Regular warrior")
-    mediumWarrior.attack(pig)
-    println(pig)
+// ==== ENTITIES ==== //
+// ==== mad warrior attacks a cute pig ===== //
+    println("\n// ==== ENTITY ===== //")
+    println("A mad warrior attacks a cute pig :0")
+    val pig = Entity("Piggy", 2)
+    val madWarrior = Warrior("No Pity Warrior")
+    println("before attack, piggy is alive ? -> " + pig.isAlive())
+    madWarrior.attack(pig, 3)
+    println("after attack, piggy is alive ? -> " + pig.isAlive())
+    println()
 
-    val barbare = Warrior("barbare", 99) //warrior without faction
 
 // ==== FACTION FRIENDS ===== //
+    val barbare = Warrior("barbare", 99) //warrior without faction
+    println("\n// ==== FACTION FRIEND ===== //")
     val famousFaction = Faction("famous")
     val friendFaction = Faction("friend")
 
@@ -88,6 +73,7 @@ fun main(){
    priest.heal(priest)
 
    // ==== ASSEMBLY ===== //
+    println("\n// ==== ASSEMBLY ===== //")
     val assembly = Assembly("assembly", arrayOf(Warrior::class.simpleName.toString(), ""))
     barbare.join(assembly)
     println(assembly)

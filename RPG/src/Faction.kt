@@ -2,7 +2,7 @@ open class Faction(var name: String) {
     protected val listOfMembers : MutableList<Character> = mutableListOf()
     private val listOfFriends : MutableList<Faction> = mutableListOf()
     
-    fun add(character : Character) {
+    open fun add(character : Character) {
         this.listOfMembers.remove(character)
         this.listOfMembers.add(character)
     }
@@ -18,7 +18,7 @@ open class Faction(var name: String) {
         faction.acceptFriend(this)
     }
 
-    fun remove(character : Character) {
+    open fun remove(character : Character) {
         this.listOfMembers.remove(character)
     }
 

@@ -8,5 +8,16 @@ class Warrior(
     fun attack(anEntity : Entity) =
         super.attack(anEntity, Random.nextInt(10))
 
-    fun heal() = super.heal(this, 1)
+    override fun isEnemy(aCharacter : Character) : Boolean {
+        if (this == aCharacter)
+            return true
+
+        return super.isEnemy(aCharacter)
+    }
+
+    fun heal() {
+        println("$this healed itself")
+        if (0 < this.health && this.health < 100)
+            this.health++
+    }
 }
