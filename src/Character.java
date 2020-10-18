@@ -11,22 +11,18 @@ public abstract class Character {
         this.name = name;
     }
 
-    public void attack(Character attackTarget){
-        if(attackTarget.state != status.DEAD && this != attackTarget){
-            attackTarget.currentHealth -= 1;
-            if (attackTarget.currentHealth <= 0){
-                attackTarget.state = status.DEAD;
-            }
+    public abstract void attack(Character attackTarget);
+
+    public abstract void heal(Character healTarget);
+
+    public void increaseCurrentHealth(int healthPoint){
+        if(this.currentHealth + healthPoint <= this.MAXHEALTH && this.state == status.ALIVE){
+            this.currentHealth += healthPoint;
+        } else if (this.currentHealth + healthPoint > this.MAXHEALTH){
+            this.currentHealth = this.MAXHEALTH;
         }
     }
 
-    public void heal(Character healTarget){
-
-        if(healTarget.currentHealth<healTarget.MAXHEALTH && healTarget.state != status.DEAD ){
-            healTarget.currentHealth +=1;
-        }
-
-    }
     //Like toString but roleplay
     public String status() {
         return this.name + "{ currentHealth=" + this.currentHealth + ", state=" + this.state + '}';

@@ -3,6 +3,7 @@ public class Main {
     public static void main(String[] args) {
         Warrior ragnar = new Warrior("Ragnar");
         Warrior lagertha = new Warrior("Lagertha");
+        Priest athelstan = new Priest("Athelstan");
 
         System.out.println("\nShould kill Lagertha");
         System.out.println("Lagertha's status before ragnar's attacks:");
@@ -22,7 +23,7 @@ public class Main {
         System.out.println(ragnar.status());
 
         System.out.println("\nRagnar shoud gain one life point.");
-        ragnar.currentHealth = ragnar.MAXHEALTH - 10;
+        ragnar.currentHealth = ragnar.MAXHEALTH - 2;
         ragnar.state = Character.status.ALIVE;
         System.out.println(ragnar.status());
         ragnar.heal(ragnar);
@@ -33,5 +34,13 @@ public class Main {
         lagertha.currentHealth = lagertha.MAXHEALTH - 5;
         ragnar.heal(lagertha);
         lagertha.status();
+
+        System.out.println("\nAthelstan tried to attack ragnar, but failed.");
+        athelstan.attack(ragnar);
+
+        System.out.println("\nAthelstan should heal ragnar.");
+        System.out.println(ragnar.status());
+        athelstan.heal(ragnar);
+        System.out.println(ragnar.status());
     }
 }

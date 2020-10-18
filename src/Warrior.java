@@ -29,7 +29,7 @@ public class Warrior extends Character{
     public void heal(Character healTarget) {
         if(healTarget == this){
             if(healTarget.currentHealth<healTarget.MAXHEALTH && healTarget.state != status.DEAD ){
-                healTarget.currentHealth +=1;
+                healTarget.increaseCurrentHealth(1);
                 System.out.println(this.name + " healed.");
             }
         } else {
