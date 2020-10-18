@@ -1,4 +1,4 @@
-public class Character {
+public abstract class Character {
 
     protected int MAXHEALTH = 100;
     protected int currentHealth = MAXHEALTH;
@@ -14,7 +14,7 @@ public class Character {
     public void attack(Character attackTarget){
         if(attackTarget.state != status.DEAD && this != attackTarget){
             attackTarget.currentHealth -= 1;
-            if (attackTarget.currentHealth == 0){
+            if (attackTarget.currentHealth <= 0){
                 attackTarget.state = status.DEAD;
             }
         }
@@ -27,5 +27,8 @@ public class Character {
         }
 
     }
-
+    //Like toString but roleplay
+    public String status() {
+        return this.name + "{ currentHealth=" + this.currentHealth + ", state=" + this.state + '}';
+    }
 }
