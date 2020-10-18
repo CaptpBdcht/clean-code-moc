@@ -9,9 +9,23 @@
 import Foundation
 public class CharacterRPG:Characters{
     
-    vvar faction: Faction?
+    
+    
+    var faction: Faction?
     var name: String = ""
-    var health: Int = 100
+    var health: Int = 100 {
+        didSet {
+            if self.health > 100 {
+                print("Vie superieur à 100 reset à 100")
+                self.health = 100
+            }else if self.health < 1 {
+                self.alive = false
+                if self.health < 0 {
+                    self.health = 0
+                }
+            }
+        }
+    }
     var alive: Bool = true
     
     init(name: String) {
@@ -19,11 +33,38 @@ public class CharacterRPG:Characters{
     }
     
     func attack(ennemyCharacter: Characters){
-        if(ennemyCharacter.alive == true && !(self === ennemyCharacter) && !(ennemyCharacter.faction === self.faction)){
-            ennemyCharacter.takeDamage(damage: 1)
-        } else {
-            print("Character already dead!")
-        }
+        
+        if ennemyCharacter.alive == true && !(self === ennemyCharacter) {
+            if let myFaction = self.faction {
+                
+                if let ennemyFaction = ennemyCharacter.faction {
+                    
+                    if !(myFaction === ennemyCharacter.faction){
+                        
+                        if myFaction.alliesFactions.contains(ennemyFaction){
+                            print("CEST UN POTE")
+                        }else {
+                            ennemyCharacter.takeDamage(damage: 1)
+                        }
+                        
+                    }
+                    
+                }else {
+                    ennemyCharacter.takeDamage(damage: 1)
+                }
+                
+            }else {
+                ennemyCharacter.takeDamage(damage: 1)
+            }
+        }else {
+                    print("Character already dead or he want to attack himself")
+                }
+    
+    }
+    
+    
+    func attack(entity:Entities){
+        entity.health -= 1
     }
     
     func heal(allyCharacter: Characters){

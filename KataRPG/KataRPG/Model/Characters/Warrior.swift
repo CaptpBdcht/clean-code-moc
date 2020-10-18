@@ -11,7 +11,19 @@ import Foundation
 class Warrior: Characters {
     var faction: Faction? 
     var name: String
-    var health: Int = 100
+    var health: Int = 100 {
+        didSet {
+            if self.health > 100 {
+                print("Vie superieur à 100 reset à 100")
+                self.health = 100
+            }else if self.health < 1 {
+                self.alive = false
+                if self.health < 0 {
+                    self.health = 0
+                }
+            }
+        }
+    }
     var alive: Bool = true
     var damage: Int = Int.random(in: 0...9)
     
@@ -20,12 +32,51 @@ class Warrior: Characters {
     }
     
     func attack(ennemyCharacter: Characters) {
-        if(ennemyCharacter.alive == true && (!(ennemyCharacter.faction === self.faction) || (self === ennemyCharacter))){
-            ennemyCharacter.takeDamage(damage: damage)
-        } else {
-            print("Character already dead!")
-        }
+       
+//
+//
+//        if(ennemyCharacter.alive == true && (!(ennemyCharacter.faction === self.faction) || (self === ennemyCharacter))){
+//            ennemyCharacter.takeDamage(damage: damage)
+//        } else {
+//            print("Character already dead!")
+//        }
+        
+        
+        if ennemyCharacter.alive == true  {
+                  
+            if let myFaction = self.faction {
+                       
+                       if let ennemyFaction = ennemyCharacter.faction {
+                           
+                           if !(myFaction === ennemyCharacter.faction){
+                               
+                               if myFaction.alliesFactions.contains(ennemyFaction){
+                                   print("CEST UN POTE")
+                               }else {
+                                   ennemyCharacter.takeDamage(damage: damage)
+                               }
+                               
+                           }
+                           
+                       }else {
+                           ennemyCharacter.takeDamage(damage: damage)
+                       }
+                       
+                   }else {
+                       ennemyCharacter.takeDamage(damage: damage)
+                   }
+               }else {
+                           print("Character already dead!")
+                       }
+        
+        
     }
+    
+    func attack(entity:Entities){
+           entity.health -= 1
+       }
+    
+    
     
     func heal(allyCharacter: Characters){
         if(self === allyCharacter){

@@ -9,25 +9,127 @@
 import XCTest
 
 class KataRPG_Tests: XCTestCase {
-
+    
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    
+    func testCharacterShouldHaveAName() throws {
+        let characterToTest:CharacterRPG = CharacterRPG(name: "John")
+        let expectName = "John"
+        XCTAssertEqual(characterToTest.name, expectName)
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    
+    func testCharacterHealthCannotGoAboveOneHundred() throws {
+        let characterToTest:CharacterRPG = CharacterRPG(name: "John")
+        characterToTest.health += 1
+        XCTAssertEqual(characterToTest.health, 100)
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        measure {
-            // Put the code you want to measure the time of here.
-        }
+    
+    func testCharacterShouldBeDead() throws {
+          let characterToTest:CharacterRPG = CharacterRPG(name: "John")
+          characterToTest.health -= 100
+          XCTAssertFalse(characterToTest.alive)
+      }
+    
+    func testCharacterHealthCannotGoUnderZeroAndHisStatusIsDead() throws {
+        let characterToTest:CharacterRPG = CharacterRPG(name: "John")
+        characterToTest.health -= 101
+        XCTAssertEqual(characterToTest.health, 0)
+        XCTAssertFalse(characterToTest.alive)
+        
     }
-
+    
+    
+    func testCharacterShouldAttackOtherCharacters() throws {
+        let characterToTest:CharacterRPG = CharacterRPG(name: "John")
+        let receiverDamageCharacter:CharacterRPG = CharacterRPG(name: "Doe")
+        let receiverCharacterInitialHealth = receiverDamageCharacter.health
+        characterToTest.attack(ennemyCharacter: receiverDamageCharacter)
+        XCTAssertNotEqual(receiverDamageCharacter.health, receiverCharacterInitialHealth)
+    }
+    
+    func testCharacterShouldHealOtherCharacters() throws {
+        let characterToTest:CharacterRPG = CharacterRPG(name: "John")
+        let receiverHealCharacter:CharacterRPG = CharacterRPG(name: "Doe")
+        receiverHealCharacter.health -= 5
+        let receiverCharacterInitialHealth = receiverHealCharacter.health
+        characterToTest.heal(allyCharacter: receiverHealCharacter)
+        XCTAssertNotEqual(receiverHealCharacter.health, receiverCharacterInitialHealth)
+    }
+    
+    func testCharacterAttackEntity() throws {
+        let characterToTest:CharacterRPG = CharacterRPG(name: "John")
+        let animalEntityToTest:AnimalEntity = AnimalEntity(name: "Wolf", health: 200)
+        let initialAnimalHealth = animalEntityToTest.health
+        characterToTest.attack(entity: animalEntityToTest)
+        XCTAssertNotEqual(animalEntityToTest.health, initialAnimalHealth)
+    }
+    
+    func testFactionShouldBeCreated() throws {
+        let factionToBeTested = Faction(name: "Zevent")
+        let expectedFactionName = "Zevent"
+        XCTAssertEqual(factionToBeTested.name, expectedFactionName)
+    }
+    
+    
+    
+    func testAllyFactionShouldBeAdded() throws {
+        let factionToBeTested = Faction(name: "Zevent")
+        let allyFaction = Faction(name: "Amnesty")
+        factionToBeTested.addAlly(allyFaction: allyFaction)
+        
+        var allyFactionListExpected:[Faction] = []
+        allyFactionListExpected.append(allyFaction)
+    
+        
+        XCTAssertEqual(factionToBeTested.alliesFactions, allyFactionListExpected)
+    }
+    
+    func testFactionCantAddItselfAsAlly() throws {
+        let factionToBeTested = Faction(name: "Zevent")
+        factionToBeTested.addAlly(allyFaction: factionToBeTested)
+        XCTAssertTrue(factionToBeTested.alliesFactions.isEmpty)
+    }
+    
+    
+    func testWarriorShouldAttackEnnemies() throws {
+        
+        let firstFactionTest = Faction(name: "Zevent")
+        let secondFactionTest = Faction(name: "Amnesty")
+        
+        let warriorTest = Warrior(name: "Marc")
+        let warriorEnnemyTest = Warrior(name: "Dylan")
+        
+        let warriorEnnemyWithFactionTest = Warrior(name: "DylanAvecDesPotes")
+        warriorEnnemyWithFactionTest.joinFaction(faction: firstFactionTest)
+        
+        let secondWarriorEnnemyWithFactionTest = Warrior(name: "Jean")
+        secondWarriorEnnemyWithFactionTest.joinFaction(faction: secondFactionTest)
+        
+        let warriorEnnemyInitialHealth = warriorEnnemyTest.health
+        let firstWarriorEnnemyWithFactionInitialHealth = warriorEnnemyWithFactionTest.health
+        let secondWarriorEnnemyWithFactionInitialHealth = secondWarriorEnnemyWithFactionTest.health
+        
+        warriorTest.attack(ennemyCharacter: warriorEnnemyTest)
+        warriorTest.attack(ennemyCharacter: warriorEnnemyWithFactionTest)
+        warriorEnnemyWithFactionTest.attack(ennemyCharacter: secondWarriorEnnemyWithFactionTest)
+        
+        
+        XCTAssertNotEqual(warriorEnnemyTest.health, warriorEnnemyInitialHealth)
+        XCTAssertNotEqual(warriorEnnemyWithFactionTest.health, firstWarriorEnnemyWithFactionInitialHealth)
+        XCTAssertNotEqual(secondWarriorEnnemyWithFactionTest.health, secondWarriorEnnemyWithFactionInitialHealth)
+    }
+    
+    func testWarriorShouldNotAttackEnnemies{
+        
+    }
+    
+    
+    
+    
+  
+    
+  
 }

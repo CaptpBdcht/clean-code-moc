@@ -7,3 +7,7 @@
 //
 
 import Foundation
+
+@objc protocol Entities {
+    var health:Int {get set}
+}

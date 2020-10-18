@@ -7,7 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B2355D26253C87C400B03E1F /* AnimalEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2355D25253C87C400B03E1F /* AnimalEntity.swift */; };
+		B2355D27253C89EB00B03E1F /* AnimalEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2355D25253C87C400B03E1F /* AnimalEntity.swift */; };
+		B2355D28253C8AA900B03E1F /* Entities.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2471065253C8574002B344C /* Entities.swift */; };
 		B247102F253C4821002B344C /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = B247102E253C4821002B344C /* main.swift */; };
+		B2471038253C484B002B344C /* Characters.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2471037253C484B002B344C /* Characters.swift */; };
+		B247103A253C4895002B344C /* CharacterRPG.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2471039253C4895002B344C /* CharacterRPG.swift */; };
+		B2471051253C4E7D002B344C /* KataRPG_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2471050253C4E7D002B344C /* KataRPG_Tests.swift */; };
+		B2471056253C5042002B344C /* Characters.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2471037253C484B002B344C /* Characters.swift */; };
+		B2471057253C5042002B344C /* CharacterRPG.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2471039253C4895002B344C /* CharacterRPG.swift */; };
+		B2471059253C50D5002B344C /* Warrior.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2471058253C50D5002B344C /* Warrior.swift */; };
+		B247105B253C50F6002B344C /* Priest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B247105A253C50F6002B344C /* Priest.swift */; };
+		B247105D253C512F002B344C /* Faction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B247105C253C512F002B344C /* Faction.swift */; };
+		B247105E253C513F002B344C /* Faction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B247105C253C512F002B344C /* Faction.swift */; };
+		B247105F253C5142002B344C /* Priest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B247105A253C50F6002B344C /* Priest.swift */; };
+		B2471060253C5144002B344C /* Warrior.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2471058253C50D5002B344C /* Warrior.swift */; };
+		B2471066253C8574002B344C /* Entities.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2471065253C8574002B344C /* Entities.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -23,12 +38,29 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B2355D25253C87C400B03E1F /* AnimalEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalEntity.swift; sourceTree = "<group>"; };
 		B247102B253C4821002B344C /* KataRPG */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = KataRPG; sourceTree = BUILT_PRODUCTS_DIR; };
 		B247102E253C4821002B344C /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		B2471037253C484B002B344C /* Characters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Characters.swift; sourceTree = "<group>"; };
+		B2471039253C4895002B344C /* CharacterRPG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterRPG.swift; sourceTree = "<group>"; };
+		B247104E253C4E7D002B344C /* KataRPG-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "KataRPG-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B2471050253C4E7D002B344C /* KataRPG_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KataRPG_Tests.swift; sourceTree = "<group>"; };
+		B2471052253C4E7D002B344C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B2471058253C50D5002B344C /* Warrior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Warrior.swift; sourceTree = "<group>"; };
+		B247105A253C50F6002B344C /* Priest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Priest.swift; sourceTree = "<group>"; };
+		B247105C253C512F002B344C /* Faction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Faction.swift; sourceTree = "<group>"; };
+		B2471065253C8574002B344C /* Entities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entities.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		B2471028253C4821002B344C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B247104B253C4E7D002B344C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -42,6 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				B247102D253C4821002B344C /* KataRPG */,
+				B247104F253C4E7D002B344C /* KataRPG-Tests */,
 				B247102C253C4821002B344C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -50,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				B247102B253C4821002B344C /* KataRPG */,
+				B247104E253C4E7D002B344C /* KataRPG-Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -57,9 +91,49 @@
 		B247102D253C4821002B344C /* KataRPG */ = {
 			isa = PBXGroup;
 			children = (
+				B2471061253C5172002B344C /* Protocol */,
+				B2471035253C4833002B344C /* Model */,
 				B247102E253C4821002B344C /* main.swift */,
 			);
 			path = KataRPG;
+			sourceTree = "<group>";
+		};
+		B2471035253C4833002B344C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B2471062253C5193002B344C /* Characters */,
+				B247105C253C512F002B344C /* Faction.swift */,
+				B2355D25253C87C400B03E1F /* AnimalEntity.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B247104F253C4E7D002B344C /* KataRPG-Tests */ = {
+			isa = PBXGroup;
+			children = (
+				B2471050253C4E7D002B344C /* KataRPG_Tests.swift */,
+				B2471052253C4E7D002B344C /* Info.plist */,
+			);
+			path = "KataRPG-Tests";
+			sourceTree = "<group>";
+		};
+		B2471061253C5172002B344C /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				B2471037253C484B002B344C /* Characters.swift */,
+				B2471065253C8574002B344C /* Entities.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		B2471062253C5193002B344C /* Characters */ = {
+			isa = PBXGroup;
+			children = (
+				B2471039253C4895002B344C /* CharacterRPG.swift */,
+				B2471058253C50D5002B344C /* Warrior.swift */,
+				B247105A253C50F6002B344C /* Priest.swift */,
+			);
+			path = Characters;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -82,6 +156,23 @@
 			productReference = B247102B253C4821002B344C /* KataRPG */;
 			productType = "com.apple.product-type.tool";
 		};
+		B247104D253C4E7D002B344C /* KataRPG-Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B2471053253C4E7D002B344C /* Build configuration list for PBXNativeTarget "KataRPG-Tests" */;
+			buildPhases = (
+				B247104A253C4E7D002B344C /* Sources */,
+				B247104B253C4E7D002B344C /* Frameworks */,
+				B247104C253C4E7D002B344C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "KataRPG-Tests";
+			productName = "KataRPG-Tests";
+			productReference = B247104E253C4E7D002B344C /* KataRPG-Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -93,6 +184,9 @@
 				ORGANIZATIONNAME = esgi;
 				TargetAttributes = {
 					B247102A253C4821002B344C = {
+						CreatedOnToolsVersion = 11.6;
+					};
+					B247104D253C4E7D002B344C = {
 						CreatedOnToolsVersion = 11.6;
 					};
 				};
@@ -111,9 +205,20 @@
 			projectRoot = "";
 			targets = (
 				B247102A253C4821002B344C /* KataRPG */,
+				B247104D253C4E7D002B344C /* KataRPG-Tests */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B247104C253C4E7D002B344C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B2471027253C4821002B344C /* Sources */ = {
@@ -121,6 +226,28 @@
 			buildActionMask = 2147483647;
 			files = (
 				B247102F253C4821002B344C /* main.swift in Sources */,
+				B2471038253C484B002B344C /* Characters.swift in Sources */,
+				B2471066253C8574002B344C /* Entities.swift in Sources */,
+				B247105D253C512F002B344C /* Faction.swift in Sources */,
+				B2355D26253C87C400B03E1F /* AnimalEntity.swift in Sources */,
+				B247105B253C50F6002B344C /* Priest.swift in Sources */,
+				B2471059253C50D5002B344C /* Warrior.swift in Sources */,
+				B247103A253C4895002B344C /* CharacterRPG.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B247104A253C4E7D002B344C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B2355D27253C89EB00B03E1F /* AnimalEntity.swift in Sources */,
+				B2471060253C5144002B344C /* Warrior.swift in Sources */,
+				B247105E253C513F002B344C /* Faction.swift in Sources */,
+				B2471056253C5042002B344C /* Characters.swift in Sources */,
+				B247105F253C5142002B344C /* Priest.swift in Sources */,
+				B2471057253C5042002B344C /* CharacterRPG.swift in Sources */,
+				B2355D28253C8AA900B03E1F /* Entities.swift in Sources */,
+				B2471051253C4E7D002B344C /* KataRPG_Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,6 +385,40 @@
 			};
 			name = Release;
 		};
+		B2471054253C4E7D002B344C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "KataRPG-Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.esgi.KataRPG-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		B2471055253C4E7D002B344C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "KataRPG-Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.esgi.KataRPG-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -275,6 +436,15 @@
 			buildConfigurations = (
 				B2471033253C4821002B344C /* Debug */,
 				B2471034253C4821002B344C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B2471053253C4E7D002B344C /* Build configuration list for PBXNativeTarget "KataRPG-Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B2471054253C4E7D002B344C /* Debug */,
+				B2471055253C4E7D002B344C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

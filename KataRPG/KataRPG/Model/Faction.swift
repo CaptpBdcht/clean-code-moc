@@ -7,3 +7,21 @@
 //
 
 import Foundation
+class Faction: NSObject {
+    var name: String
+    var alliesFactions:[Faction] = []
+    
+    init(name: String) {
+        self.name = name
+    }
+    
+    func addAlly(allyFaction:Faction){
+        if !(self === allyFaction) {
+            self.alliesFactions.append(allyFaction)
+        }else{
+            print("U CANT ADD URSELF AS ALLY")
+        }
+        
+    }
+    
+}
