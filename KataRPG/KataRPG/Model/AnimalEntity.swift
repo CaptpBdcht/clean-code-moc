@@ -15,7 +15,4 @@ public class AnimalEntity:Entities{
         self.name = name
         self.health = health
     }
-    
-    
-
 }

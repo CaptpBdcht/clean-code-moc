@@ -13,7 +13,7 @@ class KataRPG_Tests: XCTestCase {
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
-
+    
     
     func testCharacterShouldHaveAName() throws {
         let characterToTest:CharacterRPG = CharacterRPG(name: "John")
@@ -28,10 +28,10 @@ class KataRPG_Tests: XCTestCase {
     }
     
     func testCharacterShouldBeDead() throws {
-          let characterToTest:CharacterRPG = CharacterRPG(name: "John")
-          characterToTest.health -= 100
-          XCTAssertFalse(characterToTest.alive)
-      }
+        let characterToTest:CharacterRPG = CharacterRPG(name: "John")
+        characterToTest.health -= 100
+        XCTAssertFalse(characterToTest.alive)
+    }
     
     func testCharacterHealthCannotGoUnderZeroAndHisStatusIsDead() throws {
         let characterToTest:CharacterRPG = CharacterRPG(name: "John")
@@ -49,15 +49,15 @@ class KataRPG_Tests: XCTestCase {
         characterToTest.attack(ennemyCharacter: receiverDamageCharacter)
         XCTAssertNotEqual(receiverDamageCharacter.health, receiverCharacterInitialHealth)
     }
-    
-    func testCharacterShouldHealOtherCharacters() throws {
-        let characterToTest:CharacterRPG = CharacterRPG(name: "John")
-        let receiverHealCharacter:CharacterRPG = CharacterRPG(name: "Doe")
-        receiverHealCharacter.health -= 5
-        let receiverCharacterInitialHealth = receiverHealCharacter.health
-        characterToTest.heal(allyCharacter: receiverHealCharacter)
-        XCTAssertNotEqual(receiverHealCharacter.health, receiverCharacterInitialHealth)
-    }
+    //
+    //    func testCharacterShouldHealOtherCharacters() throws {
+    //        let characterToTest:CharacterRPG = CharacterRPG(name: "John")
+    //        let receiverHealCharacter:CharacterRPG = CharacterRPG(name: "Doe")
+    //        receiverHealCharacter.health -= 5
+    //        let receiverCharacterInitialHealth = receiverHealCharacter.health
+    //        characterToTest.heal(allyCharacter: receiverHealCharacter)
+    //        XCTAssertNotEqual(receiverHealCharacter.health, receiverCharacterInitialHealth)
+    //    }
     
     func testCharacterAttackEntity() throws {
         let characterToTest:CharacterRPG = CharacterRPG(name: "John")
@@ -82,7 +82,7 @@ class KataRPG_Tests: XCTestCase {
         
         var allyFactionListExpected:[Faction] = []
         allyFactionListExpected.append(allyFaction)
-    
+        
         
         XCTAssertEqual(factionToBeTested.alliesFactions, allyFactionListExpected)
     }
@@ -95,6 +95,9 @@ class KataRPG_Tests: XCTestCase {
     
     
     func testWarriorShouldAttackEnnemies() throws {
+        
+        
+        //NE PAS OUBLIER DE MOCK LE RANDOM DAMAGE DU WARRIOR
         
         let firstFactionTest = Faction(name: "Zevent")
         let secondFactionTest = Faction(name: "Amnesty")
@@ -146,4 +149,78 @@ class KataRPG_Tests: XCTestCase {
         XCTAssertEqual(warriorSameFactionTest.health, warriorSameFactionInitialHealth)
         XCTAssertEqual(warriorDifferentFactionTest.health, warriorDifferentInitialHealth)
     }
+    
+    
+    func testPriestShouldHealCharacterOnTheSameFaction(){
+        
+        let factionTest = Faction(name: "Zevent")
+        
+        let priestTest = Priest(name: "Arthas")
+        let warriorInTheSameFaction = Warrior(name: "Leonardo")
+        
+        warriorInTheSameFaction.attack(ennemyCharacter: warriorInTheSameFaction)
+        let warriorHealthAfterAttack = warriorInTheSameFaction.health
+        
+        priestTest.joinFaction(faction: factionTest)
+        warriorInTheSameFaction.joinFaction(faction: factionTest)
+        
+        
+        priestTest.heal(allyCharacter: warriorInTheSameFaction)
+        
+        
+        XCTAssertNotEqual(warriorInTheSameFaction.health, warriorHealthAfterAttack)
+        
+    }
+    
+    
+    func testPriestShouldNotHealCharacterOnNotFriendlyFaction(){
+        
+        let factionTest = Faction(name: "Zevent")
+        
+        let priestTest = Priest(name: "Arthas")
+        let warriorWithoutFaction = Warrior(name: "Leonardo")
+        
+        warriorWithoutFaction.attack(ennemyCharacter: warriorWithoutFaction)
+        let warriorHealthAfterAttack = warriorWithoutFaction.health
+        
+        
+        priestTest.joinFaction(faction: factionTest)
+        priestTest.heal(allyCharacter: warriorWithoutFaction)
+        
+        XCTAssertEqual(warriorWithoutFaction.health, warriorHealthAfterAttack)
+        
+        
+    }
+    
+    func testPriestShouldHealCharacterOnFriendlyFaction(){
+    
+        let factionTest = Faction(name: "Zevent")
+        let fridenlyFactionTest = Faction(name: "Amnesty")
+        factionTest.addAlly(allyFaction: fridenlyFactionTest)
+        
+        let priestTest = Priest(name: "Arthas")
+        let warriorInFriendlyFaction = Warrior(name: "Leonardo")
+        
+        warriorInFriendlyFaction.attack(ennemyCharacter: warriorInFriendlyFaction)
+        let warriorHealthAfterAttack = warriorInFriendlyFaction.health
+        
+        priestTest.joinFaction(faction: factionTest)
+        warriorInFriendlyFaction.joinFaction(faction: fridenlyFactionTest)
+        
+        priestTest.heal(allyCharacter: warriorInFriendlyFaction)
+        
+        XCTAssertNotEqual(warriorInFriendlyFaction.health, warriorHealthAfterAttack)
+    }
+    
+    
+    func testWarriorShouldNotAttackOther()  {
+        let deadWarrior = Warrior(name: "deadman")
+        deadWarrior.health = 0
+        
+        let cow = AnimalEntity(name: "cow", health: 30)
+        let initialCowHealth = cow.health
+        deadWarrior.attack(entity: cow)
+        XCTAssertEqual(cow.health, initialCowHealth)
+    }
+    
 }

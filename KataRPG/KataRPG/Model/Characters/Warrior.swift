@@ -9,7 +9,8 @@
 import Foundation
 
 class Warrior: Characters {
-    var faction: Faction? 
+    
+    var faction: Faction?
     var name: String
     var health: Int = 100 {
         didSet {
@@ -32,7 +33,7 @@ class Warrior: Characters {
     }
     
     func attack(ennemyCharacter: Characters) {
-        if ennemyCharacter.alive == true  {
+        if ennemyCharacter.alive == true && self.alive  {
             if let myFaction = self.faction {
                 if let ennemyFaction = ennemyCharacter.faction {
                     if !(myFaction === ennemyCharacter.faction){
@@ -54,22 +55,20 @@ class Warrior: Characters {
     }
     
     func attack(entity:Entities){
+        if self.alive {
            entity.health -= 1
-       }
+        }else{
+            print("\(self.name) cannot attack because is dead")
+        }
+    }
     
     
     
     func heal(allyCharacter: Characters){
-        if(self === allyCharacter){
+        if(self === allyCharacter) && self.alive{
             allyCharacter.health += 1
-        } else if (self === allyCharacter && allyCharacter.health > 99){
-            print("Max health reached!")
-        } else {
-            print("You can only heal yourself")
-        }
-        
-        if(allyCharacter.health > 100) {
-            allyCharacter.health = 100
+        } else{
+            print("not possible")
         }
     }
     

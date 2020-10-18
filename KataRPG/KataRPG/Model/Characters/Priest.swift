@@ -32,17 +32,28 @@ class Priest: Characters {
     }
     
     func heal(allyCharacter: Characters){
-        if(!(self === allyCharacter) && (self.faction === allyCharacter.faction)){
-            allyCharacter.health += damage
-        } else if (allyCharacter.health > 99){
-            print("Max health reached!")
-        } else {
-            print("You can only heal yourself")
-        }
         
-        if(allyCharacter.health > 100) {
-            allyCharacter.health = 100
-        }
+        
+        
+        if allyCharacter.alive == true && self.alive {
+                   if let myFaction = self.faction {
+                       if let otherFaction = allyCharacter.faction {
+                               if myFaction === otherFaction || myFaction.alliesFactions.contains(otherFaction){
+                                 allyCharacter.health += damage
+                               } else {
+                                   print("NOT ALLY FACTION")
+                               }
+                           
+                       } else {
+                            print("cant heal I dont have any faction")
+                       }
+                   } else {
+                      print("cant heal other character dont have any faction")
+                   }
+               } else {
+                   print("Character is dead")
+               }
+        
     }
     
     func takeDamage(damage:Int) {

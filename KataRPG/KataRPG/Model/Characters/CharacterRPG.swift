@@ -24,13 +24,13 @@ public class CharacterRPG:Characters{
             }
         }
     }
-
+    
     init(name: String) {
         self.name = name
     }
     
     func attack(ennemyCharacter: Characters){
-        if ennemyCharacter.alive == true && !(self === ennemyCharacter) {
+        if ennemyCharacter.alive == true && !(self === ennemyCharacter) && self.alive {
             if let myFaction = self.faction {
                 if let ennemyFaction = ennemyCharacter.faction {
                     if !(myFaction === ennemyCharacter.faction){
@@ -57,10 +57,28 @@ public class CharacterRPG:Characters{
     }
     
     func heal(allyCharacter: Characters){
-        if (allyCharacter.health > 99){
-            print("Max health reached!")
-        } else if(self.faction === allyCharacter.faction) { 
-            allyCharacter.health += 1
+        
+        
+        if allyCharacter.alive == true && self.alive {
+            if let myFaction = self.faction {
+                if let otherFaction = allyCharacter.faction {
+                    
+                    if  myFaction === otherFaction || myFaction.alliesFactions.contains(otherFaction){
+                        
+                        allyCharacter.health += 1
+                        
+                    } else {
+                        print("NOT ALLY FACTION")
+                    }
+                    
+                } else {
+                    print("cant heal I dont have any faction")
+                }
+            } else {
+                print("cant heal other character dont have any faction")
+            }
+        } else {
+            print("Character is dead")
         }
     }
     
