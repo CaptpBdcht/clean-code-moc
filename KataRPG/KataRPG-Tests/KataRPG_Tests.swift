@@ -122,14 +122,28 @@ class KataRPG_Tests: XCTestCase {
         XCTAssertNotEqual(secondWarriorEnnemyWithFactionTest.health, secondWarriorEnnemyWithFactionInitialHealth)
     }
     
-    func testWarriorShouldNotAttackEnnemies{
+    func testWarriorShouldNotAttackEnnemies() throws {
+        let factionTest = Faction(name: "Zevent")
+        let allyFactionTest = Faction(name: "Amnesty")
+        let warriorTest = Warrior(name: "Marc")
+        let warriorSameFactionTest = Warrior(name: "Dylan")
+        let warriorDifferentFactionTest = Warrior(name: "Bob")
         
+        factionTest.addAlly(allyFaction: allyFactionTest)
+        
+        warriorTest.joinFaction(faction: factionTest)
+        warriorSameFactionTest.joinFaction(faction: factionTest)
+        warriorDifferentFactionTest.joinFaction(faction: allyFactionTest)
+        
+        factionTest.addAlly(allyFaction: allyFactionTest)
+        
+        warriorTest.attack(ennemyCharacter: warriorSameFactionTest)
+        warriorTest.attack(ennemyCharacter: warriorDifferentFactionTest)
+        
+        let warriorSameFactionInitialHealth = warriorSameFactionTest.health
+        let warriorDifferentInitialHealth = warriorDifferentFactionTest.health
+        
+        XCTAssertEqual(warriorSameFactionTest.health, warriorSameFactionInitialHealth)
+        XCTAssertEqual(warriorDifferentFactionTest.health, warriorDifferentInitialHealth)
     }
-    
-    
-    
-    
-  
-    
-  
 }
