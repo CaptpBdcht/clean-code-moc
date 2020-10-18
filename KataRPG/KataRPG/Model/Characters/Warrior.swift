@@ -32,44 +32,25 @@ class Warrior: Characters {
     }
     
     func attack(ennemyCharacter: Characters) {
-       
-//
-//
-//        if(ennemyCharacter.alive == true && (!(ennemyCharacter.faction === self.faction) || (self === ennemyCharacter))){
-//            ennemyCharacter.takeDamage(damage: damage)
-//        } else {
-//            print("Character already dead!")
-//        }
-        
-        
         if ennemyCharacter.alive == true  {
-                  
             if let myFaction = self.faction {
-                       
-                       if let ennemyFaction = ennemyCharacter.faction {
-                           
-                           if !(myFaction === ennemyCharacter.faction){
-                               
-                               if myFaction.alliesFactions.contains(ennemyFaction){
-                                   print("CEST UN POTE")
-                               }else {
-                                   ennemyCharacter.takeDamage(damage: damage)
-                               }
-                               
-                           }
-                           
-                       }else {
-                           ennemyCharacter.takeDamage(damage: damage)
-                       }
-                       
-                   }else {
-                       ennemyCharacter.takeDamage(damage: damage)
-                   }
-               }else {
-                           print("Character already dead!")
-                       }
-        
-        
+                if let ennemyFaction = ennemyCharacter.faction {
+                    if !(myFaction === ennemyCharacter.faction){
+                        if myFaction.alliesFactions.contains(ennemyFaction){
+                            print("CEST UN POTE")
+                        } else {
+                            ennemyCharacter.takeDamage(damage: damage)
+                        }
+                    }
+                } else {
+                    ennemyCharacter.takeDamage(damage: damage)
+                }
+            } else {
+                ennemyCharacter.takeDamage(damage: damage)
+            }
+        } else {
+            print("Character already dead!")
+        }
     }
     
     func attack(entity:Entities){

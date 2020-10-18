@@ -8,11 +8,9 @@
 
 import Foundation
 public class CharacterRPG:Characters{
-    
-    
-    
     var faction: Faction?
     var name: String = ""
+    var alive: Bool = true
     var health: Int = 100 {
         didSet {
             if self.health > 100 {
@@ -26,40 +24,31 @@ public class CharacterRPG:Characters{
             }
         }
     }
-    var alive: Bool = true
-    
+
     init(name: String) {
         self.name = name
     }
     
     func attack(ennemyCharacter: Characters){
-        
         if ennemyCharacter.alive == true && !(self === ennemyCharacter) {
             if let myFaction = self.faction {
-                
                 if let ennemyFaction = ennemyCharacter.faction {
-                    
                     if !(myFaction === ennemyCharacter.faction){
-                        
                         if myFaction.alliesFactions.contains(ennemyFaction){
                             print("CEST UN POTE")
-                        }else {
+                        } else {
                             ennemyCharacter.takeDamage(damage: 1)
                         }
-                        
                     }
-                    
-                }else {
+                } else {
                     ennemyCharacter.takeDamage(damage: 1)
                 }
-                
-            }else {
+            } else {
                 ennemyCharacter.takeDamage(damage: 1)
             }
-        }else {
-                    print("Character already dead or he want to attack himself")
-                }
-    
+        } else {
+            print("Character already dead or he want to attack himself")
+        }
     }
     
     
