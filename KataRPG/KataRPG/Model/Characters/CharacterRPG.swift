@@ -7,18 +7,18 @@
 //
 
 import Foundation
-public class CharacterRPG:Characters{
+public class CharacterRPG:Characters {
     var faction: Faction?
     var name: String = ""
     var alive: Bool = true
     var health: Int = 100 {
         didSet {
-            if self.health > 100 {
+            if(self.health > 100) {
                 print("Vie superieur à 100 reset à 100")
                 self.health = 100
-            }else if self.health < 1 {
+            } else if(self.health < 1) {
                 self.alive = false
-                if self.health < 0 {
+                if(self.health < 0) {
                     self.health = 0
                 }
             }
@@ -29,7 +29,7 @@ public class CharacterRPG:Characters{
         self.name = name
     }
     
-    func attack(ennemyCharacter: Characters){
+    func attack(ennemyCharacter: Characters) {
         if ennemyCharacter.alive == true && !(self === ennemyCharacter) && self.alive {
             if let myFaction = self.faction {
                 if let ennemyFaction = ennemyCharacter.faction {
@@ -52,25 +52,19 @@ public class CharacterRPG:Characters{
     }
     
     
-    func attack(entity:Entities){
+    func attack(entity:Entities) {
         entity.health -= 1
     }
     
-    func heal(allyCharacter: Characters){
-        
-        
+    func heal(allyCharacter: Characters) {
         if allyCharacter.alive == true && self.alive {
             if let myFaction = self.faction {
                 if let otherFaction = allyCharacter.faction {
-                    
                     if  myFaction === otherFaction || myFaction.alliesFactions.contains(otherFaction){
-                        
                         allyCharacter.health += 1
-                        
                     } else {
                         print("NOT ALLY FACTION")
                     }
-                    
                 } else {
                     print("cant heal I dont have any faction")
                 }
@@ -102,7 +96,7 @@ public class CharacterRPG:Characters{
     
 }
 
-extension CharacterRPG:CustomStringConvertible{
+extension CharacterRPG:CustomStringConvertible {
     public var description: String{
         return "name : \(self.name) health : \(self.health)"
     }

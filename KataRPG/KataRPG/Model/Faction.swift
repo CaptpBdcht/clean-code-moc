@@ -15,11 +15,11 @@ class Faction: NSObject {
         self.name = name
     }
     
-    func addAlly(allyFaction:Faction){
+    func addAlly(allyFaction:Faction) {
         if !(self === allyFaction) {
             self.alliesFactions.append(allyFaction)
             allyFaction.alliesFactions.append(self)
-        }else{
+        } else {
             print("U CANT ADD URSELF AS ALLY")
         }
         

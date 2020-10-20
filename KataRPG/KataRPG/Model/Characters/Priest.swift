@@ -16,7 +16,7 @@ class Priest: Characters {
             if self.health > 100 {
                 print("Vie superieur à 100 reset à 100")
                 self.health = 100
-            }else if self.health < 1 {
+            } else if self.health < 1 {
                 self.alive = false
                 if self.health < 0 {
                     self.health = 0
@@ -32,28 +32,23 @@ class Priest: Characters {
     }
     
     func heal(allyCharacter: Characters){
-        
-        
-        
         if allyCharacter.alive == true && self.alive {
-                   if let myFaction = self.faction {
-                       if let otherFaction = allyCharacter.faction {
-                               if myFaction === otherFaction || myFaction.alliesFactions.contains(otherFaction){
-                                 allyCharacter.health += damage
-                               } else {
-                                   print("NOT ALLY FACTION")
-                               }
-                           
-                       } else {
-                            print("cant heal I dont have any faction")
-                       }
-                   } else {
-                      print("cant heal other character dont have any faction")
-                   }
-               } else {
-                   print("Character is dead")
-               }
-        
+            if let myFaction = self.faction {
+                if let otherFaction = allyCharacter.faction {
+                    if myFaction === otherFaction || myFaction.alliesFactions.contains(otherFaction){
+                        allyCharacter.health += damage
+                    } else {
+                        print("NOT ALLY FACTION")
+                    }
+                } else {
+                    print("cant heal I dont have any faction")
+                }
+            } else {
+                print("cant heal other character dont have any faction")
+            }
+        } else {
+            print("Character is dead")
+        }
     }
     
     func takeDamage(damage:Int) {
