@@ -11,6 +11,9 @@ public class Priest extends Character {
 
     @Override
     public void heal(Character character) {
+        if (this.getFaction() != character.getFaction()) {
+            return;
+        }
         int value = this.equals(character) ? 1 : ThreadLocalRandom.current().nextInt(5, 11);
         character.setHealth(character.getHealth() + value);
     }

@@ -1,9 +1,11 @@
 public class Character {
     private String name;
     private int health = 100;
+    private Faction faction;
 
     Character(String name) {
         this.name = name;
+        faction = null;
     }
 
     public void setHealth(int health) {
@@ -31,6 +33,9 @@ public class Character {
     }
 
     public void attack(Character character) {
+        if (character.getFaction() == this.faction && this.faction != null) {
+            return;
+        }
         boolean success = !this.equals(character) && character.isAlive();
         if (success) {
             character.setHealth(character.getHealth() - 1);
@@ -38,7 +43,25 @@ public class Character {
     }
 
     public void heal(Character character) {
+        if (this.getFaction() != character.getFaction()) {
+            return;
+        }
         character.setHealth(character.getHealth() + 1);
+    }
+
+    public void joinFaction(Faction faction) {
+        this.faction = faction;
+    }
+
+    public void leaveFaction() {
+        if (this.faction == null) {
+            return;
+        }
+        this.faction = null;
+    }
+
+    public Faction getFaction() {
+        return this.faction;
     }
 
     private boolean isMaximumHealth(int value){
