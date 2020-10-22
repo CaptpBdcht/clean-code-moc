@@ -70,10 +70,17 @@ fun main(){
     println("Faction : " + famousFaction)
     println("Faction : " + friendFaction)
 
-   priest.heal(priest)
+    priest.heal(priest)
 
+<<<<<<< HEAD
+// ==== ASSEMBLY ===== //
+=======
    // ==== ASSEMBLY ===== //
     println("\n// ==== ASSEMBLY ===== //")
+<<<<<<< Updated upstream
+=======
+>>>>>>> 54b145add8e8afb6d1474e0d27b08bc845002ff0
+>>>>>>> Stashed changes
     val assembly = Assembly("assembly", arrayOf(Warrior::class.simpleName.toString(), ""))
     barbare.join(assembly)
     println(assembly)
