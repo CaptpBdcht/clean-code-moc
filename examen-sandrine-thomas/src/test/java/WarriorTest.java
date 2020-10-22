@@ -19,6 +19,8 @@ public class WarriorTest {
     Character priestDarnassus;
     Character warriorDarnassus;
 
+    Building molfenderTower;
+
     @BeforeEach
     void init() {
         // Horde factions
@@ -40,6 +42,9 @@ public class WarriorTest {
         priestStormwind = new Priest("Anduin Wrynn");
         warriorDarnassus = new Warrior("Sildanair");
         priestDarnassus = new Priest("Tyrande Whisperwind");
+
+        // Non-characters entities
+        molfenderTower = new Building("Training Dummy", 10000);
     }
 
     @Test
@@ -49,6 +54,27 @@ public class WarriorTest {
         priestStormwind.joinFaction(stormwindFaction);
         warriorOrgrimmar.attack(priestStormwind);
         Assert.assertTrue(priestStormwind.getHealth() < 100);
+    }
+
+    @Test
+    @DisplayName("A warrior can attack a non-character entity")
+    void warriorAttacksNonCharacterEntity() {
+        molfenderTower.setHealth(100);
+        warriorOrgrimmar.attack(molfenderTower);
+        Assert.assertTrue(molfenderTower.getHealth() < 100);
+    }
+
+    @Test
+    @DisplayName("A warrior can't attack a dead entity")
+    void warriorAttacksDeadCharacter() {
+        warriorDarnassus.setHealth(0);
+        try {
+            warriorOrgrimmar.attack(warriorDarnassus);
+        }
+        catch (RuntimeException re) {
+            String expectedException = "A character can't attack a dead entity";
+            Assert.assertEquals(expectedException, re.getMessage());
+        }
     }
 
     @Test
@@ -67,14 +93,31 @@ public class WarriorTest {
     }
 
     @Test
+    @DisplayName("A warrior can't attack a character of a friend faction")
+    void warriorAttacksFriendFaction() {
+        orgrimmarFaction.addFriend(darkspearFaction);
+        warriorOrgrimmar.joinFaction(orgrimmarFaction);
+        warriorDarkspear.joinFaction(darkspearFaction);
+
+        try {
+            warriorOrgrimmar.attack(warriorDarkspear);
+            Assert.assertTrue(warriorDarkspear.getHealth() < 100);
+        }
+        catch (RuntimeException re) {
+            String expectedException = "A character can't attack another character of his faction or friend faction";
+            Assert.assertEquals(expectedException, re.getMessage());
+        }
+    }
+
+    @Test
     @DisplayName("A warrior can kill a character of another faction")
     void warriorKills() {
         warriorOrgrimmar.joinFaction(orgrimmarFaction);
         priestStormwind.joinFaction(stormwindFaction);
         priestStormwind.setHealth(1);
-        Assert.assertTrue(priestStormwind.getIsAlive());
+        Assert.assertTrue(priestStormwind.isAlive());
         warriorOrgrimmar.attack(priestStormwind);
-        Assert.assertFalse(priestStormwind.getIsAlive());
+        Assert.assertFalse(priestStormwind.isAlive());
     }
 
     @Test
