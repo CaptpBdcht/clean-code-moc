@@ -6,7 +6,7 @@ public class Priest extends Character{
     }
 
     @Override
-    public void attack(Character attackTarget) {
+    public void attack(Entity attackTarget) {
         System.out.println("A priest is a man of religion, and do not tolerate violence.");
     }
 
@@ -21,6 +21,6 @@ public class Priest extends Character{
         int max = 11;
         int healPoints = randHeal.nextInt(max - min) + min;
         healTarget.increaseCurrentHealth(healPoints);
-        System.out.println(this.name + " healed by " + healPoints + " points to " + healTarget.name);
+        System.out.println(this.getName() + " healed by " + healPoints + " points to " + healTarget.getName());
     }
 }

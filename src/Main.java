@@ -9,6 +9,8 @@ public class Main {
         Faction northmen = new Faction("Northmen");
         Faction wessex = new Faction("Wessex");
 
+        Tree tree = new Tree(10);
+
         System.out.println("Ragnar and Lagertha join Northmen faction, and athelstan join northumbia faction");
         ragnar.joinFaction(northmen);
         lagertha.joinFaction(northmen);
@@ -25,7 +27,7 @@ public class Main {
         ragnar.attack(lagertha);
         System.out.println(lagertha.status());
 
-        ragnar.currentHealth = 90;
+        ragnar.health = 90;
 
         System.out.println("Athelstan tries to heal Ragnar");
         System.out.println(ragnar.status());
@@ -42,5 +44,11 @@ public class Main {
         athelstan.leaveFaction(wessex);
         System.out.println(athelstan.status());
         System.out.println("List of wessex member : " + wessex.getMembers());
+
+        System.out.println("Lagertha tries to hit a tree");
+        while(tree.getState() != Entity.states.DEAD){
+            lagertha.attack(tree);
+        }
+        System.out.println("Tree life: " + tree.getHealth());
     }
 }

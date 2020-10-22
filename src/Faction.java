@@ -8,7 +8,7 @@ public class Faction {
     private List<Character> members;
 
     public List<String > getMembers() {
-        return members.stream().map(member-> member.name).collect(Collectors.toList());
+        return members.stream().map(Character::getName).collect(Collectors.toList());
     }
 
     public void addMembers(Character member) {
