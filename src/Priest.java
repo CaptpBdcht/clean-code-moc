@@ -12,6 +12,10 @@ public class Priest extends Character{
 
     @Override
     public void heal(Character healTarget) {
+        if (!this.checkFaction(healTarget)){
+            System.out.println("Cannot heal someone from another faction");
+            return;
+        }
         Random randHeal = new Random();
         int min = 5;
         int max = 11;

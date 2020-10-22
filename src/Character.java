@@ -5,6 +5,8 @@ public abstract class Character {
     protected enum status {ALIVE,DEAD}
     protected Character.status state = Character.status.ALIVE;
 
+    protected Faction faction = null;
+
     protected String name;
 
     public Character(String name) {
@@ -25,6 +27,25 @@ public abstract class Character {
 
     //Like toString but roleplay
     public String status() {
-        return this.name + "{ currentHealth=" + this.currentHealth + ", state=" + this.state + '}';
+        String factionName = "null";
+        if (this.faction != null){
+            factionName = this.faction.getName();
+        }
+        return this.name + "{ currentHealth=" + this.currentHealth + ", state=" + this.state + ", faction=" + factionName + " }";
+    }
+
+    public void joinFaction(Faction faction){
+        this.faction = faction;
+        faction.addMembers(this);
+    }
+
+
+    public void leaveFaction(Faction faction){
+        this.faction = null;
+        faction.leaveFaction(this);
+    }
+
+    public boolean checkFaction(Character target){
+        return this.faction == target.faction;
     }
 }

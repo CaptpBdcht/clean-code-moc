@@ -8,6 +8,10 @@ public class Warrior extends Character{
 
     @Override
     public void attack(Character attackTarget) {
+        if (this.checkFaction(attackTarget)){
+            System.out.println("Cannot hit someone from the same faction");
+            return;
+        }
         if(attackTarget.state != status.DEAD){
             Random randDamage = new Random();
             int damage = randDamage.nextInt(10);
