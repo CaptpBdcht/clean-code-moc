@@ -41,7 +41,8 @@ public abstract class Character extends Entity {
     }
 
     public boolean checkFaction(Character target){
-        return this.faction == target.faction;
+
+        return this.faction == target.faction || this.faction.getFriendFaction().contains(target.faction);
     }
 
     public String getName(){

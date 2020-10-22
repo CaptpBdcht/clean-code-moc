@@ -15,7 +15,7 @@ public class Warrior extends Character{
                 System.err.println(e.getLocalizedMessage());
             }
             if (sameFaction){
-                System.out.println("Cannot hit someone from the same faction");
+                System.out.println("Cannot hit someone from the same faction or friend faction");
                 return;
             }
         }
