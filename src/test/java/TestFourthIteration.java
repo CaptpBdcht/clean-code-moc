@@ -10,12 +10,27 @@ public class TestFourthIteration {
     }
 
     @Test
+    public void testNoMembers() {
+        Faction faction = new Faction("Demacia");
+        Assert.assertEquals(faction.getMembers().size(), 0);
+    }
+
+    @Test
     public void testJoinFaction() {
         Warrior guerrier = new Warrior("Garen");
         Faction faction = new Faction("Demacia");
         guerrier.joinFaction(faction);
 
         Assert.assertEquals(guerrier.getFaction(), faction);
+    }
+
+    @Test
+    public void testAddMember(){
+        Warrior guerrier = new Warrior("Garen");
+        Faction faction = new Faction("Demacia");
+        guerrier.joinFaction(faction);
+
+        Assert.assertTrue(faction.isMember(guerrier));
     }
 
     @Test
@@ -26,6 +41,16 @@ public class TestFourthIteration {
         guerrier.leaveFaction();
 
         Assert.assertNull(guerrier.getFaction());
+    }
+
+    @Test
+    public void testDeleteMember() {
+        Warrior guerrier = new Warrior("Garen");
+        Faction faction = new Faction("Demacia");
+        guerrier.joinFaction(faction);
+        guerrier.leaveFaction();
+
+        Assert.assertFalse(faction.isMember(guerrier));
     }
 
     @Test

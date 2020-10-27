@@ -7,10 +7,15 @@ public class Priest extends Character {
     }
 
     @Override
-    public void attack(Character character) { }
+    public void attack(Entity entity) { }
 
     @Override
-    public void heal(Character character) {
+    public void heal(Entity entity) {
+        if(!(entity instanceof Character)) {
+            return;
+        }
+
+        Character character = (Character) entity;
         if (this.getFaction() != character.getFaction()) {
             return;
         }

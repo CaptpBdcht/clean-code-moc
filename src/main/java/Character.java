@@ -1,75 +1,60 @@
-public class Character {
+public abstract class Character extends Entity {
     private String name;
-    private int health = 100;
     private Faction faction;
 
+
     Character(String name) {
+        super(100);
         this.name = name;
         faction = null;
     }
 
-    public void setHealth(int health) {
-        if (this.isMaximumHealth(health)) {
-            this.health = 100;
+
+
+    public int getHealth() { return health; }
+
+    public String getName() { return name; }
+
+    public Faction getFaction() { return this.faction; }
+
+    public void attack(Entity entity) {
+        if(entity instanceof Character) {
+            Character character = (Character) entity;
+
+            if (this.getFaction() != null && this.getFaction().isMember(character)) {
+                return;
+            }
         }
-        else if (this.isMinimumHealth(health)) {
-            this.health = 0;
+
+        boolean success = !this.equals(entity) && entity.isAlive();
+        if (success) {
+            entity.setHealth(entity.getHealth() - 1);
         }
-        else {
-            this.health = health;
-        }
     }
 
-    public int getHealth() {
-        return health;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public boolean isAlive() {
-        return health > 0;
-    }
-
-    public void attack(Character character) {
-        if (character.getFaction() == this.faction && this.faction != null) {
+    public void heal(Entity entity) {
+        if(!(entity instanceof Character)) {
             return;
         }
-        boolean success = !this.equals(character) && character.isAlive();
-        if (success) {
-            character.setHealth(character.getHealth() - 1);
-        }
-    }
 
-    public void heal(Character character) {
-        if (this.getFaction() != character.getFaction()) {
+        Character character = (Character) entity;
+        if (this.getFaction() != null && this.getFaction().isMember(character)) {
             return;
         }
         character.setHealth(character.getHealth() + 1);
     }
 
-    public void joinFaction(Faction faction) {
+
+    void joinFaction(Faction faction) {
+        faction.addMember(this);
         this.faction = faction;
     }
 
-    public void leaveFaction() {
-        if (this.faction == null) {
-            return;
+    void leaveFaction() {
+        this.faction.deleteMember(this);
+        if (this.faction != null) {
+            this.faction = null;
         }
-        this.faction = null;
-    }
-
-    public Faction getFaction() {
-        return this.faction;
-    }
-
-    private boolean isMaximumHealth(int value){
-        return value > 100;
-    }
-
-    private boolean isMinimumHealth(int value){
-        return value < 0;
     }
 
 }

@@ -2,7 +2,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class TestFirstIteration {
-
+/*
     @Test
     public void testCharacterCreation(){
         Character gentil = new Character("Link");
@@ -76,4 +76,6 @@ public class TestFirstIteration {
         gentil.setHealth(0);
         Assert.assertFalse(gentil.isAlive());
     }
+
+ */
 }

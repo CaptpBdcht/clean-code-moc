@@ -7,18 +7,28 @@ public class Warrior extends Character {
     }
 
     @Override
-    public void attack(Character character) {
-        if (character.isAlive()) {
-            if (character.getFaction() == this.getFaction() && this.getFaction() != null) {
-                return;
+    public void attack(Entity entity) {
+        if (entity.isAlive()) {
+            if(entity instanceof Character) {
+                Character character = (Character) entity;
+                if (character.getFaction() == this.getFaction() && this.getFaction() != null) {
+                    return;
+                }
             }
+
             int damages = ThreadLocalRandom.current().nextInt(0, 9);
-            character.setHealth(getHealth() - damages);
+            entity.setHealth(entity.getHealth() - damages);
         }
     }
 
     @Override
-    public void heal(Character character) {
+    public void heal(Entity entity) {
+        if(!(entity instanceof Character)) {
+            return;
+        }
+
+        Character character = (Character) entity;
+
         if (this.getFaction() != character.getFaction()) {
             return;
         }
