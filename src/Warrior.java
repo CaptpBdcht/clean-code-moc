@@ -8,12 +8,7 @@ public class Warrior extends Character{
     @Override
     public void attack(Entity attackTarget) {
         if(attackTarget instanceof Character){
-            boolean sameFaction = false;
-            try{
-                sameFaction = this.checkFaction((Character) attackTarget);
-            } catch (Exception e){
-                System.err.println(e.getLocalizedMessage());
-            }
+            boolean sameFaction = this.checkFaction((Character) attackTarget);
             if (sameFaction){
                 System.out.println("Cannot hit someone from the same faction or friend faction");
                 return;

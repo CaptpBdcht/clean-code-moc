@@ -50,5 +50,20 @@ public class Main {
         System.out.println(ragnar.status());
         athelstan.heal(ragnar);
         System.out.println(ragnar.status());
+
+        System.out.println("\nAthelstan keep his faction but also joined Ragnar's");
+        System.out.println(athelstan.status());
+        athelstan.joinFaction(northmen);
+        System.out.println(athelstan.status());
+
+        System.out.println("\nNow Athelstan should be able to heal Ragnar");
+        System.out.println(ragnar.status());
+        athelstan.heal(ragnar);
+        System.out.println(ragnar.status());
+
+        System.out.println("\nNow that Athelstan has healed Ragnar, he leaved the faction");
+        System.out.println(athelstan.status());
+        athelstan.leaveFaction(northmen);
+        System.out.println(athelstan.status());
     }
 }

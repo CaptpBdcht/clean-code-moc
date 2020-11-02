@@ -1,6 +1,12 @@
+import org.w3c.dom.ls.LSOutput;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public abstract class Character extends Entity {
     protected static final int MAXHEALTH = 100;
-    private Faction faction = null;
+    private ArrayList<Faction> factions = new ArrayList<Faction>();
     private final String name;
 
     public Character(String name) {
@@ -22,30 +28,47 @@ public abstract class Character extends Entity {
 
     //Like toString but roleplay
     public String status() {
-        String factionName = "null";
-        if (this.faction != null){
-            factionName = this.faction.getName();
+        String factionsNames = "null";
+        if (this.factions.size() > 0){
+            List<String> factions = this.factions.stream().map(Faction::getName).collect(Collectors.toList());
+            factionsNames = factions.toString();
         }
-        return this.name + "{ currentHealth:" + this.health + ", state:" + this.getState() + ", faction:" + factionName + " }";
+        return this.name + "{ currentHealth:" + this.health + ", state:" + this.getState() + ", factions:" + factionsNames + " }";
     }
 
     public void joinFaction(Faction faction){
-        this.faction = faction;
-        faction.addMembers(this);
+        if(!this.factions.contains(faction)) {
+            this.factions.add(faction);
+            faction.addMembers(this);
+        } else {
+            System.out.println("Already member of this faction.");
+        }
     }
 
 
     public void leaveFaction(Faction faction){
-        this.faction = null;
+        if(this.factions.contains(faction)) {
+            this.factions.remove(faction);
+        } else {
+            System.out.println("Not member of this faction.");
+        }
         faction.leaveFaction(this);
     }
 
     public boolean checkFaction(Character target){
-
-        return this.faction == target.faction || this.faction.getFriendFaction().contains(target.faction);
+        for(Faction targetFaction: target.getFactions()){
+            if(this.factions.contains(targetFaction)){
+                return true;
+            }
+        }
+        return false;
     }
 
     public String getName(){
         return this.name;
+    }
+
+    public ArrayList<Faction> getFactions(){
+        return this.factions;
     }
 }
