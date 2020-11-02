@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -39,7 +42,7 @@ public class Main {
         System.out.println(ecbert.status());
 
         System.out.println("\nNow northem and wessex faction are friend");
-        northmen.addFriendFaction(wessex);
+        northmen.addFriend(wessex);
         System.out.println("List of northmen friend faction : " + northmen.getFriendFaction());
         System.out.println("List of wessex friend faction : " + wessex.getFriendFaction());
 
@@ -64,6 +67,24 @@ public class Main {
         System.out.println("\nNow that Athelstan has healed Ragnar, he leaved the faction");
         System.out.println(athelstan.status());
         athelstan.leaveFaction(northmen);
+        System.out.println(athelstan.status());
+
+        System.out.println("\nLagertha wants to join the priest assembly");
+        ArrayList<Class<?>> allowedRoles = new ArrayList<Class<?>>();
+        allowedRoles.add(Priest.class);
+        Assembly priestAssembly = new Assembly("Priest", allowedRoles);
+        System.out.println(lagertha.status());
+        lagertha.joinAssembly(priestAssembly);
+        System.out.println(lagertha.status());
+
+        System.out.println("\nAthelstan wants to join the priest assembly");
+        System.out.println(athelstan.status());
+        athelstan.joinAssembly(priestAssembly);
+        System.out.println(athelstan.status());
+
+        System.out.println("\nAthelstan wants to leave the priest assembly");
+        System.out.println(athelstan.status());
+        athelstan.leaveAssembly();
         System.out.println(athelstan.status());
     }
 }

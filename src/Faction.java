@@ -19,15 +19,15 @@ public class Faction {
     public void addMembers(Character member) {
         this.members.add(member);
     }
-    public void leaveFaction(Character member){
+    public void leave(Character member){
         this.members.remove(member);
     }
 
-    public void addFriendFaction(Faction friend) {
+    public void addFriend(Faction friend) {
         this.friendFactions.add(friend);
         friend.friendFactions.add(this);
     }
-    public void leaveFriendFaction(Faction friend){
+    public void leaveFriend(Faction friend){
         this.friendFactions.remove(friend);
     }
 

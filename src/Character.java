@@ -8,6 +8,7 @@ public abstract class Character extends Entity {
     protected static final int MAXHEALTH = 100;
     private ArrayList<Faction> factions = new ArrayList<Faction>();
     private final String name;
+    private Assembly assembly;
 
     public Character(String name) {
         super(MAXHEALTH);
@@ -33,7 +34,11 @@ public abstract class Character extends Entity {
             List<String> factions = this.factions.stream().map(Faction::getName).collect(Collectors.toList());
             factionsNames = factions.toString();
         }
-        return this.name + "{ currentHealth:" + this.health + ", state:" + this.getState() + ", factions:" + factionsNames + " }";
+        String assemblyName = "null";
+        if(this.assembly != null){
+            assemblyName = this.assembly.getName();
+        }
+        return this.name + "{ currentHealth:" + this.health + ", state:" + this.getState() + ", factions:" + factionsNames + ", assemblies:" + assemblyName + " }";
     }
 
     public void joinFaction(Faction faction){
@@ -52,7 +57,7 @@ public abstract class Character extends Entity {
         } else {
             System.out.println("Not member of this faction.");
         }
-        faction.leaveFaction(this);
+        faction.leave(this);
     }
 
     public boolean checkFaction(Character target){
@@ -62,6 +67,17 @@ public abstract class Character extends Entity {
             }
         }
         return false;
+    }
+
+    public void joinAssembly(Assembly assembly){
+        if(assembly.addMembers(this)) {
+            this.assembly = assembly;
+        }
+    }
+
+    public void leaveAssembly(){
+        this.assembly.leave(this);
+        this.assembly = null;
     }
 
     public String getName(){
