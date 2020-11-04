@@ -1,5 +1,3 @@
-import org.w3c.dom.ls.LSOutput;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -76,15 +74,47 @@ public abstract class Character extends Entity {
     }
 
     public void leaveAssembly(){
-        this.assembly.leave(this);
-        this.assembly = null;
+        if(this.assembly!=null){
+            this.assembly.leave(this);
+            this.assembly = null;
+        } else {
+            System.out.println("Not member of any assembly ");
+        }
     }
 
     public String getName(){
-        return this.name;
+        try {
+            return this.name;
+        }catch (NullPointerException e){
+            return "none";
+        }
     }
 
     public ArrayList<Faction> getFactions(){
         return this.factions;
+    }
+
+    public void updateAssemblyName(String name){
+        if(this.assembly.getMaster() == this){
+            this.assembly.setName(name);
+        } else {
+            System.out.println("You can't do that, you are not the fucking master !");
+        }
+    }
+
+    @Override
+    public void takeDamage(int damage) {
+        super.takeDamage(damage);
+        if(this.getState() == states.DEAD){
+            die();
+        }
+    }
+
+    @Override
+    public void die() {
+        leaveAssembly();
+        for (int i = 0; i < this.factions.size(); i++) {
+            this.leaveFaction(this.factions.get(i));
+        }
     }
 }

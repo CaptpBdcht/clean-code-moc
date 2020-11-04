@@ -8,9 +8,22 @@ public class Main {
         Warrior lagertha = new Warrior("Lagertha");
         Priest athelstan = new Priest("Athelstan");
         Warrior ecbert = new Warrior("Ecbert");
+        Warrior floki = new Warrior("Floki");
+        Warrior rollo = new Warrior("Rollo");
+        Warrior torstein = new Warrior("Torstein");
+        Warrior porunn = new Warrior("Porunn");
 
         Faction northmen = new Faction("Northmen");
         Faction wessex = new Faction("Wessex");
+
+        ArrayList<Class<?>> scandinavianAllowedRoles = new ArrayList<Class<?>>();
+        scandinavianAllowedRoles.add(Warrior.class);
+        Assembly scandinavianAssembly = new Assembly("Scandinavian", scandinavianAllowedRoles);
+
+        ArrayList<Class<?>> englandAllowedRoles = new ArrayList<Class<?>>();
+        englandAllowedRoles.add(Priest.class);
+        englandAllowedRoles.add(Warrior.class);
+        Assembly englandAssembly = new Assembly("England", englandAllowedRoles);
 
         System.out.println("Ragnar and Lagertha join Northmen faction, and athelstan join northumbia faction");
         ragnar.joinFaction(northmen);
@@ -69,22 +82,41 @@ public class Main {
         athelstan.leaveFaction(northmen);
         System.out.println(athelstan.status());
 
-        System.out.println("\nLagertha wants to join the priest assembly");
-        ArrayList<Class<?>> allowedRoles = new ArrayList<Class<?>>();
-        allowedRoles.add(Priest.class);
-        Assembly priestAssembly = new Assembly("Priest", allowedRoles);
-        System.out.println(lagertha.status());
-        lagertha.joinAssembly(priestAssembly);
-        System.out.println(lagertha.status());
+        System.out.println("\nRagnar join the scandinavian assembly");
+        System.out.println(ragnar.status());
+        ragnar.joinAssembly(scandinavianAssembly);
+        System.out.println(ragnar.status());
+        System.out.println("Actual scandianvian master: " + scandinavianAssembly.getMaster().getName());
 
-        System.out.println("\nAthelstan wants to join the priest assembly");
-        System.out.println(athelstan.status());
-        athelstan.joinAssembly(priestAssembly);
-        System.out.println(athelstan.status());
+        System.out.println("\nEcbert join the england assembly");
+        System.out.println(ecbert.status());
+        ecbert.joinAssembly(englandAssembly);
+        System.out.println(ecbert.status());
+        System.out.println("Actual england master : " + englandAssembly.getMaster().getName());
 
-        System.out.println("\nAthelstan wants to leave the priest assembly");
-        System.out.println(athelstan.status());
-        athelstan.leaveAssembly();
-        System.out.println(athelstan.status());
+        System.out.println("\nRagnar changes scandinavian assembly's name to Vikings");
+        System.out.println("Old name : " + scandinavianAssembly.getName());
+        ragnar.updateAssemblyName("Vikings");
+        System.out.println("New name : " + scandinavianAssembly.getName());
+
+        System.out.println("\nLagertha tries to change the assembly name");
+        lagertha.joinAssembly(scandinavianAssembly);
+        lagertha.updateAssemblyName("Bjorn");
+
+        System.out.println("\nRagnar was killed and let the mastering to another viking");
+        floki.joinAssembly(scandinavianAssembly);
+        rollo.joinAssembly(scandinavianAssembly);
+        porunn.joinAssembly(scandinavianAssembly);
+        torstein.joinAssembly(scandinavianAssembly);
+
+        while(ragnar.getState()== Entity.states.ALIVE){
+            ecbert.attack(ragnar);
+        }
+        System.out.println("New Vikings master : " + scandinavianAssembly.getMaster().getName());
+
+        System.out.println("\nEcbert leaves his assembly");
+        System.out.println("Old master name : " + englandAssembly.getMaster().getName());
+        ecbert.leaveAssembly();
+        System.out.println("New master name : " + englandAssembly.getMaster());
     }
 }

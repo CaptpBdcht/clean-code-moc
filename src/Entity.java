@@ -27,4 +27,5 @@ public abstract class Entity {
         else
             this.health -= damage;
     }
+    public abstract void die();
 }
