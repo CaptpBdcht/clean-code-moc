@@ -27,30 +27,36 @@ public class CharacterRPG: Characters {
     
     init(name: String) {
         self.name = name
+        self.faction = []
     }
     
     func attack(ennemyCharacter: Characters) {
         if ennemyCharacter.alive == true && !(self === ennemyCharacter) && self.alive {
             if let myFactions = self.faction {
-                if let ennemyFactions = ennemyCharacter.faction {
-                    
-                    let commonFaction: [Faction] = Array(Set(myFactions).intersection(ennemyFactions))
-                    
-                    if(commonFaction != []) {
-                        print("It's an ally")
-                    } else {
-                        for myFaction in myFactions {
-                            for ennemyFaction in ennemyFactions {
-                                if (myFaction.alliesFactions.contains(ennemyFaction)){
-                                    print("C UN POTE")
-                                } else {
-                                    print("C'est un Ennemy")
-                                    ennemyCharacter.takeDamage(damage: 1)
+               if myFactions != [] {
+                    if let ennemyFactions = ennemyCharacter.faction {
+                        
+                        let commonFaction: [Faction] = Array(Set(myFactions).intersection(ennemyFactions))
+                        
+                        if(commonFaction != []) {
+                            print("It's an ally")
+                        } else {
+                            for myFaction in myFactions {
+                                for ennemyFaction in ennemyFactions {
+                                    if (myFaction.alliesFactions.contains(ennemyFaction)){
+                                        print("C UN POTE")
+                                    } else {
+                                        print("C'est un Ennemy")
+                                        ennemyCharacter.takeDamage(damage: 1)
+                                    }
                                 }
                             }
                         }
                     }
+                }else{
+                    ennemyCharacter.takeDamage(damage: 1)
                 }
+                
             }
         } else {
             print("Character already dead or he want to attack himself")
@@ -65,25 +71,28 @@ public class CharacterRPG: Characters {
     func heal(allyCharacter: Characters) {
         if allyCharacter.alive == true && self.alive {
             if let myFactions = self.faction {
-                if let otherFactions = allyCharacter.faction {
-                    
-                    let commonFaction: [Faction] = Array(Set(myFactions).intersection(otherFactions))
-                    if (commonFaction != []){
-                        allyCharacter.health += 1
-                    } else {
-                        for myFaction in myFactions {
-                            for otherFaction in otherFactions {
-                                if (myFaction.alliesFactions.contains(otherFaction)){
-                                    print("C UN POTE")
-                                    allyCharacter.health += 1
-                                } else {
-                                    print("C'est un Ennemy")
+                if myFactions != [] {
+                    if let otherFactions = allyCharacter.faction {
+                        
+                        let commonFaction: [Faction] = Array(Set(myFactions).intersection(otherFactions))
+                        if (commonFaction != []){
+                            allyCharacter.health += 1
+                        } else {
+                            for myFaction in myFactions {
+                                for otherFaction in otherFactions {
+                                    if (myFaction.alliesFactions.contains(otherFaction)){
+                                        print("C UN POTE")
+                                        allyCharacter.health += 1
+                                    } else {
+                                        print("C'est un Ennemy")
+                                    }
                                 }
                             }
                         }
+                        
                     }
-                    
                 }
+                
             }
         } else {
             print("Character is dead")

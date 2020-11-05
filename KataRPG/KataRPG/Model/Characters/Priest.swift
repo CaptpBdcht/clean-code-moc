@@ -29,6 +29,7 @@ class Priest: Characters {
     
     init(name: String) {
         self.name = name
+        self.faction = []
     }
     
     func heal(allyCharacter: Characters){

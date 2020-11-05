@@ -28,6 +28,7 @@ class Warrior: Characters {
     
     init(name: String) {
         self.name = name
+        self.faction = []
     }
     
     func attack(ennemyCharacter: Characters) {
@@ -35,23 +36,30 @@ class Warrior: Characters {
             ennemyCharacter.takeDamage(damage: damage)
         } else if ennemyCharacter.alive == true && !(self === ennemyCharacter) && self.alive {
             if let myFactions = self.faction {
-                if let ennemyFactions = ennemyCharacter.faction {
-                    let commonFaction: [Faction] = Array(Set(myFactions).intersection(ennemyFactions))
-                    if(commonFaction != []) {
-                        print("It's an ally")
-                    } else {
-                        for myFaction in myFactions {
-                            for ennemyFaction in ennemyFactions {
-                                if (myFaction.alliesFactions.contains(ennemyFaction)){
-                                    print("C UN POTE")
-                                } else {
-                                    print("C'est un Ennemy")
-                                    ennemyCharacter.takeDamage(damage: damage)
+                if myFactions != [] {
+                    
+                    if let ennemyFactions = ennemyCharacter.faction {
+                        let commonFaction: [Faction] = Array(Set(myFactions).intersection(ennemyFactions))
+                        if(commonFaction != []) {
+                            print("It's an ally")
+                        } else {
+                            for myFaction in myFactions {
+                                for ennemyFaction in ennemyFactions {
+                                    if (myFaction.alliesFactions.contains(ennemyFaction)){
+                                        print("C UN POTE")
+                                    } else {
+                                        print("C'est un Ennemy")
+                                        ennemyCharacter.takeDamage(damage: damage)
+                                    }
                                 }
                             }
                         }
                     }
+                    
+                }else{
+                    ennemyCharacter.takeDamage(damage: damage)
                 }
+                
             }
         } else {
             print("Character already dead or he want to attack himself")
@@ -60,7 +68,7 @@ class Warrior: Characters {
     
     func attack(entity:Entities){
         if self.alive {
-           entity.health -= 1
+            entity.health -= 1
         } else {
             print("\(self.name) cannot attack because is dead")
         }
@@ -84,10 +92,10 @@ class Warrior: Characters {
     }
     
     func joinFaction(faction: Faction) {
-           self.faction?.append(faction)
+        self.faction?.append(faction)
     }
-       
+    
     func leaveFaction(faction: Faction) {
-           self.faction = self.faction?.filter { $0 != faction}
+        self.faction = self.faction?.filter { $0 != faction}
     }
 }

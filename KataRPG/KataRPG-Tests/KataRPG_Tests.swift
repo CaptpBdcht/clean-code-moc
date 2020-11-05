@@ -49,15 +49,7 @@ class KataRPG_Tests: XCTestCase {
         characterToTest.attack(ennemyCharacter: receiverDamageCharacter)
         XCTAssertNotEqual(receiverDamageCharacter.health, receiverCharacterInitialHealth)
     }
-    //
-    //    func testCharacterShouldHealOtherCharacters() throws {
-    //        let characterToTest:CharacterRPG = CharacterRPG(name: "John")
-    //        let receiverHealCharacter:CharacterRPG = CharacterRPG(name: "Doe")
-    //        receiverHealCharacter.health -= 5
-    //        let receiverCharacterInitialHealth = receiverHealCharacter.health
-    //        characterToTest.heal(allyCharacter: receiverHealCharacter)
-    //        XCTAssertNotEqual(receiverHealCharacter.health, receiverCharacterInitialHealth)
-    //    }
+  
     
     func testCharacterAttackEntity() throws {
         let characterToTest:CharacterRPG = CharacterRPG(name: "John")
@@ -103,7 +95,9 @@ class KataRPG_Tests: XCTestCase {
         let secondFactionTest = Faction(name: "Amnesty")
         
         let warriorTest = Warrior(name: "Marc")
+        warriorTest.damage = 1
         let warriorEnnemyTest = Warrior(name: "Dylan")
+        warriorTest.damage = 1
         
         let warriorEnnemyWithFactionTest = Warrior(name: "DylanAvecDesPotes")
         warriorEnnemyWithFactionTest.joinFaction(faction: firstFactionTest)
@@ -122,7 +116,8 @@ class KataRPG_Tests: XCTestCase {
         
         XCTAssertNotEqual(warriorEnnemyTest.health, warriorEnnemyInitialHealth)
         XCTAssertNotEqual(warriorEnnemyWithFactionTest.health, firstWarriorEnnemyWithFactionInitialHealth)
-        XCTAssertNotEqual(secondWarriorEnnemyWithFactionTest.health, secondWarriorEnnemyWithFactionInitialHealth)
+        XCTAssertEqual(secondWarriorEnnemyWithFactionTest.health, secondWarriorEnnemyWithFactionInitialHealth - warriorEnnemyWithFactionTest.damage)
+       
     }
     
     func testWarriorShouldNotAttackEnnemies() throws {
@@ -157,7 +152,7 @@ class KataRPG_Tests: XCTestCase {
         
         let priestTest = Priest(name: "Arthas")
         let warriorInTheSameFaction = Warrior(name: "Leonardo")
-        
+        warriorInTheSameFaction.damage = 1
         warriorInTheSameFaction.attack(ennemyCharacter: warriorInTheSameFaction)
         let warriorHealthAfterAttack = warriorInTheSameFaction.health
         
@@ -200,7 +195,7 @@ class KataRPG_Tests: XCTestCase {
         
         let priestTest = Priest(name: "Arthas")
         let warriorInFriendlyFaction = Warrior(name: "Leonardo")
-        
+        warriorInFriendlyFaction.damage = 1
         warriorInFriendlyFaction.attack(ennemyCharacter: warriorInFriendlyFaction)
         let warriorHealthAfterAttack = warriorInFriendlyFaction.health
         
