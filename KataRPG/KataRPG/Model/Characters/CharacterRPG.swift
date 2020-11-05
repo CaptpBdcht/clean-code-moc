@@ -7,8 +7,8 @@
 //
 
 import Foundation
-public class CharacterRPG:Characters {
-    var faction: Faction?
+public class CharacterRPG: Characters {
+    var faction: [Faction]? // MY LIST OF FACTION
     var name: String = ""
     var alive: Bool = true
     var health: Int = 100 {
@@ -31,20 +31,26 @@ public class CharacterRPG:Characters {
     
     func attack(ennemyCharacter: Characters) {
         if ennemyCharacter.alive == true && !(self === ennemyCharacter) && self.alive {
-            if let myFaction = self.faction {
-                if let ennemyFaction = ennemyCharacter.faction {
-                    if !(myFaction === ennemyCharacter.faction){
-                        if myFaction.alliesFactions.contains(ennemyFaction){
-                            print("CEST UN POTE")
-                        } else {
-                            ennemyCharacter.takeDamage(damage: 1)
+            if let myFactions = self.faction {
+                if let ennemyFactions = ennemyCharacter.faction {
+                    
+                    let commonFaction: [Faction] = Array(Set(myFactions).intersection(ennemyFactions))
+                    
+                    if(commonFaction != []) {
+                        print("It's an ally")
+                    } else {
+                        for myFaction in myFactions {
+                            for ennemyFaction in ennemyFactions {
+                                if (myFaction.alliesFactions.contains(ennemyFaction)){
+                                    print("C UN POTE")
+                                } else {
+                                    print("C'est un Ennemy")
+                                    ennemyCharacter.takeDamage(damage: 1)
+                                }
+                            }
                         }
                     }
-                } else {
-                    ennemyCharacter.takeDamage(damage: 1)
                 }
-            } else {
-                ennemyCharacter.takeDamage(damage: 1)
             }
         } else {
             print("Character already dead or he want to attack himself")
@@ -58,18 +64,26 @@ public class CharacterRPG:Characters {
     
     func heal(allyCharacter: Characters) {
         if allyCharacter.alive == true && self.alive {
-            if let myFaction = self.faction {
-                if let otherFaction = allyCharacter.faction {
-                    if  myFaction === otherFaction || myFaction.alliesFactions.contains(otherFaction){
+            if let myFactions = self.faction {
+                if let otherFactions = allyCharacter.faction {
+                    
+                    let commonFaction: [Faction] = Array(Set(myFactions).intersection(otherFactions))
+                    if (commonFaction != []){
                         allyCharacter.health += 1
                     } else {
-                        print("NOT ALLY FACTION")
+                        for myFaction in myFactions {
+                            for otherFaction in otherFactions {
+                                if (myFaction.alliesFactions.contains(otherFaction)){
+                                    print("C UN POTE")
+                                    allyCharacter.health += 1
+                                } else {
+                                    print("C'est un Ennemy")
+                                }
+                            }
+                        }
                     }
-                } else {
-                    print("cant heal I dont have any faction")
+                    
                 }
-            } else {
-                print("cant heal other character dont have any faction")
             }
         } else {
             print("Character is dead")
@@ -86,14 +100,12 @@ public class CharacterRPG:Characters {
     }
     
     func joinFaction(faction: Faction) {
-        self.faction = faction
+        self.faction?.append(faction)
     }
     
-    func leaveFaction() {
-        self.faction = nil
+    func leaveFaction(faction: Faction) {
+        self.faction = self.faction?.filter { $0 != faction}
     }
-    
-    
 }
 
 extension CharacterRPG:CustomStringConvertible {

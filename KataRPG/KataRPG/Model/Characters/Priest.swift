@@ -9,7 +9,7 @@
 import Foundation
 
 class Priest: Characters {
-    var faction: Faction?
+    var faction: [Faction]?
     var name: String
     var health: Int = 100 {
         didSet {
@@ -33,18 +33,24 @@ class Priest: Characters {
     
     func heal(allyCharacter: Characters){
         if allyCharacter.alive == true && self.alive {
-            if let myFaction = self.faction {
-                if let otherFaction = allyCharacter.faction {
-                    if myFaction === otherFaction || myFaction.alliesFactions.contains(otherFaction){
+            if let myFactions = self.faction {
+                if let otherFactions = allyCharacter.faction {
+                    let commonFaction: [Faction] = Array(Set(myFactions).intersection(otherFactions))
+                    if (commonFaction != []){
                         allyCharacter.health += damage
                     } else {
-                        print("NOT ALLY FACTION")
+                        for myFaction in myFactions {
+                            for otherFaction in otherFactions {
+                                if (myFaction.alliesFactions.contains(otherFaction)){
+                                    print("C UN POTE")
+                                    allyCharacter.health += damage
+                                } else {
+                                    print("C'est un Ennemy")
+                                }
+                            }
+                        }
                     }
-                } else {
-                    print("cant heal I dont have any faction")
                 }
-            } else {
-                print("cant heal other character dont have any faction")
             }
         } else {
             print("Character is dead")
@@ -61,11 +67,11 @@ class Priest: Characters {
     }
     
     func joinFaction(faction: Faction) {
-        self.faction = faction
+           self.faction?.append(faction)
     }
-    
-    func leaveFaction() {
-        self.faction = nil
+       
+    func leaveFaction(faction: Faction) {
+           self.faction = self.faction?.filter { $0 != faction}
     }
     
 }

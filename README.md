@@ -34,6 +34,8 @@ Le code doit:
                                     Ajout Protocol Entities
                                     Ajout des premiers TU
                                     Modification des methodes attack et heal selon les nouveaux use cases
+                                    
+05/11/20 - Seance 3 : f
                         
 # Todo
 
