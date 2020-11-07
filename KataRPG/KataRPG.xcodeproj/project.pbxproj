@@ -26,6 +26,8 @@
 		B247105F253C5142002B344C /* Priest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B247105A253C50F6002B344C /* Priest.swift */; };
 		B2471060253C5144002B344C /* Warrior.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2471058253C50D5002B344C /* Warrior.swift */; };
 		B2471066253C8574002B344C /* Entities.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2471065253C8574002B344C /* Entities.swift */; };
+		B29A450025573C36002AD3F6 /* ClassEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A5EFA3255736B0000B5498 /* ClassEnum.swift */; };
+		B29A450325573C39002AD3F6 /* Assembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A5EFA025572A65000B5498 /* Assembly.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -268,6 +270,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B29A450025573C36002AD3F6 /* ClassEnum.swift in Sources */,
+				B29A450325573C39002AD3F6 /* Assembly.swift in Sources */,
 				B2355D27253C89EB00B03E1F /* AnimalEntity.swift in Sources */,
 				B2471060253C5144002B344C /* Warrior.swift in Sources */,
 				B247105E253C513F002B344C /* Faction.swift in Sources */,

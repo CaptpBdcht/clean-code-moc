@@ -49,7 +49,7 @@ class KataRPG_Tests: XCTestCase {
         characterToTest.attack(ennemyCharacter: receiverDamageCharacter)
         XCTAssertNotEqual(receiverDamageCharacter.health, receiverCharacterInitialHealth)
     }
-  
+    
     
     func testCharacterAttackEntity() throws {
         let characterToTest:CharacterRPG = CharacterRPG(name: "John")
@@ -117,7 +117,7 @@ class KataRPG_Tests: XCTestCase {
         XCTAssertNotEqual(warriorEnnemyTest.health, warriorEnnemyInitialHealth)
         XCTAssertNotEqual(warriorEnnemyWithFactionTest.health, firstWarriorEnnemyWithFactionInitialHealth)
         XCTAssertEqual(secondWarriorEnnemyWithFactionTest.health, secondWarriorEnnemyWithFactionInitialHealth - warriorEnnemyWithFactionTest.damage)
-       
+        
     }
     
     func testWarriorShouldNotAttackEnnemies() throws {
@@ -188,7 +188,7 @@ class KataRPG_Tests: XCTestCase {
     }
     
     func testPriestShouldHealCharacterOnFriendlyFaction(){
-    
+        
         let factionTest = Faction(name: "Zevent")
         let fridenlyFactionTest = Faction(name: "Amnesty")
         factionTest.addAlly(allyFaction: fridenlyFactionTest)
@@ -218,4 +218,50 @@ class KataRPG_Tests: XCTestCase {
         XCTAssertEqual(cow.health, initialCowHealth)
     }
     
+    func testWarriorShouldJoinAnAssembly(){
+        let assemblyTest = Assembly(name:"TestAssembly")
+        assemblyTest.addAllowedRoles(classAllowed: Class.warrior)
+        let warrior = Warrior(name: "Testeur")
+        warrior.joinAssembly(assembly: assemblyTest)
+        XCTAssertNotNil(warrior.assembly)
+    }
+    
+    
+    func testWarriorShouldNotJoinAnotherAssembly(){
+        let assemblyTest = Assembly(name:"TestAssembly")
+        let assemblyTest2 = Assembly(name:"TestAssembly2")
+        
+        assemblyTest.addAllowedRoles(classAllowed: Class.warrior)
+        assemblyTest2.addAllowedRoles(classAllowed: Class.warrior)
+        
+        let warrior = Warrior(name: "Testeur")
+        
+        warrior.joinAssembly(assembly: assemblyTest)
+        warrior.joinAssembly(assembly: assemblyTest2)
+        
+        XCTAssertNotEqual(warrior.assembly, assemblyTest2)
+    }
+    
+    
+    func testWarriorShouldCantJoinAnAssembly(){
+        let assemblyTest = Assembly(name:"TestAssembly")
+        let warrior = Warrior(name: "Testeur")
+        
+        warrior.joinAssembly(assembly: assemblyTest)
+        
+        XCTAssertNil(warrior.assembly)
+    }
+    
+    func testWarriorLeaveAnAssembly() {
+        let assemblyTest = Assembly(name:"TestAssembly")
+        let warrior = Warrior(name: "Testeur")
+        
+        assemblyTest.addAllowedRoles(classAllowed: Class.warrior)
+        
+        warrior.joinAssembly(assembly: assemblyTest)
+        
+        warrior.leaveAssembly()
+        
+        XCTAssertNil(warrior.assembly)
+    }
 }
