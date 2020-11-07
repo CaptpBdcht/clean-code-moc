@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A0A5EFA125572A65000B5498 /* Assembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A5EFA025572A65000B5498 /* Assembly.swift */; };
+		A0A5EFA4255736B0000B5498 /* ClassEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A5EFA3255736B0000B5498 /* ClassEnum.swift */; };
 		B2355D26253C87C400B03E1F /* AnimalEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2355D25253C87C400B03E1F /* AnimalEntity.swift */; };
 		B2355D27253C89EB00B03E1F /* AnimalEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2355D25253C87C400B03E1F /* AnimalEntity.swift */; };
 		B2355D28253C8AA900B03E1F /* Entities.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2471065253C8574002B344C /* Entities.swift */; };
@@ -38,6 +40,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A0A5EFA025572A65000B5498 /* Assembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembly.swift; sourceTree = "<group>"; };
+		A0A5EFA3255736B0000B5498 /* ClassEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassEnum.swift; sourceTree = "<group>"; };
 		B2355D25253C87C400B03E1F /* AnimalEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalEntity.swift; sourceTree = "<group>"; };
 		B247102B253C4821002B344C /* KataRPG */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = KataRPG; sourceTree = BUILT_PRODUCTS_DIR; };
 		B247102E253C4821002B344C /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -70,6 +74,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A0A5EFA225573696000B5498 /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				A0A5EFA3255736B0000B5498 /* ClassEnum.swift */,
+			);
+			path = Enum;
+			sourceTree = "<group>";
+		};
 		B2471022253C4821002B344C = {
 			isa = PBXGroup;
 			children = (
@@ -91,6 +103,7 @@
 		B247102D253C4821002B344C /* KataRPG */ = {
 			isa = PBXGroup;
 			children = (
+				A0A5EFA225573696000B5498 /* Enum */,
 				B2471061253C5172002B344C /* Protocol */,
 				B2471035253C4833002B344C /* Model */,
 				B247102E253C4821002B344C /* main.swift */,
@@ -104,6 +117,7 @@
 				B2471062253C5193002B344C /* Characters */,
 				B247105C253C512F002B344C /* Faction.swift */,
 				B2355D25253C87C400B03E1F /* AnimalEntity.swift */,
+				A0A5EFA025572A65000B5498 /* Assembly.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -226,9 +240,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				B247102F253C4821002B344C /* main.swift in Sources */,
+				A0A5EFA4255736B0000B5498 /* ClassEnum.swift in Sources */,
 				B2471038253C484B002B344C /* Characters.swift in Sources */,
 				B2471066253C8574002B344C /* Entities.swift in Sources */,
 				B247105D253C512F002B344C /* Faction.swift in Sources */,
+				A0A5EFA125572A65000B5498 /* Assembly.swift in Sources */,
 				B2355D26253C87C400B03E1F /* AnimalEntity.swift in Sources */,
 				B247105B253C50F6002B344C /* Priest.swift in Sources */,
 				B2471059253C50D5002B344C /* Warrior.swift in Sources */,

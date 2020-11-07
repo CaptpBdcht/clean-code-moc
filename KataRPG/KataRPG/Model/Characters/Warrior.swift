@@ -9,6 +9,8 @@
 import Foundation
 
 class Warrior: Characters {
+    var assembly: Assembly?
+    var classNames: Class = Class.warrior
     var faction: [Faction]?
     var name: String
     var health: Int = 100 {
@@ -97,5 +99,17 @@ class Warrior: Characters {
     
     func leaveFaction(faction: Faction) {
         self.faction = self.faction?.filter { $0 != faction}
+    }
+    
+    func joinAssembly(assembly: Assembly) {
+        if(self.assembly == nil && assembly.allowedRoles.contains(self.classNames)) {
+            self.assembly = assembly
+        }
+    }
+       
+    func leaveAssembly() {
+        if self.assembly != nil {
+            self.assembly = nil
+        }
     }
 }

@@ -12,10 +12,14 @@ import Foundation
     var name: String { get set }
     var alive: Bool { get set }
     var faction: [Faction]? { get }
+    var assembly: Assembly? { get }
+    var classNames: Class { get }
     
     @objc optional func attack(ennemyCharacter: Characters)
     func heal(allyCharacter: Characters)
     func takeDamage(damage: Int)
     func joinFaction(faction: Faction)
     func leaveFaction(faction: Faction)
+    func joinAssembly(assembly: Assembly)
+    func leaveAssembly()
 }

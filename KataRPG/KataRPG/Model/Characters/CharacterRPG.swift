@@ -8,7 +8,9 @@
 
 import Foundation
 public class CharacterRPG: Characters {
-    var faction: [Faction]? // MY LIST OF FACTION
+    var classNames: Class = Class.characterRPG
+    var faction: [Faction]?
+    var assembly: Assembly?
     var name: String = ""
     var alive: Bool = true
     var health: Int = 100 {
@@ -114,6 +116,18 @@ public class CharacterRPG: Characters {
     
     func leaveFaction(faction: Faction) {
         self.faction = self.faction?.filter { $0 != faction}
+    }
+    
+    func joinAssembly(assembly: Assembly) {
+        if(self.assembly == nil && assembly.allowedRoles.contains(self.classNames)) {
+            self.assembly = assembly
+        }
+    }
+       
+    func leaveAssembly() {
+        if self.assembly != nil {
+            self.assembly = nil
+        }
     }
 }
 
