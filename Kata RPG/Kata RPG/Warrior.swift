@@ -9,22 +9,19 @@ import Foundation
 
 class Warrior: Character {
    
-    override func attack(target: Character){
-            if(self.lifeStatus == true){
+     func attack(target: Character){
+        if(self.lifeStatus == true && (self.faction !== target.faction && self.faction != nil && target.faction != nil )){
                 target.health -= Int.random(in: 0...9)
                 if (target.health < 0) {
                     target.health = 0
                     target.lifeStatus = false
                 }
             }
-            else{
-            print("\(self.name) is dead and can't attack")
-            }
         }
     
     
     
-    override func heal(target: Character){
+     func heal(target: Character){
         if(self.lifeStatus == true){
             if(self === target){
                 target.health += 1
@@ -32,14 +29,9 @@ class Warrior: Character {
                 if (target.health > 100) {
                     target.health = 100
                 }
-            }else{
-                print("\(self.name) can't heal other character")
-                }
-            }
-        else{
-            print("\(self.name) is dead and can't heal")
+               }
         }
-    }
-
+     }
+    
 
 }

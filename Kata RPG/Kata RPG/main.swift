@@ -9,7 +9,7 @@ import Foundation
 
 
 
-let test = 3
+let test = 4
 
 switch test {
 case 1:
@@ -21,7 +21,11 @@ case 2:
 case 3:
     thirdIteration()
 
-
+case 4:
+    fourthIteration()
+//case 5:
+    //fifthIteration()
+    
 default: break
 }
 
