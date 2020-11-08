@@ -9,7 +9,7 @@ import Foundation
 
 let c1 = Character(name: "Link")
 let w1 = Warrior(name: "Ganon")
-let c2 = Character(name: "Zelda")
+let p1 = Priest(name: "Zelda")
 
 func firstIteration(){
     
@@ -73,4 +73,18 @@ func warriorHealingonOnlyHimself(){
     w1.heal(target: c1)
 }
 
+func thirdIteration(){
+    priestAttack()
+    priestHeal()
+}
 
+func priestAttack(){
+    p1.attack(target: w1)
+}
+
+func priestHeal(){
+    p1.health = 5
+    print(p1)
+    p1.heal(target: p1)
+    print(p1)
+}

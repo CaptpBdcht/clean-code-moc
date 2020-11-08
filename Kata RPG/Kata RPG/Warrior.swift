@@ -41,8 +41,5 @@ class Warrior: Character {
         }
     }
 
-    
-     
-    
-    
+
 }
