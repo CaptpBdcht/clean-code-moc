@@ -10,22 +10,20 @@ import Foundation
 
 class Priest: Character {
 
-        override func attack(target: Character){
+         func attack(target: Character){
                print("\(self.name) is a priest and can't attack")
             }
 
 
-    override func heal(target: Character) {
-                    if(self.lifeStatus == true){
+        func heal(target: Character) {
+            if(self.lifeStatus == true && (self.faction === target.faction && self.faction != nil && target.faction != nil ) || !(target is Entity) ){
                         target.health += Int.random(in: 5...10)
                         target.lifeStatus = true
                         if (target.health > 100) {
                             target.health = 100
                         }
                     }
-                    else{
-                        print("\(self.name) is dead and can't heal")
-                    }
+                    
             }
 
 }
