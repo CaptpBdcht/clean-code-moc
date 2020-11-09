@@ -7,30 +7,41 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class WarriorTest {
-    Warrior ragnar, lagertha, ecbert, floki, rollo, torstein, porunn;
-    Priest athelstan;
+    Warrior ragnar = new Warrior("Ragnar");
+    Warrior ecbert = new Warrior("Ecbert");
 
     @Test
-    public void shouldCreateWarriors(){
-        this.ragnar = new Warrior("Ragnar");
-        this.lagertha = new Warrior("Lagertha");
-        this.ecbert = new Warrior("Ecbert");
-        this.floki = new Warrior("Floki");
-        this.rollo = new Warrior("Rollo");
-        this.torstein = new Warrior("Torstein");
-        this.porunn = new Warrior("Porunn");
-        this.athelstan = new Priest("Athelstan");
-
+    public void shouldBeAlive(){
         assertEquals(ragnar.getState(), Entity.states.ALIVE);
-        assertEquals(lagertha.getState(), Entity.states.ALIVE);
         assertEquals(ecbert.getState(), Entity.states.ALIVE);
-        assertEquals(floki.getState(), Entity.states.ALIVE);
-        assertEquals(rollo.getState(), Entity.states.ALIVE);
-        assertEquals(torstein.getState(), Entity.states.ALIVE);
-        assertEquals(porunn.getState(), Entity.states.ALIVE);
-        assertEquals(athelstan.getState(), Entity.states.ALIVE);
     }
-    
-    //@Test
-    //public void
+
+    @Test
+    public void shouldAttack(){
+        ragnar.attack(ecbert);
+        assertTrue(ecbert.getHealth() <= 100 && ecbert.getHealth() >= 91);
+    }
+
+    @Test
+    public void shouldHurtHimself(){
+        ragnar.attack(ragnar);
+        assertTrue(ragnar.getHealth() <= 100 && ragnar.getHealth() >= 91);
+    }
+
+    @Test
+    public void shouldHealEcbert(){
+        int ecbertHealth = this.ecbert.getHealth();
+        ragnar.heal(ecbert);
+        assertEquals(ecbertHealth, ecbert.getHealth());
+    }
+
+    @Test
+    public void shouldHealHimself(){
+        while(ragnar.getHealth() == 100){
+            ecbert.attack(ragnar);
+        }
+        int ragnarHealth =ragnar.getHealth();
+        ragnar.heal(ragnar);
+        assertTrue(ragnar.getHealth() > ragnarHealth);
+    }
 }
