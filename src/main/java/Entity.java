@@ -1,4 +1,5 @@
 public class Entity {
+
     protected int health;
     protected int maxHealth;
 
@@ -7,13 +8,7 @@ public class Entity {
         this.maxHealth = health;
     }
 
-    public int getHealth() {
-        return health;
-    }
-
-    public boolean isAlive() { return health > 0; }
-
-    public void setHealth(int health) {
+    void setHealth(int health) {
         if (this.isMaximumHealth(health)) {
             this.health = maxHealth;
         }
@@ -25,11 +20,15 @@ public class Entity {
         }
     }
 
-    private boolean isMaximumHealth(int value){
-        return value > maxHealth;
-    }
+    int getHealth() { return health; }
 
-    private boolean isMinimumHealth(int value){
-        return value < 0;
-    }
+
+    private boolean isMaximumHealth(int value) { return value > maxHealth; }
+
+    private boolean isMinimumHealth(int value) { return value < 0; }
+
+    public boolean isHealable(){ return this instanceof Character; }
+
+    boolean isAlive() { return health > 0; }
+
 }

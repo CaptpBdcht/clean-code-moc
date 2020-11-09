@@ -1,25 +1,34 @@
-import java.util.Random;
-import java.util.concurrent.ThreadLocalRandom;
-
 public class Priest extends Character {
     Priest(String name) {
         super(name);
     }
+    private RandomizedHealer randomizedHealer = new RandomizedHealer(); // random à l'instanciation
+    private BasicHealer basicHealer = new BasicHealer();
 
     @Override
     public void attack(Entity entity) { }
 
     @Override
     public void heal(Entity entity) {
-        if(!(entity instanceof Character)) {
+        Character character;
+        if(!entity.isHealable()){
             return;
         }
 
-        Character character = (Character) entity;
-        if (this.getFaction() != character.getFaction()) {
+        character = (Character) entity;
+        if(equals(character)){
+            basicHealer.heal(character);
             return;
         }
-        int value = this.equals(character) ? 1 : ThreadLocalRandom.current().nextInt(5, 11);
-        character.setHealth(character.getHealth() + value);
+
+        if(!hasFaction()){
+            randomizedHealer.heal(character);
+            return;
+        }
+
+        if(isAlly(character)){
+            randomizedHealer.heal(character);
+            //return;
+        }
     }
 }

@@ -30,7 +30,7 @@ public class TestFourthIteration {
         Faction faction = new Faction("Demacia");
         guerrier.joinFaction(faction);
 
-        Assert.assertTrue(faction.isMember(guerrier));
+        Assert.assertTrue(faction.hasMember(guerrier));
     }
 
     @Test
@@ -50,7 +50,7 @@ public class TestFourthIteration {
         guerrier.joinFaction(faction);
         guerrier.leaveFaction();
 
-        Assert.assertFalse(faction.isMember(guerrier));
+        Assert.assertFalse(faction.hasMember(guerrier));
     }
 
     @Test

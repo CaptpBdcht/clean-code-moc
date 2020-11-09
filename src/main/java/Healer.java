@@ -1,7 +1,3 @@
-public class Healer {
-    private Healing healing;
-
-    Healer(Healing healing){ this.healing = healing; }
-
-    Healer() { this.healing.heal(); }
+public interface Healer {
+    public void heal(Character character);
 }
