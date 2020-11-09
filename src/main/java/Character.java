@@ -1,6 +1,8 @@
+import java.util.ArrayList;
+
 public abstract class Character extends Entity {
     private String name;
-    private Faction faction;
+    private ArrayList<Faction> factions = new ArrayList<Faction>();
 
     private BasicHealer basicHealer = new BasicHealer();
     private BasicAttacker basicAttacker = new BasicAttacker();
@@ -8,12 +10,11 @@ public abstract class Character extends Entity {
     Character(String name){
         super(100);
         this.name = name;
-        faction = null;
     }
 
     public String getName() { return name; }
 
-    public Faction getFaction() { return this.faction; }
+    public ArrayList<Faction> getFactions() { return this.factions; }
 
     public void attack(Entity entity) {
         if(!entity.isAlive()){
@@ -53,18 +54,19 @@ public abstract class Character extends Entity {
 
     public void joinFaction(Faction faction) {
         faction.addMember(this);
-        this.faction = faction;
+        this.factions.add(faction);
     }
 
-    public void leaveFaction() {
-        this.faction.removeMember(this);
-        if (this.faction != null) {
-            this.faction = null;
+    public void leaveFaction(Faction faction) {
+        int index = this.factions.indexOf(faction);
+        this.factions.get(index).removeMember(this);
+        if (this.factions != null) {
+            this.factions.remove(faction);
         }
     }
 
     public boolean hasFaction(){
-        return this.faction != null;
+        return !this.factions.isEmpty();
     }
 
     public boolean isAlly(Character character){
@@ -72,10 +74,26 @@ public abstract class Character extends Entity {
     }
 
     public boolean shareFaction(Character character){
-        return this.hasFaction() && this.faction.hasMember(character);
+        if (!this.hasFaction()) {
+            return false;
+        }
+        for(Faction faction : this.factions) {
+            if (faction.hasMember(character)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public boolean isFriend(Character character){
-        return this.hasFaction() && character.hasFaction() && this.faction.hasFriend(character.getFaction());
+        if (!this.hasFaction()) {
+            return false;
+        }
+        for(Faction faction : this.factions) {
+            if (faction.hasFriend(character.getFactions())) {
+                return true;
+            }
+        }
+        return false;
     }
 }

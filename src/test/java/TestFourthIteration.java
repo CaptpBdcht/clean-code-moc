@@ -6,7 +6,7 @@ public class TestFourthIteration {
     @Test
     public void testNoFaction() {
         Warrior guerrier = new Warrior("Garen");
-        Assert.assertNull(guerrier.getFaction());
+        Assert.assertTrue(guerrier.getFactions().isEmpty());
     }
 
     @Test
@@ -21,7 +21,7 @@ public class TestFourthIteration {
         Faction faction = new Faction("Demacia");
         guerrier.joinFaction(faction);
 
-        Assert.assertEquals(guerrier.getFaction(), faction);
+        Assert.assertTrue(guerrier.getFactions().contains(faction));
     }
 
     @Test
@@ -38,9 +38,9 @@ public class TestFourthIteration {
         Warrior guerrier = new Warrior("Garen");
         Faction faction = new Faction("Demacia");
         guerrier.joinFaction(faction);
-        guerrier.leaveFaction();
+        guerrier.leaveFaction(faction);
 
-        Assert.assertNull(guerrier.getFaction());
+        Assert.assertTrue(guerrier.getFactions().isEmpty());
     }
 
     @Test
@@ -48,7 +48,7 @@ public class TestFourthIteration {
         Warrior guerrier = new Warrior("Garen");
         Faction faction = new Faction("Demacia");
         guerrier.joinFaction(faction);
-        guerrier.leaveFaction();
+        guerrier.leaveFaction(faction);
 
         Assert.assertFalse(faction.hasMember(guerrier));
     }
