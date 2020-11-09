@@ -33,6 +33,4 @@ public class PriestTest {
         athelstan.heal(ragnar);
         assertTrue(ragnar.getHealth() > ragnarHealth);
     }
-
-
 }

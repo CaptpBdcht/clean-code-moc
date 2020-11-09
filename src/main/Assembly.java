@@ -73,7 +73,6 @@ public class Assembly {
     }
 
     public void setName(String name) {
-
         this.name = name;
     }
 

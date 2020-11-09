@@ -83,6 +83,10 @@ public abstract class Character extends Entity {
         }
     }
 
+    public Assembly getAssembly(){
+        return this.assembly;
+    }
+
     public String getName(){
         try {
             return this.name;
