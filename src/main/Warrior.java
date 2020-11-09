@@ -11,7 +11,7 @@ public class Warrior extends Character{
     public void attack(Entity attackTarget) {
         if(attackTarget instanceof Character){
             boolean sameFaction = this.checkFaction((Character) attackTarget);
-            if (sameFaction){
+            if (sameFaction && attackTarget != this){
                 System.out.println("Cannot hit someone from the same faction or friend faction");
                 return;
             }
