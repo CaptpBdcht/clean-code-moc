@@ -22,7 +22,7 @@ public abstract class Entity {
     }
 
     public void takeDamage(int damage){
-        if(this.health - damage < 0){
+        if(this.health - damage <= 0){
             this.health = 0;
             this.setState(states.DEAD);
         }
