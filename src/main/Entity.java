@@ -1,3 +1,5 @@
+package main;
+
 public abstract class Entity {
     public enum states {ALIVE,DEAD}
     protected int health;
