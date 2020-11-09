@@ -11,7 +11,7 @@ public class Assembly {
     private List<Character> members;
     private Character master;
 
-    Assembly(String name, ArrayList<Class<?>> allowedRoles){
+    public Assembly(String name, ArrayList<Class<?>> allowedRoles){
         this.name = name;
         this.allowedRoles = allowedRoles;
         this.members = new ArrayList<>();
