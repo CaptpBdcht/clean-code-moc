@@ -3,6 +3,8 @@ import java.util.ArrayList;
 public abstract class Character extends Entity {
     private String name;
     private ArrayList<Faction> factions = new ArrayList<Faction>();
+    private Assembly assembly;
+    Role role;
 
     private BasicHealer basicHealer = new BasicHealer();
     private BasicAttacker basicAttacker = new BasicAttacker();
@@ -13,6 +15,12 @@ public abstract class Character extends Entity {
     }
 
     public String getName() { return name; }
+
+    public Assembly getAssembly() {
+        return assembly;
+    }
+
+    public Role getRole() { return this.role; }
 
     public ArrayList<Faction> getFactions() { return this.factions; }
 
@@ -52,6 +60,7 @@ public abstract class Character extends Entity {
         }
     }
 
+
     public void joinFaction(Faction faction) {
         faction.addMember(this);
         this.factions.add(faction);
@@ -65,12 +74,34 @@ public abstract class Character extends Entity {
         }
     }
 
+    public void joinAssembly(Assembly assembly){
+        if(!assembly.isAllowed(role)){
+            return;
+        }
+
+        if(hasAssembly()){
+            this.leaveAssembly(assembly);
+        }
+
+        assembly.addMember(this);
+        this.assembly = assembly;
+    }
+
+    public void leaveAssembly(Assembly assembly){
+        if(this.assembly != null) {
+            assembly.removeMember(this);
+            this.assembly = null;
+        }
+    }
+
     public boolean hasFaction(){
         return !this.factions.isEmpty();
     }
 
+    public boolean hasAssembly() { return this.assembly != null; }
+
     public boolean isAlly(Character character){
-        return shareFaction(character) || isFriend(character);
+        return shareFaction(character) || shareAssembly(character) || isFriend(character);
     }
 
     public boolean shareFaction(Character character){
@@ -83,6 +114,10 @@ public abstract class Character extends Entity {
             }
         }
         return false;
+    }
+
+    public boolean shareAssembly(Character character){
+        return this.hasAssembly() && character.hasAssembly() && this.assembly.equals(character.getAssembly());
     }
 
     public boolean isFriend(Character character){

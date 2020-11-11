@@ -12,7 +12,7 @@ public class TestFourthIteration {
     @Test
     public void testNoMembers() {
         Faction faction = new Faction("Demacia");
-        Assert.assertEquals(faction.getMembers().size(), 0);
+        Assert.assertTrue(faction.getMembers().isEmpty());
     }
 
     @Test

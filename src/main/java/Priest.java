@@ -1,9 +1,12 @@
 public class Priest extends Character {
     Priest(String name) {
         super(name);
+        this.role = Role.Priest;
     }
+
     private RandomizedHealer randomizedHealer = new RandomizedHealer(); // random à l'instanciation
     private BasicHealer basicHealer = new BasicHealer();
+
 
     @Override
     public void attack(Entity entity) { }
@@ -21,7 +24,7 @@ public class Priest extends Character {
             return;
         }
 
-        if(!hasFaction()){
+        if(!hasFaction() && !hasAssembly()){
             randomizedHealer.heal(character);
             return;
         }

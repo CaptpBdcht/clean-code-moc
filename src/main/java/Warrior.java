@@ -8,6 +8,7 @@ public class Warrior extends Character {
 
     Warrior(String name) {
         super(name);
+        this.role = Role.Warrior;
     }
 
     @Override
@@ -24,7 +25,7 @@ public class Warrior extends Character {
                 return;
             }
 
-            if(!hasFaction()){
+            if(!hasFaction() && !hasAssembly()){
                 randomizedAttacker.attack(character);
                 return;
             }

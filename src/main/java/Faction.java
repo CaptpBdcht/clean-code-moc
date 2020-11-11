@@ -45,7 +45,7 @@ public class Faction {
     }
 
     void removeMember(Character character){
-        if(members.indexOf(character) != -1){
+        if(members.contains(character)){
             members.remove(character);
         }
     }
