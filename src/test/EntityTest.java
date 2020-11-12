@@ -3,13 +3,12 @@ import main.Entity;
 import main.Priest;
 import main.Warrior;
 import org.junit.Test;
+
 import static org.junit.Assert.*;
 
-public class EntityTest {
+public class EntityTest extends DataTest {
 
     static final int OAKHEALTH = 300;
-    Warrior floki = new Warrior("Floki");
-    Priest athelstan = new Priest("Athlestan");
     Entity oak = new Entity(OAKHEALTH) {
         @Override
         public void die() {

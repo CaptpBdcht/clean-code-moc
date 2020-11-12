@@ -6,9 +6,7 @@ import main.Warrior;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class WarriorTest {
-    Warrior ragnar = new Warrior("Ragnar");
-    Warrior ecbert = new Warrior("Ecbert");
+public class WarriorTest extends DataTest {
 
     @Test
     public void shouldBeAlive(){

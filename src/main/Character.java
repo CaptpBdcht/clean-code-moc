@@ -37,7 +37,7 @@ public abstract class Character extends Entity {
         if(this.assembly != null){
             assemblyName = this.assembly.getName();
         }
-        return this.name + "{ currentHealth:" + this.health + ", state:" + this.getState() + ", factions:" + factionsNames + ", assemblies:" + assemblyName + " }";
+        return this.name + "{ currentHealth:" + this.health + ", state:" + this.getState() + ", factions:" + factionsNames + ", assembly:" + assemblyName + " }";
     }
 
     public void joinFaction(Faction faction){

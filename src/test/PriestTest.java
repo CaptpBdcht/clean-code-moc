@@ -6,10 +6,7 @@ import main.Warrior;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class PriestTest {
-    Priest athelstan = new Priest("Athelstan");
-    Warrior ragnar = new Warrior("Ragnar");
-    Faction vikings = new Faction("Vikings");
+public class PriestTest extends DataTest{
 
     @Test
     public void shouldBeAlive(){
