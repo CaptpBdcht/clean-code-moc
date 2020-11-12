@@ -7,9 +7,9 @@
 
 import Foundation
 
-let c1 = Character(name: "Link")
-let w1 = Warrior(name: "Ganon")
-let p1 = Priest(name: "Zelda")
+let Link = Warrior(name: "Link")
+let Ganon = Warrior(name: "Ganon")
+let Zelda = Priest(name: "Zelda")
 
 func firstIteration(){
     
@@ -21,56 +21,56 @@ func firstIteration(){
 
 func characterAttack() {
   
-    print(c1)
-    print(w1)
+    print(Link)
+    print(Ganon)
 
     for _ in 1...150 {
-        c1.attack(target: w1)
+        Link.attack(target: Ganon)
     }
-    print(w1)
+    print(Ganon)
 }
 
 func characterisDead(){
-    c1.lifeStatus = false
-    c1.health = 0
-    c1.attack(target: w1)
-    c1.heal(target: c1)
+    Link.alive = false
+    Link.health = 0
+    Link.attack(target: Ganon)
+    Link.heal(target: Link)
 }
 
 func characterHealing() {
-    c1.lifeStatus = true
-    c1.health = 100
-    print(c1)
-    print(w1)
+    Link.alive = true
+    Link.health = 100
+    print(Link)
+    print(Ganon)
     
     for _ in 1...150 {
-        c1.heal(target: w1)
+        Link.heal(target: Ganon)
     }
-    print(w1)
+    print(Ganon)
 }
 
 func characterCantAttackHimself(){
-    c1.attack(target: c1)
+    Link.attack(target: Link)
 }
 
 
 
 func secondIteration(){
-    w1.lifeStatus = true
-    w1.health = 100
-    print(w1)
+    Ganon.alive = true
+    Ganon.health = 100
+    print(Ganon)
     warriorAttackHimself()
-    print(w1)
+    print(Ganon)
     warriorHealingonOnlyHimself()
 }
 
 func warriorAttackHimself(){
-    w1.attack(target: w1)
+    Ganon.attack(target: Ganon)
 }
 
 func warriorHealingonOnlyHimself(){
-    w1.heal(target: w1)
-    w1.heal(target: c1)
+    Ganon.heal(target: Ganon)
+    Ganon.heal(target: Link)
 }
 
 func thirdIteration(){
@@ -79,12 +79,104 @@ func thirdIteration(){
 }
 
 func priestAttack(){
-    p1.attack(target: w1)
+    Zelda.attack(target: Ganon)
 }
 
 func priestHeal(){
-    p1.health = 5
-    print(p1)
-    p1.heal(target: p1)
-    print(p1)
+    Zelda.health = 5
+    print(Zelda)
+    Zelda.heal(target: Zelda)
+    print(Zelda)
+}
+
+let Hyrule = Faction(name: "Hyrule")
+let Zebes = Faction(name: "Zebes")
+let Samus = Warrior(name: "Samus")
+
+func fourthIteration(){
+    attackAnotherFaction()
+    healAnotherFaction()
+}
+
+func attackAnotherFaction(){
+    print(Link,Ganon)
+    Link.joinFaction(faction: Hyrule)
+    Ganon.joinFaction(faction: Hyrule)
+    Link.attack(target: Ganon)
+    print(Link,Ganon)
+}
+
+func healAnotherFaction(){
+  
+    Samus.health = 60
+    Ganon.health = 60
+    
+    print(Zelda,Ganon,Samus)
+    Zelda.heal(target: Ganon)
+    Zelda.heal(target: Samus)
+    print(Zelda,Ganon,Samus)
+    
+    Samus.joinFaction(faction: Zebes)
+    Zelda.joinFaction(faction: Hyrule)
+    
+    print(Zelda,Ganon,Samus)
+    Zelda.heal(target: Ganon)
+    Zelda.heal(target: Samus)
+    print(Zelda,Ganon,Samus)
+
+}
+
+func fifthIteration(){
+    let Metroid = Entity(name: "Metroid")
+    Metroid.health = 50
+    print(Metroid)
+    print(Zelda)
+    Zelda.heal(target: Metroid)
+    print(Metroid)
+}
+
+func sixthIteration(){
+    addAllyFaction()
+    removeAllyFaction()
+    attackAllyFaction()
+}
+
+func addAllyFaction(){
+    Hyrule.addAlly(ally: Zebes)
+    
+    Hyrule.addAlly(ally: Zebes)
+    Hyrule.addAlly(ally: Hyrule)
+    Zebes.addAlly(ally: Hyrule)
+
+    Hyrule.showAlly()
+    Zebes.showAlly()
+}
+
+func removeAllyFaction(){
+Hyrule.removeAlly(ally: Zebes)
+Hyrule.showAlly()
+Zebes.showAlly()
+}
+
+func attackAllyFaction(){
+    Hyrule.addAlly(ally: Zebes)
+    Hyrule.showAlly(); Zebes.showAlly()
+    Link.joinFaction(faction: Hyrule)
+    Samus.joinFaction(faction: Zebes)
+    print(Link,Samus)
+    Link.attack(target: Samus)
+    print(Link,Samus)
+}
+
+func seventhIteration(){
+    addMultipleFaction()
+}
+
+func addMultipleFaction(){
+    print(Link)
+    Link.joinFaction(faction: Hyrule)
+    Link.joinFaction(faction: Zebes)
+    print(Link)
+    Link.leaveFaction(faction: Zebes)
+    print(Link)
 }

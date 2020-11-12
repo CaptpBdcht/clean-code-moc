@@ -8,53 +8,30 @@
 import Foundation
 
 class Character: CustomStringConvertible {
-   
-
+  
     
     var name: String
     var health: Int =  100
-    var lifeStatus : Bool = true
+    var alive: Bool = true
+    var faction: [Faction] = []
     
     var description: String{
-        return "\(self.name )|\(self.health )|\(self.lifeStatus )"
+        return "\(self.name )|\(self.health)|\(self.faction)"
     }
     
     init(name: String) {
         self.name = name
         }
     
-    func attack(target: Character){
-        if(self.lifeStatus == true){
-           
-            if(self === target){
-                print("\(self.name) can't attack himself")
-            }
-            else{
-                target.health -= 1
-                if (target.health < 0) {
-                    target.health = 0
-                    target.lifeStatus = false
-            }
-        
-            }
-        }
-        else{
-            print("\(self.name) is dead and can't attack")
+    func joinFaction(faction: Faction){
+        if (!(self.faction.contains(faction))){
+        self.faction.append(faction)
         }
     }
     
- 
-    
-    func heal(target: Character){
-        if(self.lifeStatus == true){
-            target.health += 1
-            target.lifeStatus = true
-            if (target.health > 100) {
-                target.health = 100
-            }
-        }
-        else{
-            print("\(self.name) is dead and can't heal")
+    func leaveFaction(faction: Faction){
+        if let index = self.faction.firstIndex(of: faction) {
+            self.faction.remove(at: index)
         }
     }
     

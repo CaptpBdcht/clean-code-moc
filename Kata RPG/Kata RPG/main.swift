@@ -7,26 +7,10 @@
 
 import Foundation
 
-
-
-let test = 3
-
-switch test {
-case 1:
     firstIteration()
-
-case 2:
     secondIteration()
-
-case 3:
     thirdIteration()
-
-
-default: break
-}
-
-
-
-
-
-
+    fourthIteration()
+    fifthIteration()
+    sixthIteration()
+    seventhIteration()
