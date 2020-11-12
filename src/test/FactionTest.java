@@ -27,6 +27,56 @@ public class FactionTest extends DataTest {
 
     @Test
     public void shouldAddFriendsFaction(){
-
+        northmen.addFriend(wessex);
+        assertNotNull(wessex.getFriendFaction());
+        assertNotNull(northmen.getFriendFaction());
     }
+
+    @Test
+    public void shouldLeaveFaction(){
+        ragnar.joinFaction(northmen);
+        ragnar.leaveFaction(northmen);
+        assertFalse(ragnar.getFactions().contains(northmen));
+    }
+
+    @Test
+    public void shouldHealFriends(){
+        athelstan.joinFaction(northmen);
+        floki.joinFaction(northmen);
+        while(floki.getHealth() == 100){
+            floki.attack(floki);
+        }
+        int currentFlokiHeath = floki.getHealth();
+        athelstan.heal(floki);
+        assertTrue(floki.getHealth() > currentFlokiHeath);
+    }
+
+    @Test
+    public void ShouldNotHeal(){
+        athelstan.joinFaction(northmen);
+        floki.joinFaction(wessex);
+        while(floki.getHealth() == 100){
+            floki.attack(floki);
+        }
+        int currentFlokiHeath = floki.getHealth();
+        athelstan.heal(floki);
+        assertEquals(floki.getHealth(), currentFlokiHeath);
+    }
+
+    /* Waiting For Fix 
+    @Test
+    public void shouldHealFriend(){
+        northmen.addFriend(wessex);
+        System.out.println(northmen.getFriendFaction());
+        System.out.println(wessex.getFriendFaction());
+        athelstan.joinFaction(northmen);
+        floki.joinFaction(wessex);
+        while(floki.getHealth() == 100){
+            floki.attack(floki);
+        }
+        int currentFlokiHeath = floki.getHealth();
+        athelstan.heal(floki);
+        assertTrue(floki.getHealth() > currentFlokiHeath);
+    }
+*/
 }
