@@ -10,9 +10,23 @@ public class FactionTest extends DataTest {
         assertEquals("Northmen",northmen.getName());
     }
     @Test
-    public void getSomeMembers() {
+    public void shouldGetSomeMembers() {
         ragnar.joinFaction(northmen);
         ecbert.joinFaction(northmen);
+        System.out.println(northmen.getMembers());
         assertEquals(northmen.getMembers().size(), 2);
+    }
+
+    @Test
+    public void shouldNotAttackingFriends(){
+        ragnar.joinFaction(northmen);
+        floki.joinFaction(northmen);
+        ragnar.attack(floki);
+        assertEquals(floki.getHealth(), 100);
+    }
+
+    @Test
+    public void shouldAddFriendsFaction(){
+
     }
 }
