@@ -43,16 +43,16 @@ public class Assembly {
     public boolean hasMember(Character character){
         return this.members.indexOf(character) != -1;
     }
-    public boolean hasFriend(ArrayList<Faction> factions) {
+    /*public boolean hasFriend(ArrayList<Assembly> assemblies) {
         for (Faction faction : factions) {
             if (this.friends.indexOf(faction) != -1) {
                 return true;
             }
         }
         return false;
-    }
-    public boolean hasFriend(Faction faction) {
-        return this.friends.indexOf(faction) != -1;
+    }*/
+    public boolean hasFriend(Assembly assembly) {
+        return this.friends.contains(assembly);
     }
     public boolean isAllowed(Role role){ return this.getAllowedRoles().contains(role); }
 

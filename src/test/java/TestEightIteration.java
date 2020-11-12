@@ -155,5 +155,75 @@ public class TestEightIteration {
         Assert.assertEquals(enemy.getHealth(), 50);
     }
 
-    // test 6eme iteration : friends
+    @Test
+    public void testAddFriend(){
+        ArrayList<Role> rolesAssembly = new ArrayList<>();
+        rolesAssembly.add(Role.Priest);
+
+        ArrayList<Role> rolesFriendAssembly = new ArrayList<>();
+        rolesFriendAssembly.add(Role.Warrior);
+        Assembly assembly = new Assembly("Demacia", rolesAssembly);
+        Assembly friend = new Assembly("Noxus", rolesFriendAssembly);
+
+        assembly.addFriend(friend);
+        Assert.assertTrue(assembly.hasFriend(friend) && friend.hasFriend(assembly));
+    }
+
+    @Test public void testRemoveFriend(){
+        ArrayList<Role> rolesAssembly = new ArrayList<>();
+        rolesAssembly.add(Role.Priest);
+
+        ArrayList<Role> rolesFriendAssembly = new ArrayList<>();
+        rolesFriendAssembly.add(Role.Warrior);
+        Assembly assembly = new Assembly("Demacia", rolesAssembly);
+        Assembly friend = new Assembly("Noxus", rolesFriendAssembly);
+
+        assembly.addFriend(friend);
+        assembly.removeFriend(friend);
+        Assert.assertFalse(assembly.hasFriend(friend) && friend.hasFriend(assembly));
+    }
+
+    @Test public void testCannotDamageFriend() {
+        ArrayList<Role> roles = new ArrayList<>();
+        roles.add(Role.Warrior);
+
+        ArrayList<Role> rolesFriendAssembly = new ArrayList<>();
+        Assembly assembly = new Assembly("Demacia", roles);
+        Assembly friend = new Assembly("Noxus", rolesFriendAssembly);
+
+        Warrior guerrier = new Warrior("Garen");
+        Warrior ninja = new Warrior("Akali");
+        guerrier.joinAssembly(assembly);
+        ninja.joinAssembly(friend);
+
+        assembly.addFriend(friend);
+
+        guerrier.attack(ninja);
+
+        Assert.assertEquals(ninja.getHealth(), 100);
+    }
+
+    @Test
+    public void testHealFriend() {
+        ArrayList<Role> roles = new ArrayList<>();
+        roles.add(Role.Priest);
+
+        ArrayList<Role> rolesFriendAssembly = new ArrayList<>();
+        Assembly assembly = new Assembly("Demacia", roles);
+        Assembly friend = new Assembly("Noxus", rolesFriendAssembly);
+
+        Warrior guerrier = new Warrior("Garen");
+        Priest pretre = new Priest("Lux");
+
+        assembly.addFriend(friend);
+
+        guerrier.joinAssembly(assembly);
+        guerrier.setHealth(50);
+        pretre.joinAssembly(friend);
+
+        pretre.heal(guerrier);
+
+        Assert.assertNotEquals(guerrier.getHealth(), 50);
+    }
+
 }
