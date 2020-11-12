@@ -18,9 +18,11 @@ public class EntityTest extends DataTest {
 
     @Test
     public void shouldStartToCutDownTheOakToMakeBoats(){
-        int oakHealth = oak.getHealth();
+        while(oak.getHealth() == OAKHEALTH){
+            floki.attack(oak);
+        }
         floki.attack(oak);
-        assertTrue(oak.getHealth() < oakHealth);
+        assertTrue(oak.getHealth() < OAKHEALTH);
     }
 
     @Test
