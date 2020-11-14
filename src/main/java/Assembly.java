@@ -1,12 +1,14 @@
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Assembly {
     private String name;
     private List<Character> members = new ArrayList<Character>();
     private ArrayList<Role> allowedRoles;
     private List<Assembly> friends = new ArrayList<>();
+    private Character master;
 
     Assembly(String name, ArrayList<Role> roles){
         this.name = name;
@@ -27,15 +29,35 @@ public class Assembly {
 
     public List<Assembly> getFriends(){ return this.friends; }
 
+    public Character getMaster() {return master; }
+
+    public void updateName(Character updater, String newName) {
+        if (updater == master) {
+            name = newName;
+        }
+    }
+
 
     public void addMember(Character character){
         if(this.isAllowed(character.getRole())){
+            if (members.isEmpty()) {
+                master = character;
+            }
             members.add(character);
         }
     }
     public void removeMember(Character character){
         if(this.members.contains(character)) {
             members.remove(character);
+            if (character == master) {
+                if (members.isEmpty()) {
+                    master = null;
+                }
+                else {
+                    int numberNewMaster = ThreadLocalRandom.current().nextInt(0, members.size());
+                    master = members.get(numberNewMaster);
+                }
+            }
         }
     }
 
