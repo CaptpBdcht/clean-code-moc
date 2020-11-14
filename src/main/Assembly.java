@@ -44,10 +44,6 @@ public class Assembly {
         }
     }
 
-    private void setMaster(Character master) {
-        this.master = master;
-    }
-
     private void checkMaster(){
         if(this.master==null){
             setMaster(this.members.get(0));
@@ -64,12 +60,16 @@ public class Assembly {
         }
     }
 
-    public String getName(){
-        return this.name;
-    }
-
     public Character getMaster() {
         return master;
+    }
+
+    private void setMaster(Character master) {
+        this.master = master;
+    }
+
+    public String getName(){
+        return this.name;
     }
 
     public void setName(String name) {

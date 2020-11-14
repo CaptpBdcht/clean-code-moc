@@ -18,11 +18,35 @@ public abstract class Character extends Entity {
 
     public abstract void heal(Character healTarget);
 
+    @Override
+    public void takeDamage(int damage) {
+        super.takeDamage(damage);
+        if(this.getState() == states.DEAD){
+            die();
+        }
+    }
+
+    @Override
+    public void die() {
+        leaveAssembly();
+        for (int i = 0; i < this.factions.size(); i++) {
+            this.leaveFaction(this.factions.get(i));
+        }
+    }
+
     public void increaseCurrentHealth(int healthPoint){
         if(this.getHealth() + healthPoint <= MAXHEALTH && this.getState() == states.ALIVE){
             this.health += healthPoint;
         } else if (this.health + healthPoint > MAXHEALTH){
             this.health = MAXHEALTH;
+        }
+    }
+
+    public String getName(){
+        try {
+            return this.name;
+        }catch (NullPointerException e){
+            return "none";
         }
     }
 
@@ -73,6 +97,10 @@ public abstract class Character extends Entity {
         return false;
     }
 
+    public ArrayList<Faction> getFactions(){
+        return this.factions;
+    }
+
     public void joinAssembly(Assembly assembly){
         if(assembly.addMembers(this)) {
             this.assembly = assembly;
@@ -92,39 +120,11 @@ public abstract class Character extends Entity {
         return this.assembly;
     }
 
-    public String getName(){
-        try {
-            return this.name;
-        }catch (NullPointerException e){
-            return "none";
-        }
-    }
-
-    public ArrayList<Faction> getFactions(){
-        return this.factions;
-    }
-
     public void updateAssemblyName(String name){
         if(this.assembly.getMaster() == this){
             this.assembly.setName(name);
         } else {
             System.out.println("You can't do that, you are not the fucking master !");
-        }
-    }
-
-    @Override
-    public void takeDamage(int damage) {
-        super.takeDamage(damage);
-        if(this.getState() == states.DEAD){
-            die();
-        }
-    }
-
-    @Override
-    public void die() {
-        leaveAssembly();
-        for (int i = 0; i < this.factions.size(); i++) {
-            this.leaveFaction(this.factions.get(i));
         }
     }
 }

@@ -3,6 +3,7 @@ package main;
 import java.util.Random;
 
 public class Priest extends Character{
+
     public Priest(String name) {
         super(name);
     }
@@ -15,7 +16,7 @@ public class Priest extends Character{
     @Override
     public void heal(Character healTarget) {
         if (!this.checkFaction(healTarget)){
-            System.out.println("Cannot heal someone from another faction");
+            System.out.println("Cannot heal someone from a faction that is not ours nor a friend.");
             return;
         }
         Random randHeal = new Random();

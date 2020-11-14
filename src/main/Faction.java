@@ -10,6 +10,12 @@ public class Faction {
     private List<Character> members;
     private List<Faction> friendFactions;
 
+    public Faction(String name) {
+        this.name = name;
+        this.members = new ArrayList<>();
+        this.friendFactions = new ArrayList<>();
+    }
+
     public List<String> getMembers() {
         return members.stream().map(Character::getName).collect(Collectors.toList());
     }
@@ -35,12 +41,6 @@ public class Faction {
     }
     public void leaveFriend(Faction friend){
         this.friendFactions.remove(friend);
-    }
-
-    public Faction(String name) {
-        this.name = name;
-        this.members = new ArrayList<>();
-        this.friendFactions = new ArrayList<>();
     }
 
     public String getName() {

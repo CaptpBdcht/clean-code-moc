@@ -7,6 +7,7 @@ public class Warrior extends Character{
     public Warrior(String name) {
         super(name);
     }
+
     @Override
     public void attack(Entity attackTarget) {
         if(attackTarget instanceof Character){

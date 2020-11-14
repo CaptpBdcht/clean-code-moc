@@ -21,6 +21,8 @@ public abstract class Entity {
         return health;
     }
 
+    public abstract void die();
+
     public void takeDamage(int damage){
         if(this.health - damage <= 0){
             this.health = 0;
@@ -29,5 +31,4 @@ public abstract class Entity {
         else
             this.health -= damage;
     }
-    public abstract void die();
 }
