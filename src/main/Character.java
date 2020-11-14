@@ -60,9 +60,14 @@ public abstract class Character extends Entity {
     }
 
     public boolean checkFaction(Character target){
-        for(Faction targetFaction: target.getFactions()){
-            if(this.factions.contains(targetFaction)){
+        for(Faction faction: this.getFactions()){
+            if(target.getFactions().contains(faction)){
                 return true;
+            }
+            for(Faction targetFact: target.getFactions()){
+                if(targetFact.getFriendsFactions().contains(faction)){
+                    return true;
+                }
             }
         }
         return false;

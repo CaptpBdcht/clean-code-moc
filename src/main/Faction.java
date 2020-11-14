@@ -14,8 +14,12 @@ public class Faction {
         return members.stream().map(Character::getName).collect(Collectors.toList());
     }
 
-    public List<String> getFriendFaction() {
+    public List<String> getFriends() {
         return friendFactions.stream().map(Faction::getName).collect(Collectors.toList());
+    }
+
+    public List<Faction> getFriendsFactions(){
+        return friendFactions;
     }
 
     public void addMembers(Character member) {

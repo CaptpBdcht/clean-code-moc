@@ -28,8 +28,8 @@ public class FactionTest extends DataTest {
     @Test
     public void shouldAddFriendsFaction(){
         northmen.addFriend(wessex);
-        assertNotNull(wessex.getFriendFaction());
-        assertNotNull(northmen.getFriendFaction());
+        assertNotNull(wessex.getFriends());
+        assertNotNull(northmen.getFriends());
     }
 
     @Test
@@ -63,14 +63,11 @@ public class FactionTest extends DataTest {
         assertEquals(floki.getHealth(), currentFlokiHeath);
     }
 
-    /* Waiting For Fix 
     @Test
     public void shouldHealFriend(){
         northmen.addFriend(wessex);
-        System.out.println(northmen.getFriendFaction());
-        System.out.println(wessex.getFriendFaction());
-        athelstan.joinFaction(northmen);
-        floki.joinFaction(wessex);
+        athelstan.joinFaction(wessex);
+        floki.joinFaction(northmen);
         while(floki.getHealth() == 100){
             floki.attack(floki);
         }
@@ -78,5 +75,4 @@ public class FactionTest extends DataTest {
         athelstan.heal(floki);
         assertTrue(floki.getHealth() > currentFlokiHeath);
     }
-*/
 }

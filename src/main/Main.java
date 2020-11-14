@@ -57,8 +57,8 @@ public class Main {
 
         System.out.println("\nNow northem and wessex faction are friend");
         northmen.addFriend(wessex);
-        System.out.println("List of northmen friend faction : " + northmen.getFriendFaction());
-        System.out.println("List of wessex friend faction : " + wessex.getFriendFaction());
+        System.out.println("List of northmen friend faction : " + northmen.getFriends());
+        System.out.println("List of wessex friend faction : " + wessex.getFriends());
 
         System.out.println("\nNow ragnar tries to hit ecbert");
         ragnar.attack(ecbert);
