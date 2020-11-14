@@ -1,8 +1,8 @@
 package test;
 
-import main.Faction;
-import main.Priest;
-import main.Warrior;
+import org.delageguillan.KataRPG.Faction;
+import org.delageguillan.KataRPG.Priest;
+import org.delageguillan.KataRPG.Warrior;
 
 public class DataTest {
 

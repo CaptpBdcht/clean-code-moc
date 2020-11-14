@@ -1,4 +1,4 @@
-package main;
+package org.delageguillan.KataRPG;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,8 +1,5 @@
 package test;
-import main.Entity;
-import main.Faction;
-import main.Priest;
-import main.Warrior;
+import org.delageguillan.KataRPG.Entity;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

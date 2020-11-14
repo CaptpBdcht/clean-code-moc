@@ -1,4 +1,4 @@
-package main;
+package org.delageguillan.KataRPG;
 
 public abstract class Entity {
     public enum states {ALIVE,DEAD}

@@ -1,13 +1,10 @@
 package test;
 
-import main.Assembly;
-import main.Priest;
-import main.Warrior;
-import org.junit.Assert;
+import org.delageguillan.KataRPG.Assembly;
+import org.delageguillan.KataRPG.Warrior;
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 
 import static org.junit.Assert.*;
