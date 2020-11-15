@@ -1,5 +1,6 @@
+##IntelliJ
 .idea
-out/
+rg.delageguillan.kataRPG.exam.iml
 
 ##MAVEN
 target/
@@ -25,4 +26,6 @@ buildNumber.properties
 *.tar.gz
 *.rar
 
+#OUT DIR
+out/
 
