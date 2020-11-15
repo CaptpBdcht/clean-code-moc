@@ -1,3 +1,4 @@
+import Groups.Faction;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -5,7 +6,7 @@ public class TestFourthIteration {
 
     @Test
     public void testNoFaction() {
-        Warrior guerrier = new Warrior("Garen");
+        MockWarrior guerrier = new MockWarrior("Garen");
         Assert.assertTrue(guerrier.getFactions().isEmpty());
     }
 
@@ -17,7 +18,7 @@ public class TestFourthIteration {
 
     @Test
     public void testJoinFaction() {
-        Warrior guerrier = new Warrior("Garen");
+        MockWarrior guerrier = new MockWarrior("Garen");
         Faction faction = new Faction("Demacia");
         guerrier.joinFaction(faction);
 
@@ -26,7 +27,7 @@ public class TestFourthIteration {
 
     @Test
     public void testAddMember(){
-        Warrior guerrier = new Warrior("Garen");
+        MockWarrior guerrier = new MockWarrior("Garen");
         Faction faction = new Faction("Demacia");
         guerrier.joinFaction(faction);
 
@@ -35,7 +36,7 @@ public class TestFourthIteration {
 
     @Test
     public void testLeaveFaction() {
-        Warrior guerrier = new Warrior("Garen");
+        MockWarrior guerrier = new MockWarrior("Garen");
         Faction faction = new Faction("Demacia");
         guerrier.joinFaction(faction);
         guerrier.leaveFaction(faction);
@@ -45,7 +46,7 @@ public class TestFourthIteration {
 
     @Test
     public void testDeleteMember() {
-        Warrior guerrier = new Warrior("Garen");
+        MockWarrior guerrier = new MockWarrior("Garen");
         Faction faction = new Faction("Demacia");
         guerrier.joinFaction(faction);
         guerrier.leaveFaction(faction);
@@ -55,8 +56,8 @@ public class TestFourthIteration {
 
     @Test
     public void testAttackSameFaction() {
-        Warrior guerrier = new Warrior("Garen");
-        Priest pretre = new Priest("Lux");
+        MockWarrior guerrier = new MockWarrior("Garen");
+        MockPriest pretre = new MockPriest("Lux");
         Faction faction = new Faction("Demacia");
         guerrier.joinFaction(faction);
         pretre.joinFaction(faction);
@@ -68,8 +69,8 @@ public class TestFourthIteration {
 
     @Test
     public void testAttackNotSameFaction() {
-        Warrior guerrier = new Warrior("Garen");
-        Warrior enemy = new Warrior("Darius");
+        MockWarrior guerrier = new MockWarrior("Garen");
+        MockWarrior enemy = new MockWarrior("Darius");
         Faction faction = new Faction("Demacia");
         Faction enemyFaction = new Faction("Noxus");
         guerrier.joinFaction(faction);
@@ -82,8 +83,8 @@ public class TestFourthIteration {
 
     @Test
     public void testHealSameFaction() {
-        Warrior guerrier = new Warrior("Garen");
-        Priest pretre = new Priest("Lux");
+        MockWarrior guerrier = new MockWarrior("Garen");
+        MockPriest pretre = new MockPriest("Lux");
         Faction faction = new Faction("Demacia");
         guerrier.joinFaction(faction);
         guerrier.setHealth(50);
@@ -96,8 +97,8 @@ public class TestFourthIteration {
 
     @Test
     public void testHealNotSameFaction() {
-        Priest pretre = new Priest("Lux");
-        Warrior enemy = new Warrior("Darius");
+        MockPriest pretre = new MockPriest("Lux");
+        MockWarrior enemy = new MockWarrior("Darius");
         Faction faction = new Faction("Demacia");
         Faction enemyFaction = new Faction("Noxus");
         pretre.joinFaction(faction);

@@ -1,3 +1,5 @@
+import Enum.Role;
+import Groups.Assembly;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -11,7 +13,7 @@ public class TestNinethIteration {
         roles.add(Role.Warrior);
         Assembly assembly = new Assembly("Demacia", roles);
 
-        Warrior guerrier = new Warrior("Garen");
+        MockWarrior guerrier = new MockWarrior("Garen");
         guerrier.joinAssembly(assembly);
 
         Assert.assertEquals(assembly.getMaster(), guerrier);
@@ -23,8 +25,8 @@ public class TestNinethIteration {
         roles.add(Role.Warrior);
         Assembly assembly = new Assembly("Demacia", roles);
 
-        Warrior guerrier = new Warrior("Garen");
-        Warrior guerrierSecond = new Warrior("Joseph");
+        MockWarrior guerrier = new MockWarrior("Garen");
+        MockWarrior guerrierSecond = new MockWarrior("Joseph");
         guerrier.joinAssembly(assembly);
         guerrierSecond.joinAssembly(assembly);
 
@@ -41,8 +43,8 @@ public class TestNinethIteration {
         roles.add(Role.Warrior);
         Assembly assembly = new Assembly("Demacia", roles);
 
-        Warrior guerrier = new Warrior("Garen");
-        Warrior guerrierSecond = new Warrior("Joseph");
+        MockWarrior guerrier = new MockWarrior("Garen");
+        MockWarrior guerrierSecond = new MockWarrior("Joseph");
         guerrier.joinAssembly(assembly);
         guerrierSecond.joinAssembly(assembly);
 
@@ -59,10 +61,10 @@ public class TestNinethIteration {
         roles.add(Role.Warrior);
         Assembly assembly = new Assembly("Demacia", roles);
 
-        Warrior guerrier = new Warrior("Garen");
-        Warrior guerrierSecond = new Warrior("Joseph");
-        Warrior guerrierDeTroie = new Warrior("Jonathan");
-        Warrior guerrierFourth = new Warrior("Giuseppe");
+        MockWarrior guerrier = new MockWarrior("Garen");
+        MockWarrior guerrierSecond = new MockWarrior("Joseph");
+        MockWarrior guerrierDeTroie = new MockWarrior("Jonathan");
+        MockWarrior guerrierFourth = new MockWarrior("Giuseppe");
 
         guerrier.joinAssembly(assembly);
         guerrierSecond.joinAssembly(assembly);
@@ -70,7 +72,7 @@ public class TestNinethIteration {
         guerrierFourth.joinAssembly(assembly);
 
         guerrier.leaveAssembly(assembly);
-
+        System.out.println(assembly.getMaster().getName());
         Assert.assertTrue(assembly.getMaster() != guerrier && assembly.getMaster() != null);
     }
 

@@ -23,10 +23,10 @@ Le code doit:
   - posséder un README.md expliquant **précisément** comment lancer vos tests : partez du principe qu'un développeur lambda doit pouvoir checkout sur votre branche et suivre votre tutoriel pour lancer les tests - ce qui signifie que vous devez préciser s'il y a des choses à installer pour que ça tourne. Néanmoins n'oubliez pas que clean code rime avec "make dependencies minimal"
 
 
-##Test 1 : Test de la classe "Character"
-La classe "Character" définit un personnage tout simplement. Il possède des points de vie et un nom. Il ne peut pas dépasser les 100 points de vie et si il atteint 0 il meurt.
+##Test 1 : Test de la classe "Entities.Character"
+La classe "Entities.Character" définit un personnage tout simplement. Il possède des points de vie et un nom. Il ne peut pas dépasser les 100 points de vie et si il atteint 0 il meurt.
 
-Un "Character" peut attaquer un autre "Character" mais il ne peut pas s'attaquer lui-même Une attaque retire 1 point de vie à un personnage. 
+Un "Entities.Character" peut attaquer un autre "Entities.Character" mais il ne peut pas s'attaquer lui-même Une attaque retire 1 point de vie à un personnage. 
 
-Un "Character" peut soigner un autre "Character" mais aussi lui-même. Un soin redonne 1 point de vie à la cible.
+Un "Entities.Character" peut soigner un autre "Entities.Character" mais aussi lui-même. Un soin redonne 1 point de vie à la cible.
 d

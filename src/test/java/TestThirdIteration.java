@@ -1,14 +1,12 @@
 import org.junit.Assert;
 import org.junit.Test;
 
-import javax.print.DocFlavor;
-
 public class TestThirdIteration {
 
     @Test
     public void testPriestHealsAlly(){
-        Priest priest = new Priest("Aerith");
-        Warrior warrior = new Warrior("Cloud");
+        MockPriest priest = new MockPriest("Aerith");
+        MockWarrior warrior = new MockWarrior("Cloud");
         int healthBeforeHeal = 50;
 
         for(var i = 0; i < 200; i++){
@@ -22,7 +20,7 @@ public class TestThirdIteration {
 
     @Test
     public void testPriestHealsSelf(){
-        Priest priest = new Priest("Aerith");
+        MockPriest priest = new MockPriest("Aerith");
         int healthBeforeHeal = 50;
 
         priest.setHealth(healthBeforeHeal);
@@ -33,8 +31,8 @@ public class TestThirdIteration {
 
     @Test
     public void testPriestCannotAttackEnemy(){
-        Priest priest = new Priest("Aerith");
-        Warrior mechant = new Warrior("Sephiroth");
+        MockPriest priest = new MockPriest("Aerith");
+        MockWarrior mechant = new MockWarrior("Sephiroth");
         int healthBeforeAttack = 50;
 
         mechant.setHealth(healthBeforeAttack);
@@ -45,7 +43,7 @@ public class TestThirdIteration {
 
     @Test
     public void testPriestCannotAttackSelf(){
-        Priest priest = new Priest("Aerith");
+        MockPriest priest = new MockPriest("Aerith");
         int healthBeforeAttack = 50;
 
         priest.setHealth(healthBeforeAttack);

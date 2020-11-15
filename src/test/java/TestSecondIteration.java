@@ -5,8 +5,8 @@ public class TestSecondIteration {
 
     @Test
     public void testWarriorAttacksEnemy(){
-        Warrior gentil = new Warrior("Red Hood");
-        Warrior mechant = new Warrior("Joker");
+        MockWarrior gentil = new MockWarrior("Red Hood");
+        MockWarrior mechant = new MockWarrior("Joker");
         int healthBeforeAttacks = 100;
 
         for(int i = 0; i < 200; i ++){
@@ -20,7 +20,7 @@ public class TestSecondIteration {
 
     @Test
     public void testWarriorAttacksSelf(){
-        Warrior gentil = new Warrior("Red Hood");
+        MockWarrior gentil = new MockWarrior("Red Hood");
         int healthBeforeAttacks = 100;
 
         for(int i = 0; i < 200; i ++){
@@ -34,8 +34,8 @@ public class TestSecondIteration {
 
     @Test
     public void testWarriorCannotHealEnemy(){
-        Warrior gentil = new Warrior("Jason Todd");
-        Warrior mechant = new Warrior("Joker");
+        MockWarrior gentil = new MockWarrior("Jason Todd");
+        MockWarrior mechant = new MockWarrior("Joker");
         int healthBeforeHeal = 50;
 
         mechant.setHealth(healthBeforeHeal);
@@ -45,7 +45,7 @@ public class TestSecondIteration {
 
     @Test
     public void testWarriorHealsSelf(){
-        Warrior gentil = new Warrior("Jason Todd");
+        MockWarrior gentil = new MockWarrior("Jason Todd");
         int healthBeforeHeal = 50;
 
         gentil.setHealth(healthBeforeHeal);

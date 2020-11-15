@@ -5,7 +5,7 @@ public class TestFirstIteration {
 /*
     @Test
     public void testCharacterCreation(){
-        Character gentil = new Character("Link");
+        Characters.Character gentil = new Characters.Character("Link");
         boolean nameIsCorrect = gentil.getName().equals("Link");
         boolean healthIsCorrect = gentil.getHealth() == 100;
         Assert.assertTrue(nameIsCorrect && healthIsCorrect);
@@ -13,22 +13,22 @@ public class TestFirstIteration {
 
     @Test
     public void testCharacterAttacksEnemy(){
-        Character gentil = new Character("Link");
-        Character mechant = new Character("Ganondorf");
+        Characters.Character gentil = new Characters.Character("Link");
+        Characters.Character mechant = new Characters.Character("Ganondorf");
         mechant.attack(gentil);
         Assert.assertEquals(gentil.getHealth(), 99);
     }
 
     @Test
     public void testCharacterCannotAttackSelf(){
-        Character gentil = new Character("Link");
+        Characters.Character gentil = new Characters.Character("Link");
         gentil.attack(gentil);
         Assert.assertEquals(gentil.getHealth(), 100);
     }
 
     @Test
     public void testCharacterHealSelf(){
-        Character gentil = new Character("Link");
+        Characters.Character gentil = new Characters.Character("Link");
         int healthBeforeHeal = 50;
         gentil.setHealth(healthBeforeHeal);
         gentil.heal(gentil);
@@ -37,8 +37,8 @@ public class TestFirstIteration {
 
     @Test
     public void testCharacterHealAlly(){
-        Character gentil = new Character("Link");
-        Character ally = new Character("Zelda");
+        Characters.Character gentil = new Characters.Character("Link");
+        Characters.Character ally = new Characters.Character("Zelda");
         int healthBeforeHeal = 50;
 
         ally.setHealth(healthBeforeHeal);
@@ -48,15 +48,15 @@ public class TestFirstIteration {
 
     @Test
     public void testCharacterMaxHealth(){
-        Character gentil = new Character("Link");
+        Characters.Character gentil = new Characters.Character("Link");
         gentil.heal(gentil);
         Assert.assertEquals(gentil.getHealth(), 100);
     }
 
     @Test
     public void testCharacterMinHealth(){
-        Character gentil = new Character("Link");
-        Character mechant = new Character("Ganondorf");
+        Characters.Character gentil = new Characters.Character("Link");
+        Characters.Character mechant = new Characters.Character("Ganondorf");
         int minHeath = 0;
 
         gentil.setHealth(minHeath);
@@ -66,13 +66,13 @@ public class TestFirstIteration {
 
     @Test
     public void testCharacterIsAlive(){
-        Character gentil = new Character("Link");
+        Characters.Character gentil = new Characters.Character("Link");
         Assert.assertTrue(gentil.isAlive());
     }
 
     @Test
     public void testCharacterIsDead(){
-        Character gentil = new Character("Link");
+        Characters.Character gentil = new Characters.Character("Link");
         gentil.setHealth(0);
         Assert.assertFalse(gentil.isAlive());
     }

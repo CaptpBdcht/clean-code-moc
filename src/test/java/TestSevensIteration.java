@@ -1,3 +1,4 @@
+import Groups.Faction;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -5,7 +6,7 @@ public class TestSevensIteration {
 
     @Test
     public void joinMultipleFaction() {
-        Warrior guerrier = new Warrior("Garen");
+        MockWarrior guerrier = new MockWarrior("Garen");
         Faction faction = new Faction("Demacia");
         Faction sousFaction = new Faction("Guerriers puissants");
 
@@ -17,7 +18,7 @@ public class TestSevensIteration {
 
     @Test
     public void leaveMultipleFaction() {
-        Warrior guerrier = new Warrior("Garen");
+        MockWarrior guerrier = new MockWarrior("Garen");
         Faction faction = new Faction("Demacia");
         Faction sousFaction = new Faction("Guerriers puissants");
         Faction tripleFaction = new Faction("Mages antiques");

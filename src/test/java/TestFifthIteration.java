@@ -6,16 +6,16 @@ public class TestFifthIteration {
     /*
     @Test
     public void testCannotJoinFaction(){
-        Faction faction = new Faction("Rohan");
-        Entity cheval = new Entity(40);
+        Groups.Faction faction = new Groups.Faction("Rohan");
+        Characters.Entity cheval = new Characters.Entity(40);
         new AssertionError(faction.addMember(cheval););
     }
      */
 
     @Test
     public void testCanBeAttacked(){
-        Entity epona = new Entity(40);
-        Warrior warrior = new Warrior("Ganondorf");
+        MockEntity epona = new MockEntity(40);
+        MockWarrior warrior = new MockWarrior("Ganondorf");
         int healthBeforeAttacks = 40;
 
         for(int i = 0; i < 200; i ++){
@@ -29,8 +29,8 @@ public class TestFifthIteration {
 
     @Test
     public void testCannotBeHealed(){
-        Entity epona = new Entity(40);
-        Priest priest = new Priest("Zelda");
+        MockEntity epona = new MockEntity(40);
+        MockPriest priest = new MockPriest("Zelda");
 
         int healthBeforeHeal = 20;
         epona.setHealth(healthBeforeHeal);

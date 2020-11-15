@@ -1,3 +1,4 @@
+import Groups.Faction;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -20,8 +21,8 @@ public class TestSixIteration {
     }
 
     @Test public void testCannotDealDamage() {
-        Warrior guerrier = new Warrior("Garen");
-        Warrior ninja = new Warrior("Akali");
+        MockWarrior guerrier = new MockWarrior("Garen");
+        MockWarrior ninja = new MockWarrior("Akali");
         Faction faction = new Faction("Demacia");
         Faction ionia = new Faction("Ionia");
         guerrier.joinFaction(faction);
@@ -35,8 +36,8 @@ public class TestSixIteration {
     }
 
     @Test public void testCanDealDamage() {
-        Warrior guerrier = new Warrior("Garen");
-        Warrior noxus = new Warrior("Darius");
+        MockWarrior guerrier = new MockWarrior("Garen");
+        MockWarrior noxus = new MockWarrior("Darius");
         Faction faction = new Faction("Demacia");
         Faction nox = new Faction("Noxus");
         guerrier.joinFaction(faction);
@@ -49,8 +50,8 @@ public class TestSixIteration {
 
     @Test
     public void testHealFriendFaction() {
-        Warrior guerrier = new Warrior("Garen");
-        Priest pretre = new Priest("Lux");
+        MockWarrior guerrier = new MockWarrior("Garen");
+        MockPriest pretre = new MockPriest("Lux");
         Faction faction = new Faction("Demacia");
         Faction ally = new Faction("Sous-Demacia");
 
@@ -67,8 +68,8 @@ public class TestSixIteration {
 
     @Test
     public void testCannotHealFaction() {
-        Warrior guerrier = new Warrior("Garen");
-        Priest pretre = new Priest("Soraka");
+        MockWarrior guerrier = new MockWarrior("Garen");
+        MockPriest pretre = new MockPriest("Soraka");
         Faction faction = new Faction("Demacia");
         Faction ally = new Faction("Chevre");
 
@@ -80,10 +81,4 @@ public class TestSixIteration {
 
         Assert.assertEquals(guerrier.getHealth(), 50);
     }
-
-    // tester attack / heal friend
-    // deplacer shareFaction() isAlly() ..etc dans Faction ?
-    // deplacer les verifs de heal.ishealable() dans Entity.sethealth ???
-    // mock pour sethealth dans les tests
-
 }

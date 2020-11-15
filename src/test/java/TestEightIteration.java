@@ -1,12 +1,14 @@
+import Groups.Assembly;
 import org.junit.Assert;
 import org.junit.Test;
+import Enum.Role;
 
 import java.util.ArrayList;
 
 public class TestEightIteration {
     @Test
     public void testNoAssembly() {
-        Warrior guerrier = new Warrior("Garen");
+        MockWarrior guerrier = new MockWarrior("Garen");
         Assert.assertNull(guerrier.getAssembly());
     }
 
@@ -24,7 +26,7 @@ public class TestEightIteration {
         roles.add(Role.Warrior);
         Assembly assembly = new Assembly("Demacia", roles);
 
-        Warrior guerrier = new Warrior("Garen");
+        MockWarrior guerrier = new MockWarrior("Garen");
         guerrier.joinAssembly(assembly);
 
         Assert.assertEquals(guerrier.getAssembly(), assembly);
@@ -36,7 +38,7 @@ public class TestEightIteration {
         roles.add(Role.Priest);
         Assembly assembly = new Assembly("Demacia", roles);
 
-        Warrior guerrier = new Warrior("Garen");
+        MockWarrior guerrier = new MockWarrior("Garen");
         guerrier.joinAssembly(assembly);
         Assert.assertFalse( assembly.equals(guerrier.getAssembly()) && assembly.getMembers().contains(guerrier));
     }
@@ -47,7 +49,7 @@ public class TestEightIteration {
         roles.add(Role.Warrior);
         Assembly assembly = new Assembly("Demacia", roles);
 
-        Warrior guerrier = new Warrior("Garen");
+        MockWarrior guerrier = new MockWarrior("Garen");
         guerrier.joinAssembly(assembly);
 
         Assert.assertTrue(assembly.hasMember(guerrier));
@@ -59,7 +61,7 @@ public class TestEightIteration {
         roles.add(Role.Warrior);
         Assembly assembly = new Assembly("Demacia", roles);
 
-        Warrior guerrier = new Warrior("Garen");
+        MockWarrior guerrier = new MockWarrior("Garen");
         guerrier.joinAssembly(assembly);
         guerrier.leaveAssembly(assembly);
 
@@ -72,7 +74,7 @@ public class TestEightIteration {
         roles.add(Role.Warrior);
         Assembly assembly = new Assembly("Demacia", roles);
 
-        Warrior guerrier = new Warrior("Garen");
+        MockWarrior guerrier = new MockWarrior("Garen");
         guerrier.joinAssembly(assembly);
         guerrier.leaveAssembly(assembly);
 
@@ -86,8 +88,8 @@ public class TestEightIteration {
         roles.add(Role.Priest);
         Assembly assembly = new Assembly("Demacia", roles);
 
-        Warrior guerrier = new Warrior("Garen");
-        Priest pretre = new Priest("Lux");
+        MockWarrior guerrier = new MockWarrior("Garen");
+        MockPriest pretre = new MockPriest("Lux");
         guerrier.joinAssembly(assembly);
         pretre.joinAssembly(assembly);
 
@@ -104,8 +106,8 @@ public class TestEightIteration {
         Assembly assembly = new Assembly("Demacia", roles);
         Assembly enemyAssembly = new Assembly("Noxus", roles);
 
-        Warrior guerrier = new Warrior("Garen");
-        Warrior enemy = new Warrior("Darius");
+        MockWarrior guerrier = new MockWarrior("Garen");
+        MockWarrior enemy = new MockWarrior("Darius");
 
         guerrier.joinAssembly(assembly);
         enemy.joinAssembly(enemyAssembly);
@@ -122,8 +124,8 @@ public class TestEightIteration {
         roles.add(Role.Priest);
         Assembly assembly = new Assembly("Demacia", roles);
 
-        Warrior guerrier = new Warrior("Garen");
-        Priest pretre = new Priest("Lux");
+        MockWarrior guerrier = new MockWarrior("Garen");
+        MockPriest pretre = new MockPriest("Lux");
         guerrier.joinAssembly(assembly);
         guerrier.setHealth(50);
         pretre.joinAssembly(assembly);
@@ -143,8 +145,8 @@ public class TestEightIteration {
         Assembly assembly = new Assembly("Demacia", rolesAssembly);
         Assembly enemyAssembly = new Assembly("Noxus", rolesEnemyAssembly);
 
-        Priest pretre = new Priest("Lux");
-        Warrior enemy = new Warrior("Darius");
+        MockPriest pretre = new MockPriest("Lux");
+        MockWarrior enemy = new MockWarrior("Darius");
         pretre.joinAssembly(assembly);
         enemy.joinAssembly(enemyAssembly);
 
@@ -187,12 +189,11 @@ public class TestEightIteration {
         ArrayList<Role> roles = new ArrayList<>();
         roles.add(Role.Warrior);
 
-        ArrayList<Role> rolesFriendAssembly = new ArrayList<>();
         Assembly assembly = new Assembly("Demacia", roles);
-        Assembly friend = new Assembly("Noxus", rolesFriendAssembly);
+        Assembly friend = new Assembly("Noxus", roles);
 
-        Warrior guerrier = new Warrior("Garen");
-        Warrior ninja = new Warrior("Akali");
+        MockWarrior guerrier = new MockWarrior("Garen");
+        MockWarrior ninja = new MockWarrior("Akali");
         guerrier.joinAssembly(assembly);
         ninja.joinAssembly(friend);
 
@@ -212,8 +213,8 @@ public class TestEightIteration {
         Assembly assembly = new Assembly("Demacia", roles);
         Assembly friend = new Assembly("Noxus", rolesFriendAssembly);
 
-        Warrior guerrier = new Warrior("Garen");
-        Priest pretre = new Priest("Lux");
+        MockWarrior guerrier = new MockWarrior("Garen");
+        MockPriest pretre = new MockPriest("Lux");
 
         assembly.addFriend(friend);
 
