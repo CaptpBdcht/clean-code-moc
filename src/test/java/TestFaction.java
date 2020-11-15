@@ -2,7 +2,7 @@ import Groups.Faction;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class TestFourthIteration {
+public class TestFaction {
 
     @Test
     public void testNoFaction() {
@@ -71,8 +71,10 @@ public class TestFourthIteration {
     public void testAttackNotSameFaction() {
         MockWarrior guerrier = new MockWarrior("Garen");
         MockWarrior enemy = new MockWarrior("Darius");
+
         Faction faction = new Faction("Demacia");
         Faction enemyFaction = new Faction("Noxus");
+
         guerrier.joinFaction(faction);
         enemy.joinFaction(enemyFaction);
 
@@ -109,5 +111,33 @@ public class TestFourthIteration {
         pretre.heal(enemy);
 
         Assert.assertEquals(enemy.getHealth(), 50);
+    }
+
+    @Test
+    public void testjoinMultipleFaction() {
+        MockWarrior guerrier = new MockWarrior("Garen");
+        Faction faction = new Faction("Demacia");
+        Faction sousFaction = new Faction("Guerriers puissants");
+
+        guerrier.joinFaction(faction);
+        guerrier.joinFaction(sousFaction);
+
+        Assert.assertTrue(guerrier.getFactions().contains(faction) && guerrier.getFactions().contains(sousFaction));
+    }
+
+    @Test
+    public void testleaveMultipleFaction() {
+        MockWarrior guerrier = new MockWarrior("Garen");
+        Faction faction = new Faction("Demacia");
+        Faction sousFaction = new Faction("Guerriers puissants");
+        Faction tripleFaction = new Faction("Mages antiques");
+
+        guerrier.joinFaction(faction);
+        guerrier.joinFaction(sousFaction);
+        guerrier.joinFaction(tripleFaction);
+
+        guerrier.leaveFaction(sousFaction);
+
+        Assert.assertFalse(guerrier.getFactions().contains(sousFaction));
     }
 }

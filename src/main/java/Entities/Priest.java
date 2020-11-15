@@ -2,14 +2,13 @@ package Entities;
 import Enum.Role;
 
 public class Priest extends Character {
+    protected RandomizedHealer randomizedHealer = new RandomizedHealer(5, 11);
+    private BasicHealer basicHealer = new BasicHealer();
+
     public Priest(String name) {
         super(name);
         this.role = Role.Priest;
     }
-
-    private RandomizedHealer randomizedHealer = new RandomizedHealer(); // random à l'instanciation
-    private BasicHealer basicHealer = new BasicHealer();
-
 
     @Override
     public void attack(Entity entity) { }
@@ -36,5 +35,10 @@ public class Priest extends Character {
             randomizedHealer.heal(character);
             //return;
         }
+    }
+
+    @Override
+    public String toString(){
+        return " - Priest" + super.toString();
     }
 }

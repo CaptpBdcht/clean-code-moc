@@ -4,7 +4,7 @@ import Enum.Role;
 public class Warrior extends Character {
     private BasicHealer basicHealer = new BasicHealer();
     private BasicAttacker basicAttacker = new BasicAttacker();
-    private RandomizedAttacker randomizedAttacker = new RandomizedAttacker();
+    protected RandomizedAttacker randomizedAttacker = new RandomizedAttacker(0, 9);
 
     public Warrior(String name) {
         super(name);
@@ -53,5 +53,10 @@ public class Warrior extends Character {
             basicHealer.heal(this);
             // return
         }
+    }
+
+    @Override
+    public String toString(){
+        return " - Warrior" + super.toString();
     }
 }

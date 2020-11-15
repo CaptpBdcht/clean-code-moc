@@ -1,4 +1,5 @@
 import Entities.Priest;
+
 class MockPriest extends Priest{
     public MockPriest(String name){
         super(name);

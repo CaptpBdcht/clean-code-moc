@@ -1,11 +1,12 @@
+import Enum.Role;
 import Groups.Assembly;
 import org.junit.Assert;
 import org.junit.Test;
-import Enum.Role;
 
 import java.util.ArrayList;
 
-public class TestEightIteration {
+public class TestAssembly {
+
     @Test
     public void testNoAssembly() {
         MockWarrior guerrier = new MockWarrior("Garen");
@@ -21,7 +22,7 @@ public class TestEightIteration {
     }
 
     @Test
-    public void testJoinAssembly() {
+    public void testCanJoinAssembly() {
         ArrayList<Role> roles = new ArrayList<>();
         roles.add(Role.Warrior);
         Assembly assembly = new Assembly("Demacia", roles);
@@ -29,30 +30,18 @@ public class TestEightIteration {
         MockWarrior guerrier = new MockWarrior("Garen");
         guerrier.joinAssembly(assembly);
 
-        Assert.assertEquals(guerrier.getAssembly(), assembly);
+        Assert.assertTrue(assembly.equals(guerrier.getAssembly()) && assembly.hasMember(guerrier));
     }
 
     @Test
-    public void cannotJoinAssembly(){
+    public void testCannotJoinAssembly(){
         ArrayList<Role> roles = new ArrayList<>();
         roles.add(Role.Priest);
         Assembly assembly = new Assembly("Demacia", roles);
 
         MockWarrior guerrier = new MockWarrior("Garen");
         guerrier.joinAssembly(assembly);
-        Assert.assertFalse( assembly.equals(guerrier.getAssembly()) && assembly.getMembers().contains(guerrier));
-    }
-
-    @Test
-    public void testAddMember(){
-        ArrayList<Role> roles = new ArrayList<>();
-        roles.add(Role.Warrior);
-        Assembly assembly = new Assembly("Demacia", roles);
-
-        MockWarrior guerrier = new MockWarrior("Garen");
-        guerrier.joinAssembly(assembly);
-
-        Assert.assertTrue(assembly.hasMember(guerrier));
+        Assert.assertFalse( assembly.equals(guerrier.getAssembly()) && assembly.hasMember(guerrier));
     }
 
     @Test
@@ -65,20 +54,7 @@ public class TestEightIteration {
         guerrier.joinAssembly(assembly);
         guerrier.leaveAssembly(assembly);
 
-        Assert.assertNull(guerrier.getAssembly());
-    }
-
-    @Test
-    public void testDeleteMember() {
-        ArrayList<Role> roles = new ArrayList<>();
-        roles.add(Role.Warrior);
-        Assembly assembly = new Assembly("Demacia", roles);
-
-        MockWarrior guerrier = new MockWarrior("Garen");
-        guerrier.joinAssembly(assembly);
-        guerrier.leaveAssembly(assembly);
-
-        Assert.assertFalse(assembly.hasMember(guerrier));
+        Assert.assertFalse(assembly.equals(guerrier.getAssembly()) && assembly.hasMember(guerrier));
     }
 
     @Test
@@ -158,73 +134,72 @@ public class TestEightIteration {
     }
 
     @Test
-    public void testAddFriend(){
-        ArrayList<Role> rolesAssembly = new ArrayList<>();
-        rolesAssembly.add(Role.Priest);
-
-        ArrayList<Role> rolesFriendAssembly = new ArrayList<>();
-        rolesFriendAssembly.add(Role.Warrior);
-        Assembly assembly = new Assembly("Demacia", rolesAssembly);
-        Assembly friend = new Assembly("Noxus", rolesFriendAssembly);
-
-        assembly.addFriend(friend);
-        Assert.assertTrue(assembly.hasFriend(friend) && friend.hasFriend(assembly));
-    }
-
-    @Test public void testRemoveFriend(){
-        ArrayList<Role> rolesAssembly = new ArrayList<>();
-        rolesAssembly.add(Role.Priest);
-
-        ArrayList<Role> rolesFriendAssembly = new ArrayList<>();
-        rolesFriendAssembly.add(Role.Warrior);
-        Assembly assembly = new Assembly("Demacia", rolesAssembly);
-        Assembly friend = new Assembly("Noxus", rolesFriendAssembly);
-
-        assembly.addFriend(friend);
-        assembly.removeFriend(friend);
-        Assert.assertFalse(assembly.hasFriend(friend) && friend.hasFriend(assembly));
-    }
-
-    @Test public void testCannotDamageFriend() {
+    public void testFirstToJoinIsMaster() {
         ArrayList<Role> roles = new ArrayList<>();
         roles.add(Role.Warrior);
-
         Assembly assembly = new Assembly("Demacia", roles);
-        Assembly friend = new Assembly("Noxus", roles);
 
         MockWarrior guerrier = new MockWarrior("Garen");
-        MockWarrior ninja = new MockWarrior("Akali");
         guerrier.joinAssembly(assembly);
-        ninja.joinAssembly(friend);
 
-        assembly.addFriend(friend);
-
-        guerrier.attack(ninja);
-
-        Assert.assertEquals(ninja.getHealth(), 100);
+        Assert.assertEquals(assembly.getMaster(), guerrier);
     }
 
     @Test
-    public void testHealFriend() {
+    public void testModifyName() {
         ArrayList<Role> roles = new ArrayList<>();
-        roles.add(Role.Priest);
-
-        ArrayList<Role> rolesFriendAssembly = new ArrayList<>();
+        roles.add(Role.Warrior);
         Assembly assembly = new Assembly("Demacia", roles);
-        Assembly friend = new Assembly("Noxus", rolesFriendAssembly);
 
         MockWarrior guerrier = new MockWarrior("Garen");
-        MockPriest pretre = new MockPriest("Lux");
+        MockWarrior guerrierSecond = new MockWarrior("Joseph");
+        guerrier.joinAssembly(assembly);
+        guerrierSecond.joinAssembly(assembly);
 
-        assembly.addFriend(friend);
+        String newName = "NewDemacia !!!!";
+
+        assembly.updateName(guerrier, newName);
+
+        Assert.assertEquals(assembly.getName(), newName);
+    }
+
+    @Test
+    public void testCannotModifyName() {
+        ArrayList<Role> roles = new ArrayList<>();
+        roles.add(Role.Warrior);
+        Assembly assembly = new Assembly("Demacia", roles);
+
+        MockWarrior guerrier = new MockWarrior("Garen");
+        MockWarrior guerrierSecond = new MockWarrior("Joseph");
+        guerrier.joinAssembly(assembly);
+        guerrierSecond.joinAssembly(assembly);
+
+        String newName = "NewDemacia !!!!";
+
+        assembly.updateName(guerrierSecond, newName);
+
+        Assert.assertNotEquals(assembly.getName(), newName);
+    }
+
+    @Test
+    public void testRandomMaster() {
+        ArrayList<Role> roles = new ArrayList<>();
+        roles.add(Role.Warrior);
+        Assembly assembly = new Assembly("Demacia", roles);
+
+        MockWarrior guerrier = new MockWarrior("Garen");
+        MockWarrior guerrierSecond = new MockWarrior("Joseph");
+        MockWarrior guerrierDeTroie = new MockWarrior("Jonathan");
+        MockWarrior guerrierFourth = new MockWarrior("Giuseppe");
 
         guerrier.joinAssembly(assembly);
-        guerrier.setHealth(50);
-        pretre.joinAssembly(friend);
+        guerrierSecond.joinAssembly(assembly);
+        guerrierDeTroie.joinAssembly(assembly);
+        guerrierFourth.joinAssembly(assembly);
 
-        pretre.heal(guerrier);
-
-        Assert.assertNotEquals(guerrier.getHealth(), 50);
+        guerrier.leaveAssembly(assembly);
+        System.out.println(assembly.getMaster().getName());
+        Assert.assertTrue(assembly.getMaster() != guerrier && assembly.getMaster() != null);
     }
 
 }

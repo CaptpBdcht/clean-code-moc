@@ -1,7 +1,7 @@
 import org.junit.Assert;
 import org.junit.Test;
 
-public class TestThirdIteration {
+public class TestPriest {
 
     @Test
     public void testPriestHealsAlly(){
@@ -9,13 +9,11 @@ public class TestThirdIteration {
         MockWarrior warrior = new MockWarrior("Cloud");
         int healthBeforeHeal = 50;
 
-        for(var i = 0; i < 200; i++){
-            warrior.setHealth(healthBeforeHeal);
-            priest.heal(warrior);
-            boolean healthMin =  warrior.getHealth() >= healthBeforeHeal + 5;
-            boolean healthMax = warrior.getHealth() <= healthBeforeHeal + 10;
-            Assert.assertTrue( healthMin && healthMax);
-        }
+        warrior.setHealth(healthBeforeHeal);
+        priest.heal(warrior);
+        boolean healthMin =  warrior.getHealth() >= healthBeforeHeal + 5;
+        boolean healthMax = warrior.getHealth() <= healthBeforeHeal + 10;
+        Assert.assertTrue( healthMin && healthMax);
     }
 
     @Test
