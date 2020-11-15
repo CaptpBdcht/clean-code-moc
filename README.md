@@ -21,3 +21,5 @@ Le code doit:
   - être correctement structuré, ne mettez pas tout dans un seul fichier et séparez bien les classes par responsabilité
   - être lisible, choisissez la langue dans laquelle vous développez et tenez-vous-y ; aussi discutez régulièrement le nom des variables que vous donnez avec votre binôme: soyez au plus proche du **métier** 
   - posséder un README.md expliquant **précisément** comment lancer vos tests : partez du principe qu'un développeur lambda doit pouvoir checkout sur votre branche et suivre votre tutoriel pour lancer les tests - ce qui signifie que vous devez préciser s'il y a des choses à installer pour que ça tourne. Néanmoins n'oubliez pas que clean code rime avec "make dependencies minimal"
+
+### All Unit Tests are located in /Kata_RPG_Test
