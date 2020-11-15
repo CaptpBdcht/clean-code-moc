@@ -33,4 +33,8 @@ public class Entity {
 
     boolean isAlive() { return health > 0; }
 
+    @Override
+    public String toString(){
+        return " - Entity | HP : " + this.health ;
+    }
 }

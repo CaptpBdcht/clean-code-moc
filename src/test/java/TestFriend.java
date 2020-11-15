@@ -2,7 +2,7 @@ import Groups.Faction;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class TestSixIteration {
+public class TestFriend {
 
     @Test
     public void testAddFriend(){
@@ -12,7 +12,8 @@ public class TestSixIteration {
         Assert.assertTrue(faction.hasFriend(friend) && friend.hasFriend(faction));
     }
 
-    @Test public void testRemoveFriend(){
+    @Test
+    public void testRemoveFriend(){
         Faction faction = new Faction("Le Fléau");
         Faction friend = new Faction("Les Réprouvés");
         faction.addFriend(friend);
@@ -20,7 +21,8 @@ public class TestSixIteration {
         Assert.assertFalse(faction.hasFriend(friend) && friend.hasFriend(faction));
     }
 
-    @Test public void testCannotDealDamage() {
+    @Test
+    public void testCannotDealDamage() {
         MockWarrior guerrier = new MockWarrior("Garen");
         MockWarrior ninja = new MockWarrior("Akali");
         Faction faction = new Faction("Demacia");
@@ -35,7 +37,8 @@ public class TestSixIteration {
         Assert.assertEquals(ninja.getHealth(), 100);
     }
 
-    @Test public void testCanDealDamage() {
+    @Test
+    public void testCanDealDamage() {
         MockWarrior guerrier = new MockWarrior("Garen");
         MockWarrior noxus = new MockWarrior("Darius");
         Faction faction = new Faction("Demacia");

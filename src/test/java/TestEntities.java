@@ -1,7 +1,7 @@
 import org.junit.Assert;
 import org.junit.Test;
 
-public class TestFifthIteration {
+public class TestEntities {
 
     /*
     @Test
@@ -10,21 +10,17 @@ public class TestFifthIteration {
         Characters.Entity cheval = new Characters.Entity(40);
         new AssertionError(faction.addMember(cheval););
     }
-     */
+    */
 
     @Test
     public void testCanBeAttacked(){
-        MockEntity epona = new MockEntity(40);
-        MockWarrior warrior = new MockWarrior("Ganondorf");
-        int healthBeforeAttacks = 40;
+        int maxHealth = 40;
 
-        for(int i = 0; i < 200; i ++){
-            epona.setHealth(healthBeforeAttacks);
-            warrior.attack(epona);
-            boolean healthMin = epona.getHealth() <= 40 ;
-            boolean healthMax = epona.getHealth() >= 31;
-            Assert.assertTrue(healthMin && healthMax);
-        }
+        MockEntity epona = new MockEntity(maxHealth);
+        MockWarrior warrior = new MockWarrior("Ganondorf");
+
+        warrior.attack(epona);
+        Assert.assertTrue(epona.getHealth() < maxHealth);
     }
 
     @Test

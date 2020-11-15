@@ -5,10 +5,8 @@ import java.util.concurrent.ThreadLocalRandom;
 
 import Entities.Character;
 import Enum.Role;
-import Entities.Character;
-import org.junit.Ignore;
 
-public class Assembly<Assembly> extends Alliance<Groups.Assembly> {
+public class Assembly extends Alliance<Assembly> {
     private ArrayList<Role> allowedRoles;
     private Character master;
 
@@ -60,4 +58,20 @@ public class Assembly<Assembly> extends Alliance<Groups.Assembly> {
 
     public boolean isAllowed(Role role){ return this.getAllowedRoles().contains(role); }
 
+    @Override
+    public String toString(){
+        String result =  "=> Faction " + this.name + "\n";
+
+        result += " o Members :\n";
+        for (Character character: this.getMembers()) {
+            result += " " + character;
+        }
+
+        result += " o Friends:\n";
+        for(Assembly assembly: this.getFriends()){
+            result += "  - " + assembly.name;
+        }
+
+        return result;
+    }
 }

@@ -1,35 +1,27 @@
 import org.junit.Assert;
 import org.junit.Test;
 
-public class TestSecondIteration {
+public class TestWarrior {
 
     @Test
     public void testWarriorAttacksEnemy(){
         MockWarrior gentil = new MockWarrior("Red Hood");
         MockWarrior mechant = new MockWarrior("Joker");
-        int healthBeforeAttacks = 100;
 
-        for(int i = 0; i < 200; i ++){
-            mechant.setHealth(healthBeforeAttacks);
-            gentil.attack(mechant);
-            boolean healthMin = mechant.getHealth() <= 100 ;
-            boolean healthMax = mechant.getHealth() >= 91;
-            Assert.assertTrue(healthMin && healthMax);
-        }
+        gentil.attack(mechant);
+
+        boolean healthMin = mechant.getHealth() <= 100 - mechant.getMinDamages() ;
+        boolean healthMax = mechant.getHealth() >= 100 - mechant.getMaxDamages();
+        Assert.assertTrue(healthMin && healthMax);
     }
 
     @Test
     public void testWarriorAttacksSelf(){
         MockWarrior gentil = new MockWarrior("Red Hood");
-        int healthBeforeAttacks = 100;
 
-        for(int i = 0; i < 200; i ++){
-            gentil.setHealth(healthBeforeAttacks);
-            gentil.attack(gentil);
-            boolean healthMin = gentil.getHealth() <= 100 ;
-            boolean healthMax = gentil.getHealth() >= 91;
-            Assert.assertTrue(healthMin && healthMax);
-        }
+        gentil.attack(gentil);
+
+        Assert.assertEquals(gentil.getHealth(), 100 - 1);
     }
 
     @Test

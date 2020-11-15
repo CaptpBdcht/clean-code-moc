@@ -1,7 +1,7 @@
 import org.junit.Assert;
 import org.junit.Test;
 
-public class TestFirstIteration {
+public class TestCharacter {
 /*
     @Test
     public void testCharacterCreation(){

@@ -144,4 +144,7 @@ public abstract class Character extends Entity {
         return false;
     }
 
+    public String toString(){
+        return " | name : " + this.name + " | HP : " + this.health;
+    }
 }
