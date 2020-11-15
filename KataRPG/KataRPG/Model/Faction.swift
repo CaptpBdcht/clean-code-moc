@@ -19,10 +19,6 @@ class Faction: NSObject {
         if !(self === allyFaction) {
             self.alliesFactions.append(allyFaction)
             allyFaction.alliesFactions.append(self)
-        } else {
-            print("U CANT ADD URSELF AS ALLY")
         }
-        
     }
-    
 }

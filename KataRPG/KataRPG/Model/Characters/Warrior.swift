@@ -39,7 +39,6 @@ class Warrior: Characters {
         } else if ennemyCharacter.alive == true && !(self === ennemyCharacter) && self.alive {
             if let myFactions = self.faction {
                 if myFactions != [] {
-                    
                     if let ennemyFactions = ennemyCharacter.faction {
                         let commonFaction: [Faction] = Array(Set(myFactions).intersection(ennemyFactions))
                         if(commonFaction != []) {
@@ -58,7 +57,7 @@ class Warrior: Characters {
                         }
                     }
                     
-                }else{
+                } else {
                     ennemyCharacter.takeDamage(damage: damage)
                 }
                 

@@ -55,7 +55,7 @@ public class CharacterRPG: Characters {
                             }
                         }
                     }
-                }else{
+                } else {
                     ennemyCharacter.takeDamage(damage: 1)
                 }
                 
