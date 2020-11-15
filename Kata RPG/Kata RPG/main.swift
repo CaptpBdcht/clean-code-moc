@@ -7,10 +7,12 @@
 
 import Foundation
 
-    firstIteration()
-    secondIteration()
-    thirdIteration()
-    fourthIteration()
-    fifthIteration()
-    sixthIteration()
-    seventhIteration()
+  //  firstIteration()
+// secondIteration()
+  //  thirdIteration()
+   // fourthIteration()
+// fifthIteration()
+   // sixthIteration()
+// seventhIteration()
+
+eighthIteration()

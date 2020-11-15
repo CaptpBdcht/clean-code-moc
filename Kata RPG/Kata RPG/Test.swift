@@ -180,3 +180,43 @@ func addMultipleFaction(){
     Link.leaveFaction(faction: Zebes)
     print(Link)
 }
+
+let A1 = Assembly(name: "A1")
+let A2 = Assembly(name: "A2")
+let c1 = Character(name: "c1")
+
+func eighthIteration(){
+    
+    A1.addRole(role: "Priest")
+    A1.addRole(role: "Warrior")
+    Samus.joinAssembly(assembly: A1)
+    Zelda.joinAssembly(assembly: A1)
+    Link.joinAssembly(assembly: A1)
+    Ganon.joinAssembly(assembly: A1)
+    print(A1.members)
+    print("Master: \(A1.master?.name)")
+    Samus.leaveAssembly()
+    Samus.leaveAssembly()
+    print("Master: \(A1.master?.name)")
+    print(A1.members)
+    Ganon.leaveAssembly()
+    Ganon.leaveAssembly()
+    Ganon.leaveAssembly()
+
+    print("Master: \(A1.master?.name)")
+    print(A1.members)
+    Zelda.leaveAssembly()
+    Zelda.leaveAssembly()
+    Zelda.leaveAssembly()
+
+    print("Master: \(A1.master?.name)")
+    print(A1.members)
+    Link.leaveAssembly()
+    Link.leaveAssembly()
+    Link.leaveAssembly()
+
+    print("Master: \(A1.master?.name)")
+    print(A1.members)
+    
+}
+
