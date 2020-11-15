@@ -5,11 +5,11 @@
 L'objectif de cet exercice est de commencer à créer le coeur applicatif (business) d'un RPG.  
 Nous avons choisi pour TP de partir dans le monde de la série [Vikings](https://fr.wikipedia.org/wiki/Vikings_(série_télévisée)).
 
-###Binôme
+### Binôme
 ***
 * **Corentin DELAGE**
 * **Julien GUILLAN**
-###Installation des dépendances
+### Installation des dépendances
 ***
 Nous avons développé entièrement ce Projet en JAVA.
 il est donc nécessaire de disposer du JDK en version 11 minimum. 
@@ -19,7 +19,7 @@ Maven 3.6 est nécessaire pour compiler et lancer les tests (cf. [Documentation]
 
 >Téléchargeable ici: [Maven 3.6](http://maven.apache.org/download.cgi)
 
-###Compilation du projet
+### Compilation du projet
 ***
 Pour compiler le projet une fois OpenJDK et Maven d'installé, depuis un terminal (ou cmd) entrez:
 ```
@@ -35,7 +35,7 @@ La sortie console suivante devrait s'afficher:
 [INFO] Finished at: XXXX-XX-XXT01:09:20+01:00
 [INFO] ------------------------------------------------------------------------
 ```
- ###Lancement des tests unitaires
+ ### Lancement des tests unitaires
 ***
 Pour effectuer les tests unitaires nous avons choisi JUnit 4.12.
 >Pas d'inquiétude, tout est dans le pom.xml
@@ -60,4 +60,3 @@ La sortie console suivante devrait s'afficher:
 [INFO] ------------------------------------------------------------------------
 ```
 Tout simplement.
->>>>>>> Stashed changes
