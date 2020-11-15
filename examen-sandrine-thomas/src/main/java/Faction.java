@@ -1,10 +1,11 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public class Faction {
 
-    private final String name;
-    private final ArrayList<Character> members;
-    private final ArrayList<Faction> friends;
+    private String name;
+    private final List<Character> members;
+    private final List<Faction> friends;
 
     public Faction(String name) {
         this.name = name;
@@ -35,11 +36,15 @@ public class Faction {
         return name;
     }
 
-    public ArrayList<Character> getMembers() {
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List<Character> getMembers() {
         return members;
     }
 
-    public ArrayList<Faction> getFriends() {
+    public List<Faction> getFriends() {
         return friends;
     }
 }

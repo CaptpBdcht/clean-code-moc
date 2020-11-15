@@ -1,7 +1,9 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public abstract class Character implements Entity {
-    private final ArrayList<Faction> factions;
+    private final List<Faction> factions;
+    private Assembly assembly;
     private final String name;
     private int health;
 
@@ -22,11 +24,33 @@ public abstract class Character implements Entity {
         this.factions.add(factionJoined);
     }
 
+    void joinAssembly(Assembly assemblyJoined) {
+        if(this.assembly != null) {
+            throw new UnsupportedOperationException("This character already belong to an assembly");
+        }
+        if (!assemblyJoined.getAllowedRoles().contains(this.getClass())) {
+            throw new UnsupportedOperationException("This character role is not allowed in this assembly");
+        }
+        assemblyJoined.addMember(this);
+        this.assembly = assemblyJoined;
+    }
+
     void leaveFaction(Faction factionToLeave) {
         if (this.factions.isEmpty()) {
             throw new UnsupportedOperationException("This character doesn't have a faction to leave");
+        } else if (!this.factions.contains(factionToLeave)) {
+            throw new UnsupportedOperationException("This character doesn't belong to this faction");
         } else {
             this.factions.remove(factionToLeave);
+        }
+    }
+
+    void leaveAssembly(Assembly assemblyToLeave) {
+        if (this.assembly == null) {
+            throw new UnsupportedOperationException("This character doesn't have an assembly to leave");
+        } else {
+            this.assembly.removeMember(this);
+            this.assembly = null;
         }
     }
 
@@ -46,7 +70,7 @@ public abstract class Character implements Entity {
         return this.name;
     }
 
-    public ArrayList<Faction> getFactions() {
+    public List<Faction> getFactions() {
         return factions;
     }
 }
