@@ -9,6 +9,10 @@ Nous avons choisi pour TP de partir dans le monde de la série [Vikings](https:/
 ***
 * **Corentin DELAGE**
 * **Julien GUILLAN**
+
+### IntelliJ
+***
+>Attention a l'ouverture, cliquez sur "configure as maven project" et non pas sur eclipse !  
 ### Installation des dépendances
 ***
 Nous avons développé entièrement ce Projet en JAVA.
