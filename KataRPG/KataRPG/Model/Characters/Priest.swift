@@ -11,7 +11,7 @@ import Foundation
 class Priest: Characters {
     var assembly: Assembly?
     var classNames: Class = Class.priest
-    var faction: [Faction]?
+    var faction: [Faction]
     var name: String
     var health: Int = 100 {
         didSet {
@@ -35,28 +35,8 @@ class Priest: Characters {
     }
     
     func heal(allyCharacter: Characters){
-        if allyCharacter.alive == true && self.alive {
-            if let myFactions = self.faction {
-                if let otherFactions = allyCharacter.faction {
-                    let commonFaction: [Faction] = Array(Set(myFactions).intersection(otherFactions))
-                    if (commonFaction != []){
-                        allyCharacter.health += damage
-                    } else {
-                        for myFaction in myFactions {
-                            for otherFaction in otherFactions {
-                                if (myFaction.alliesFactions.contains(otherFaction)){
-                                    print("C UN POTE")
-                                    allyCharacter.health += damage
-                                } else {
-                                    print("C'est un Ennemy")
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        } else {
-            print("Character is dead")
+        if !self.isAllyCharacter(otherCharacter: allyCharacter) || self === allyCharacter {
+            allyCharacter.health += damage
         }
     }
     
@@ -66,26 +46,6 @@ class Priest: Characters {
             if(self.health == 0) {
                 self.alive = false
             }
-        }
-    }
-    
-    func joinFaction(faction: Faction) {
-        self.faction?.append(faction)
-    }
-       
-    func leaveFaction(faction: Faction) {
-        self.faction = self.faction?.filter { $0 != faction}
-    }
-    
-    func joinAssembly(assembly: Assembly) {
-        if(self.assembly == nil && assembly.allowedRoles.contains(self.classNames)) {
-            self.assembly = assembly
-        }
-    }
-       
-    func leaveAssembly() {
-        if self.assembly != nil {
-            self.assembly = nil
         }
     }
 }

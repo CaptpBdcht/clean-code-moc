@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		A0A5EFA125572A65000B5498 /* Assembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A5EFA025572A65000B5498 /* Assembly.swift */; };
 		A0A5EFA4255736B0000B5498 /* ClassEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A5EFA3255736B0000B5498 /* ClassEnum.swift */; };
+		A0D011C62561E0C700B4BE1A /* Extension+Characters.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D011C52561E0C700B4BE1A /* Extension+Characters.swift */; };
 		B2355D26253C87C400B03E1F /* AnimalEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2355D25253C87C400B03E1F /* AnimalEntity.swift */; };
 		B2355D27253C89EB00B03E1F /* AnimalEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2355D25253C87C400B03E1F /* AnimalEntity.swift */; };
 		B2355D28253C8AA900B03E1F /* Entities.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2471065253C8574002B344C /* Entities.swift */; };
@@ -42,6 +43,7 @@
 /* Begin PBXFileReference section */
 		A0A5EFA025572A65000B5498 /* Assembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembly.swift; sourceTree = "<group>"; };
 		A0A5EFA3255736B0000B5498 /* ClassEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassEnum.swift; sourceTree = "<group>"; };
+		A0D011C52561E0C700B4BE1A /* Extension+Characters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Characters.swift"; sourceTree = "<group>"; };
 		B2355D25253C87C400B03E1F /* AnimalEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalEntity.swift; sourceTree = "<group>"; };
 		B247102B253C4821002B344C /* KataRPG */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = KataRPG; sourceTree = BUILT_PRODUCTS_DIR; };
 		B247102E253C4821002B344C /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -82,6 +84,14 @@
 			path = Enum;
 			sourceTree = "<group>";
 		};
+		A0D011C42561E0A800B4BE1A /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				A0D011C52561E0C700B4BE1A /* Extension+Characters.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		B2471022253C4821002B344C = {
 			isa = PBXGroup;
 			children = (
@@ -103,6 +113,7 @@
 		B247102D253C4821002B344C /* KataRPG */ = {
 			isa = PBXGroup;
 			children = (
+				A0D011C42561E0A800B4BE1A /* Extension */,
 				A0A5EFA225573696000B5498 /* Enum */,
 				B2471061253C5172002B344C /* Protocol */,
 				B2471035253C4833002B344C /* Model */,
@@ -249,6 +260,7 @@
 				B247105B253C50F6002B344C /* Priest.swift in Sources */,
 				B2471059253C50D5002B344C /* Warrior.swift in Sources */,
 				B247103A253C4895002B344C /* CharacterRPG.swift in Sources */,
+				A0D011C62561E0C700B4BE1A /* Extension+Characters.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

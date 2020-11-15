@@ -9,7 +9,7 @@
 import Foundation
 public class CharacterRPG: Characters {
     var classNames: Class = Class.characterRPG
-    var faction: [Faction]?
+    var faction: [Faction]
     var assembly: Assembly?
     var name: String = ""
     var alive: Bool = true
@@ -33,71 +33,18 @@ public class CharacterRPG: Characters {
     }
     
     func attack(ennemyCharacter: Characters) {
-        if ennemyCharacter.alive == true && !(self === ennemyCharacter) && self.alive {
-            if let myFactions = self.faction {
-               if myFactions != [] {
-                    if let ennemyFactions = ennemyCharacter.faction {
-                        
-                        let commonFaction: [Faction] = Array(Set(myFactions).intersection(ennemyFactions))
-                        
-                        if(commonFaction != []) {
-                            print("It's an ally")
-                        } else {
-                            for myFaction in myFactions {
-                                for ennemyFaction in ennemyFactions {
-                                    if (myFaction.alliesFactions.contains(ennemyFaction)){
-                                        print("C UN POTE")
-                                    } else {
-                                        print("C'est un Ennemy")
-                                        ennemyCharacter.takeDamage(damage: 1)
-                                    }
-                                }
-                            }
-                        }
-                    }
-                } else {
-                    ennemyCharacter.takeDamage(damage: 1)
-                }
-                
-            }
-        } else {
-            print("Character already dead or he want to attack himself")
+        if !self.isAllyCharacter(otherCharacter: ennemyCharacter) {
+            ennemyCharacter.takeDamage(damage: 1)
         }
     }
-    
     
     func attack(entity:Entities) {
         entity.health -= 1
     }
     
     func heal(allyCharacter: Characters) {
-        if allyCharacter.alive == true && self.alive {
-            if let myFactions = self.faction {
-                if myFactions != [] {
-                    if let otherFactions = allyCharacter.faction {
-                        
-                        let commonFaction: [Faction] = Array(Set(myFactions).intersection(otherFactions))
-                        if (commonFaction != []){
-                            allyCharacter.health += 1
-                        } else {
-                            for myFaction in myFactions {
-                                for otherFaction in otherFactions {
-                                    if (myFaction.alliesFactions.contains(otherFaction)){
-                                        print("C UN POTE")
-                                        allyCharacter.health += 1
-                                    } else {
-                                        print("C'est un Ennemy")
-                                    }
-                                }
-                            }
-                        }
-                        
-                    }
-                }
-                
-            }
-        } else {
-            print("Character is dead")
+        if !self.isAllyCharacter(otherCharacter: allyCharacter) {
+            allyCharacter.health += 1
         }
     }
     
@@ -108,31 +55,5 @@ public class CharacterRPG: Characters {
                 self.alive = false
             }
         }
-    }
-    
-    func joinFaction(faction: Faction) {
-        self.faction?.append(faction)
-    }
-    
-    func leaveFaction(faction: Faction) {
-        self.faction = self.faction?.filter { $0 != faction}
-    }
-    
-    func joinAssembly(assembly: Assembly) {
-        if(self.assembly == nil && assembly.allowedRoles.contains(self.classNames)) {
-            self.assembly = assembly
-        }
-    }
-       
-    func leaveAssembly() {
-        if self.assembly != nil {
-            self.assembly = nil
-        }
-    }
-}
-
-extension CharacterRPG:CustomStringConvertible {
-    public var description: String{
-        return "name : \(self.name) health : \(self.health)"
     }
 }

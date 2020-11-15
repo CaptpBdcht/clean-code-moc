@@ -25,7 +25,7 @@ public class Assembly: NSObject {
     }
     
     func updateAssemblyName(name: String) {
-        if master === self {
+        if master != nil {
             self.name = name
         }
     }

@@ -9,6 +9,5 @@
 import Foundation
 
 @objc enum Class: Int {
-    
     case warrior, priest, characterRPG
 }
