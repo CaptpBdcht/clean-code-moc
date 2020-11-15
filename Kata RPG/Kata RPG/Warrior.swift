@@ -10,8 +10,18 @@ import Foundation
 class Warrior: Character {
    
     func attack(target: Character){
-        if(self.alive && [] == self.faction.filter(target.faction.contains)){
-               target.health -= Int.random(in: 0...9)
+        if(self.alive && [] == self.factions.filter(target.factions.contains)){
+               target.health -= Int.random(in: 1...9)
+               if (target.health < 0) {
+                   target.health = 0
+                   target.alive = false
+               }
+           }
+       }
+    
+    func attackEntity(target: Entity){
+        if(self.alive){
+               target.health -= Int.random(in: 1...9)
                if (target.health < 0) {
                    target.health = 0
                    target.alive = false

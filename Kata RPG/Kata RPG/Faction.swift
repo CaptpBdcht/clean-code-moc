@@ -25,25 +25,23 @@ class Faction: CustomStringConvertible, Equatable{
         }
     
     func addAlly(ally: Faction){
-        if(self !== ally && !(self.allyArray.contains(ally)) ){
+        if(self === ally || (self.allyArray.contains(ally))){
+            return
+        }
             self.allyArray.append(ally)
             ally.allyArray.append(self)
-        }
     }
     
     func removeAlly(ally: Faction){
-        if(self !== ally){
+        if(self === ally){
+            return
+        }
             for object in allyArray {
-                if object == ally {
+                if (object == ally) {
                     allyArray.remove(at: allyArray.firstIndex(of: ally)!)
                     ally.allyArray.remove(at: ally.allyArray.firstIndex(of: self)!)
                 }
             }
         }
-    }
-    
-    func showAlly(){
-        print(self,allyArray)
-    }
     
 }

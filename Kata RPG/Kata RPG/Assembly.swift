@@ -11,16 +11,13 @@ class Assembly: Faction{
     
     var allowedRoles: [String] = []
     var master: Character?
-    var members:[Character] = []
+    var members: [Character] = []
 
     func addRole(role: String){
-        if( !(self.allowedRoles.contains(role)) ){
-            self.allowedRoles.append(role)
+        if(self.allowedRoles.contains(role)){
+            return
         }
-    }
-    
-    func renameAssembly(sender: AnyObject, name: String){
-        print(sender)
+        self.allowedRoles.append(role)
     }
     
 }

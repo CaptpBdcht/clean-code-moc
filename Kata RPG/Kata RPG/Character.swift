@@ -7,38 +7,31 @@
 
 import Foundation
 
-class Character: CustomStringConvertible, Equatable {
+class Character: Entity, CustomStringConvertible, Equatable {
+    
+    var factions: [Faction] = []
+    var assembly: Assembly!
     
     static func == (lhs: Character, rhs: Character) -> Bool {
         return lhs.name == rhs.name
     }
     
-  
-    
-    
-    var name: String
-    var health: Int =  100
-    var alive: Bool = true
-    var faction: [Faction] = []
-    var assembly: Assembly!
-    
     var description: String{
-        return "\(self.name )|\(self.health)|Faction:\(self.faction)|Assembly:\(self.assembly ?? nil)"
+        return "\(self.name)|\(self.health)"
     }
+
     
-    init(name: String) {
-        self.name = name
-        }
-    
+
     func joinFaction(faction: Faction){
-        if (!(self.faction.contains(faction))){
-        self.faction.append(faction)
+        if (self.factions.contains(faction)){
+            return
         }
+        self.factions.append(faction)
     }
     
     func leaveFaction(faction: Faction){
-        if let index = self.faction.firstIndex(of: faction) {
-            self.faction.remove(at: index)
+        if let index = self.factions.firstIndex(of: faction) {
+            self.factions.remove(at: index)
         }
     }
     
@@ -50,8 +43,8 @@ class Character: CustomStringConvertible, Equatable {
             if(assembly.master == nil){
                 assembly.master = self
             }
-        }
-        }
+    }
+    }
     
     func leaveAssembly(){
         if(self.assembly?.master === self){
@@ -68,7 +61,5 @@ class Character: CustomStringConvertible, Equatable {
             assembly.name = name
         }
     }
-    
-    
     
 }

@@ -7,8 +7,14 @@
 
 import Foundation
 
-class Entity: Character {
+public class Entity{
     
-  
+    var name: String
+    var health: Int = 100
+    var alive: Bool = true
+    
+    init(name:String) {
+        self.name = name
+    }
     
 }

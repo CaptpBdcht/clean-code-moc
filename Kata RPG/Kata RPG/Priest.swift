@@ -9,13 +9,11 @@ import Foundation
 
 class Priest: Character {
 
-
     func attack(target: Character){
-        print("\(self.name) is a priest and can't attack")
     }
             
     func heal(target: Character) {
-        if(self.alive && [] == self.faction.filter(target.faction.contains) ){
+        if(self.alive && [] != self.factions.filter(target.factions.contains) ){
                     target.health += Int.random(in: 5...10)
                     target.alive = true
                     if (target.health > 100) {
