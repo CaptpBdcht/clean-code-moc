@@ -39,3 +39,12 @@ Le code doit:
                                     Ajout de la liste de Faction
                                     Modification fonction heal et attack (conditions avec liste de faction)
                                     MaJ des TU
+                                    
+15/11/20 - Seance 4 : Refacto code + début itération 9 
+                                    ajout d'une extension pour la notion d'intéraction entre les characters (heal, attack, join, leave...)
+                                    Refacto : - Attack
+                                                    - heal 
+                                                    - méthodes d'interaction de faction
+                                    
+                                    
+

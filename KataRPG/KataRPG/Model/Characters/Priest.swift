@@ -35,7 +35,7 @@ class Priest: Characters {
     }
     
     func heal(allyCharacter: Characters){
-        if !self.isAllyCharacter(otherCharacter: allyCharacter) || self === allyCharacter {
+        if self.isAllyCharacter(otherCharacter: allyCharacter) || self === allyCharacter {
             allyCharacter.health += damage
         }
     }
