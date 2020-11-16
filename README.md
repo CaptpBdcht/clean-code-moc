@@ -47,5 +47,8 @@ Le code doit:
                                                     - méthodes d'interaction de faction
 
 16/11/20 - Seance 5 : Itération 9 + TU 
+                                    mini refacto 
+                                    mise en place du code coverage
+                                    
                                     
 

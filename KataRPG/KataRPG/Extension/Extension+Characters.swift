@@ -10,6 +10,16 @@ import Foundation
 
 extension Characters {
     
+    
+    func takeDamage(damage:Int) {
+        if(self.alive) {
+            self.health -= damage
+            if(self.health == 0) {
+                self.alive = false
+            }
+        }
+    }
+    
     func hasFaction() -> Bool {
         if !self.faction.isEmpty {
             return true

@@ -40,13 +40,6 @@ class Priest: Characters {
         }
     }
     
-    func takeDamage(damage:Int) {
-        if(self.alive == true) {
-            self.health -= damage
-            if(self.health == 0) {
-                self.alive = false
-            }
-        }
-    }
+   
 }
 

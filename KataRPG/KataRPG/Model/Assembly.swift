@@ -14,35 +14,33 @@ public class Assembly: NSObject {
     var allowedRoles: [Class] = []
     var memberList: [Characters] = []
     var master:Characters?
-
+    
     init(name: String) { 
         self.name = name
     }
     
     func updateAssemblyName(name: String) {
-            self.name = name
+        self.name = name
     }
     
-    fileprivate func reassignMaster(_ character: Characters) {
-        if character.isAssemblyMaster(){
-            
-            if !self.memberList.isEmpty {
-                let memberCount = self.memberList.count
-                 var newMasterIndex = 0
-                 if memberCount > 0 {
-                      newMasterIndex = Int.random(in: 0..<self.memberList.count)
-                 }
-                 self.master = self.memberList[newMasterIndex]
-            }else{
-                self.master = nil
+    private func reassignMaster(_ character: Characters) {
+        if !self.memberList.isEmpty {
+            let memberCount = self.memberList.count
+            var newMasterIndex = 0
+            if memberCount > 0 {
+                newMasterIndex = Int.random(in: 0..<memberCount)
             }
-          
+            self.master = self.memberList[newMasterIndex]
+        }else{
+            self.master = nil
         }
     }
     
     func deleteMember(character:Characters){
         self.memberList = self.memberList.filter { !($0 === character) }
-        reassignMaster(character)
+        if character.isAssemblyMaster(){
+            reassignMaster(character)
+        }
     }
     
     func addMember(character:Characters){
@@ -55,7 +53,6 @@ public class Assembly: NSObject {
                 self.memberList.append(character)
                 character.assembly = self
             }
-            
         }
     }
     

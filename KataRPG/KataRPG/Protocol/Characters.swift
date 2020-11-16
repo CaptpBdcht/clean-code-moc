@@ -17,5 +17,4 @@ import Foundation
     
     @objc optional func attack(ennemyCharacter: Characters)
     func heal(allyCharacter: Characters)
-    func takeDamage(damage: Int)
 }

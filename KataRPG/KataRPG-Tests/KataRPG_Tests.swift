@@ -342,5 +342,17 @@ class KataRPG_Tests: XCTestCase {
         
     }
     
+    func testCharacterHealthShouldNotBeSubZero(){
+        let warriorFirstMaster = Warrior(name: "Testeur")
+        let priest = Priest(name: "TesteurPriest")
+        
+        for _ in 0...200 {
+            warriorFirstMaster.attack(entity: priest)
+        }
+        
+        XCTAssertEqual(priest.health, 0)
+        
+    }
+    
     
 }

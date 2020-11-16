@@ -13,7 +13,6 @@
 		B2355D26253C87C400B03E1F /* AnimalEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2355D25253C87C400B03E1F /* AnimalEntity.swift */; };
 		B2355D27253C89EB00B03E1F /* AnimalEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2355D25253C87C400B03E1F /* AnimalEntity.swift */; };
 		B2355D28253C8AA900B03E1F /* Entities.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2471065253C8574002B344C /* Entities.swift */; };
-		B247102F253C4821002B344C /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = B247102E253C4821002B344C /* main.swift */; };
 		B2471038253C484B002B344C /* Characters.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2471037253C484B002B344C /* Characters.swift */; };
 		B247103A253C4895002B344C /* CharacterRPG.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2471039253C4895002B344C /* CharacterRPG.swift */; };
 		B2471051253C4E7D002B344C /* KataRPG_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2471050253C4E7D002B344C /* KataRPG_Tests.swift */; };
@@ -26,6 +25,7 @@
 		B247105F253C5142002B344C /* Priest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B247105A253C50F6002B344C /* Priest.swift */; };
 		B2471060253C5144002B344C /* Warrior.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2471058253C50D5002B344C /* Warrior.swift */; };
 		B2471066253C8574002B344C /* Entities.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2471065253C8574002B344C /* Entities.swift */; };
+		B280E1FA256322E100D2898F /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = B280E1F9256322E100D2898F /* main.swift */; };
 		B29A450025573C36002AD3F6 /* ClassEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A5EFA3255736B0000B5498 /* ClassEnum.swift */; };
 		B29A450325573C39002AD3F6 /* Assembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A5EFA025572A65000B5498 /* Assembly.swift */; };
 		B29F72442561E67C00F22AF5 /* Extension+Characters.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D011C52561E0C700B4BE1A /* Extension+Characters.swift */; };
@@ -49,7 +49,6 @@
 		A0D011C52561E0C700B4BE1A /* Extension+Characters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Characters.swift"; sourceTree = "<group>"; };
 		B2355D25253C87C400B03E1F /* AnimalEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalEntity.swift; sourceTree = "<group>"; };
 		B247102B253C4821002B344C /* KataRPG */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = KataRPG; sourceTree = BUILT_PRODUCTS_DIR; };
-		B247102E253C4821002B344C /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		B2471037253C484B002B344C /* Characters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Characters.swift; sourceTree = "<group>"; };
 		B2471039253C4895002B344C /* CharacterRPG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterRPG.swift; sourceTree = "<group>"; };
 		B247104E253C4E7D002B344C /* KataRPG-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "KataRPG-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -59,6 +58,7 @@
 		B247105A253C50F6002B344C /* Priest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Priest.swift; sourceTree = "<group>"; };
 		B247105C253C512F002B344C /* Faction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Faction.swift; sourceTree = "<group>"; };
 		B2471065253C8574002B344C /* Entities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entities.swift; sourceTree = "<group>"; };
+		B280E1F9256322E100D2898F /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,7 +120,7 @@
 				A0A5EFA225573696000B5498 /* Enum */,
 				B2471061253C5172002B344C /* Protocol */,
 				B2471035253C4833002B344C /* Model */,
-				B247102E253C4821002B344C /* main.swift */,
+				B280E1F9256322E100D2898F /* main.swift */,
 			);
 			path = KataRPG;
 			sourceTree = "<group>";
@@ -253,7 +253,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B247102F253C4821002B344C /* main.swift in Sources */,
 				A0A5EFA4255736B0000B5498 /* ClassEnum.swift in Sources */,
 				B2471038253C484B002B344C /* Characters.swift in Sources */,
 				B2471066253C8574002B344C /* Entities.swift in Sources */,
@@ -261,6 +260,7 @@
 				A0A5EFA125572A65000B5498 /* Assembly.swift in Sources */,
 				B2355D26253C87C400B03E1F /* AnimalEntity.swift in Sources */,
 				B247105B253C50F6002B344C /* Priest.swift in Sources */,
+				B280E1FA256322E100D2898F /* main.swift in Sources */,
 				B2471059253C50D5002B344C /* Warrior.swift in Sources */,
 				B247103A253C4895002B344C /* CharacterRPG.swift in Sources */,
 				A0D011C62561E0C700B4BE1A /* Extension+Characters.swift in Sources */,
