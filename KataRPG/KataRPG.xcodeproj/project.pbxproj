@@ -28,6 +28,7 @@
 		B2471066253C8574002B344C /* Entities.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2471065253C8574002B344C /* Entities.swift */; };
 		B29A450025573C36002AD3F6 /* ClassEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A5EFA3255736B0000B5498 /* ClassEnum.swift */; };
 		B29A450325573C39002AD3F6 /* Assembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A5EFA025572A65000B5498 /* Assembly.swift */; };
+		B29F72442561E67C00F22AF5 /* Extension+Characters.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D011C52561E0C700B4BE1A /* Extension+Characters.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -280,6 +281,7 @@
 				B2471057253C5042002B344C /* CharacterRPG.swift in Sources */,
 				B2355D28253C8AA900B03E1F /* Entities.swift in Sources */,
 				B2471051253C4E7D002B344C /* KataRPG_Tests.swift in Sources */,
+				B29F72442561E67C00F22AF5 /* Extension+Characters.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

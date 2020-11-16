@@ -264,4 +264,83 @@ class KataRPG_Tests: XCTestCase {
         
         XCTAssertNil(warrior.assembly)
     }
+    
+    func testCharacterIsMasterAssembly(){
+        let assemblyTest = Assembly(name:"TestAssembly")
+        let warrior = Warrior(name: "Testeur")
+        
+        assemblyTest.addAllowedRoles(classAllowed: Class.warrior)
+        
+        warrior.joinAssembly(assembly: assemblyTest)
+        
+        XCTAssertTrue(warrior.isAssemblyMaster())
+    }
+    
+    func testSecondAssemblyCharacterIsNotMaster(){
+        let assemblyTest = Assembly(name:"TestAssembly")
+        let warrior = Warrior(name: "TesteurWarrior")
+        let priest = Priest(name: "TesteurPriest")
+        
+        assemblyTest.addAllowedRoles(classAllowed: Class.warrior)
+        assemblyTest.addAllowedRoles(classAllowed: Class.priest)
+        
+        warrior.joinAssembly(assembly: assemblyTest)
+        priest.joinAssembly(assembly: assemblyTest)
+        
+        XCTAssertFalse(priest.isAssemblyMaster())
+    }
+    
+    func testMasterUpdateAssemblyName(){
+        let assemblyTest = Assembly(name:"TestAssembly")
+        let warrior = Warrior(name: "Testeur")
+        let firstAssemblyName = assemblyTest.name
+        
+        assemblyTest.addAllowedRoles(classAllowed: Class.warrior)
+        
+        warrior.joinAssembly(assembly: assemblyTest)
+        warrior.updateAssemblyName(name: "newName")
+        
+        let newAssemblyName = assemblyTest.name
+        
+        
+        XCTAssertNotEqual(firstAssemblyName, newAssemblyName)
+    }
+    
+    
+    func testAssemblyMemberCantUpdateAssemblyName(){
+        let assemblyTest = Assembly(name:"TestAssembly")
+        
+        let warrior = Warrior(name: "Testeur")
+        let priest = Priest(name: "TesteurPriest")
+        
+        let firstAssemblyName = assemblyTest.name
+        
+        assemblyTest.addAllowedRoles(classAllowed: Class.warrior)
+        
+        warrior.joinAssembly(assembly: assemblyTest)
+        priest.joinAssembly(assembly: assemblyTest)
+        priest.updateAssemblyName(name: "newName")
+        
+        let supposedNewAssemblyName = assemblyTest.name
+        XCTAssertEqual(firstAssemblyName, supposedNewAssemblyName)
+    }
+    
+    func testShouldHaveANewAssemblyMaster(){
+        let assemblyTest = Assembly(name:"TestAssembly")
+        let warriorFirstMaster = Warrior(name: "Testeur")
+        let priest = Priest(name: "TesteurPriest")
+        
+        assemblyTest.addAllowedRoles(classAllowed: Class.warrior)
+        assemblyTest.addAllowedRoles(classAllowed: Class.priest)
+        
+        warriorFirstMaster.joinAssembly(assembly: assemblyTest)
+        priest.joinAssembly(assembly: assemblyTest)
+        
+        warriorFirstMaster.leaveAssembly()
+       
+        XCTAssertTrue(priest.isAssemblyMaster())
+        
+    }
+    
+    
 }

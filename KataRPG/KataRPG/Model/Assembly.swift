@@ -9,24 +9,53 @@
 import Foundation
 
 public class Assembly: NSObject {
+    
+    var name: String
     var allowedRoles: [Class] = []
     var memberList: [Characters] = []
-    var name: String
-    lazy var master: Characters? = memberList[0] {
-        didSet {
-            if (master == nil) {
-                master = memberList[Int.random(in: 0...memberList.count)]
-            }
-        }
-    }
+    var master:Characters?
 
-    init(name: String) {
+    init(name: String) { 
         self.name = name
     }
     
     func updateAssemblyName(name: String) {
-        if master != nil {
             self.name = name
+    }
+    
+    fileprivate func reassignMaster(_ character: Characters) {
+        if character.isAssemblyMaster(){
+            
+            if !self.memberList.isEmpty {
+                let memberCount = self.memberList.count
+                 var newMasterIndex = 0
+                 if memberCount > 0 {
+                      newMasterIndex = Int.random(in: 0..<self.memberList.count)
+                 }
+                 self.master = self.memberList[newMasterIndex]
+            }else{
+                self.master = nil
+            }
+          
+        }
+    }
+    
+    func deleteMember(character:Characters){
+        self.memberList = self.memberList.filter { !($0 === character) }
+        reassignMaster(character)
+    }
+    
+    func addMember(character:Characters){
+        if self.allowedRoles.contains(character.classNames){
+            if(memberList.isEmpty){
+                self.master = character
+                self.memberList.append(character)
+                character.assembly = self
+            }else{
+                self.memberList.append(character)
+                character.assembly = self
+            }
+            
         }
     }
     

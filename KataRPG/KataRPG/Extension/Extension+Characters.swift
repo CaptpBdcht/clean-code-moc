@@ -9,6 +9,7 @@
 import Foundation
 
 extension Characters {
+    
     func hasFaction() -> Bool {
         if !self.faction.isEmpty {
             return true
@@ -59,14 +60,27 @@ extension Characters {
     }
     
     func joinAssembly(assembly: Assembly) {
-        if(self.assembly == nil && assembly.allowedRoles.contains(self.classNames)) {
-            self.assembly = assembly
+        if self.assembly == nil {
+            assembly.addMember(character: self)
         }
     }
-       
+    
     func leaveAssembly() {
         if self.assembly != nil {
+            self.assembly?.deleteMember(character: self)
             self.assembly = nil
         }
     }
+    
+    func isAssemblyMaster() -> Bool {
+        return self === self.assembly?.master
+    }
+    
+    func updateAssemblyName(name: String) {
+        if isAssemblyMaster() {
+            self.assembly?.updateAssemblyName(name: name)
+        }
+    }
+    
+    
 }

@@ -45,6 +45,7 @@ Le code doit:
                                     Refacto : - Attack
                                                     - heal 
                                                     - méthodes d'interaction de faction
-                                    
+
+16/11/20 - Seance 5 : Itération 9 + TU 
                                     
 
